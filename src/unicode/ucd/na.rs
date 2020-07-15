@@ -3,10 +3,12 @@
 // ];
 pub(self) mod na_table;
 
+use crate::unicode::hangul;
+
 pub(crate) fn na(cp: u32) -> String {
     // AC00..D7A3 NR1 “hangul syllable”
     if (0xAC00..0xD7A3 + 1).contains(&cp) {
-        return String::from("");
+        return hangul::syllable_name(cp);
     }
     // 3400..4DBF NR2 “cjk unified ideograph-”
     // 4E00..9FFC NR2 “cjk unified ideograph-”

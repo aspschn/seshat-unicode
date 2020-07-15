@@ -2,6 +2,8 @@ pub mod props;
 
 pub(crate) mod ucd;
 
+pub(crate) mod hangul;
+
 use self::props::*;
 
 #[derive(Clone, Copy)]
