@@ -28,6 +28,28 @@ pub(crate) fn na(cp: u32) -> String {
             (0x30000..0x3134A + 1).contains(&cp) {
         return format!("CJK UNIFIED IDEOGRAPH-{:04X}", cp);
     }
+    // 17000..187F7 NR2 “tangut ideograph-”
+    // 18D00..18D08 NR2 “tangut ideograph-”
+    if (0x17000..0x187F7 + 1).contains(&cp) ||
+            (0x18D00..0x18D08 + 1).contains(&cp) {
+        return format!("TANGUT IDEOGRAPH-{:04X}", cp);
+    }
+    // 18B00..18CD5 NR2 “khitan small script character-”
+    if (0x18B00..0x18CD5 + 1).contains(&cp) {
+        return format!("KHITAN SMALL SCRIPT CHARACTER-{:04X}", cp);
+    }
+    // 1B170..1B2FB NR2 “nushu character-”
+    if (0x1B170..0x1B2FB + 1).contains(&cp) {
+        return format!("NUSHU CHARACTER-{:04X}", cp);
+    }
+    // F900..FA6D NR2 “cjk compatibility ideograph-”
+    // FA70..FAD9 NR2 “cjk compatibility ideograph-”
+    // 2F800..2FA1D NR2 “cjk compatibility ideograph-”
+    if (0xF900..0xFA6D + 1).contains(&cp) ||
+            (0xFA70..0xFAD9 + 1).contains(&cp) ||
+            (0x2F800..0x2FA1D + 1).contains(&cp) {
+        return format!("CJK COMPATIBILITY IDEOGRAPH-{:04X}", cp);
+    }
 
     let found = na_table::NA_MAP.binary_search_by_key(&cp, |&(k,_)| k);
     match found {
