@@ -12,17 +12,33 @@ fn check_property(cp: CodePoint, val: &str, prop: &str, attrs: &Vec<OwnedAttribu
     match attrs.iter().find(|&attr| attr.name.local_name == prop) {
         Some(should) => {
             if val != should.value {
-                panic!("{}: Not equal. Should {} but found {}.", cp, should, val);
+                panic!("{}: Not equal. Should `{}` but found `{}`.", cp, should, val);
             }
         }
         None => panic!("Attribute {} is not in XML file!", prop),
     }
 }
 
+fn check_na_property(cp: CodePoint, val: &str, attrs: &Vec<OwnedAttribute>) {
+    match attrs.iter().find(|&attr| attr.name.local_name == "na") {
+        Some(should) => {
+            let mut should = should.value.clone();
+            if should.contains("#") {
+                should = should[..should.len() - 1].to_string();
+                should.push_str(&format!("{:04X}", cp.to_u32()));
+            }
+            if val != should {
+                panic!("{}: Not equal. Should \"{}\" but found \"{}\".", cp, should, val);
+            }
+        }
+        None => panic!("Attribute `na` is not in XML file!"),
+    }
+}
+
 fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // na (Name)
     let cp_na = cp.na();
-    check_property(cp, &cp_na, "na", el);
+    check_na_property(cp, &cp_na, el);
     // gc (General_Category)
     let cp_gc = cp.gc().property_value_name().abbr;
     check_property(cp, cp_gc, "gc", el);
@@ -169,7 +185,6 @@ fn validate_properties() {
                         let last_cp = CodePoint::new(
                             u32::from_str_radix(&last_cp.value, 16).unwrap()
                         ).unwrap();
-                        println!("{}..{}", first_cp, last_cp);
                         for cp in first_cp.to_u32()..last_cp.to_u32() + 1 {
                             check_properties(CodePoint::new(cp).unwrap(), &attributes);
                         }

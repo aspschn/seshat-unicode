@@ -89,6 +89,59 @@ def binary_props_rs() -> str:
         prev_prop = k
     txt += '\n    false\n'
     txt += '}\n'
+
+    return txt
+
+
+def na_table_rs() -> str:
+    filename = os.path.join(UNICODE_DATA_DIR, 'extracted/DerivedName.json')
+    f = open(filename)
+    json_str = f.read()
+    f.close()
+    d = json.loads(json_str)
+    txt = '#[allow(dead_code)]\n'
+    txt += 'pub(super) const NA_MAP: &[(u32, &\'static str)] = &[\n'
+    for k, name in d.items():
+        cp = CodePointRange.parse(k)
+        # Ignore `HANGUL SYLLABLE` prefix.
+        if cp.start in CodePointRange.parse('AC00..D7A3'):
+            continue
+        # Ignore `CJK UNIFIED IDEOGRAPH-` prefix.
+        if cp.start in CodePointRange.parse('3400..4DBF'):
+            continue
+        if cp.start in CodePointRange.parse('4E00..9FFC'):
+            continue
+        if cp.start in CodePointRange.parse('20000..2A6DD'):
+            continue
+        if cp.start in CodePointRange.parse('2A700..2B734'):
+            continue
+        if cp.start in CodePointRange.parse('2B740..2B81D'):
+            continue
+        if cp.start in CodePointRange.parse('2B820..2CEA1'):
+            continue
+        if cp.start in CodePointRange.parse('2CEB0..2EBE0'):
+            continue
+        if cp.start in CodePointRange.parse('30000..3134A'):
+            continue
+        # Ignore `TANGUT IDEOGRAPH-` prefix.
+        if cp.start in CodePointRange.parse('17000..187F7'):
+            continue
+        if cp.start in CodePointRange.parse('18D00..18D08'):
+            continue
+        # Ignore `KHITAN SMALL SCRIPT CHARACTER-` prefix.
+        if cp.start in CodePointRange.parse('18B00..18CD5'):
+            continue
+        # Ignore `NUSHU CHARACTER-` prefix.
+        if cp.start in CodePointRange.parse('1B170..1B2FB'):
+            continue
+        # Ignore `CJK COMPATIBILITY IDEOGRAPH-` prefix.
+        if cp.start in CodePointRange.parse('F900..FA6D') or \
+                cp.start in CodePointRange.parse('FA70..FAD9') or \
+                cp.start in CodePointRange.parse('2F800..2FA1D'):
+            continue
+        txt += '    (0x{:04X}, "{}"),\n'.format(cp.start, name)
+    txt += '];\n'
+
     return txt
 
 
@@ -104,4 +157,8 @@ if __name__ == '__main__':
     # Make binary properties data.
     f = open('../../src/unicode/ucd/binary_props.rs', 'w')
     f.write(binary_props_rs())
+    f.close()
+    # Make na data table.
+    f = open('../../src/unicode/ucd/na/na_table.rs', 'w')
+    f.write(na_table_rs())
     f.close()
