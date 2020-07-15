@@ -80,3 +80,20 @@ impl UnicodeProperty for Gc {
         property_names::gc_name(*self)
     }
 }
+
+#[derive(Debug, PartialEq, Clone, Copy)]
+#[repr(u8)]
+pub enum Hst {
+    L,      //Leading_Jamo
+    LV,     //LV_Syllable
+    LVT,    //LVT_Syllable
+    NA,     //Not_Applicable
+    T,      //Trailing_Jamo
+    V,      //Vowel_Jamo
+}
+
+impl UnicodeProperty for Hst {
+    fn property_value_name(&self) -> PropertyName {
+        property_names::hst_name(*self)
+    }
+}

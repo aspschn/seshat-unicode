@@ -42,6 +42,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // gc (General_Category)
     let cp_gc = cp.gc().property_value_name().abbr;
     check_property(cp, cp_gc, "gc", el);
+    // hst (Hangul_Syllable_Type)
+    let cp_hst = cp.hst().property_value_name().abbr;
+    check_property(cp, cp_hst, "hst", el);
     // WSpace (White_Space)
     let cp_wspace = BinaryProperty::from(cp.wspace()).property_value_name().abbr;
     check_property(cp, cp_wspace, "WSpace", el);

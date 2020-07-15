@@ -119,7 +119,6 @@ class TwoStageTable:
         for pair in data:
             # Fill default property for implicit ranges.
             if cur_cp not in pair[0]:
-                print('cur_cp: {}'.format(cur_cp))
                 for cp in CodePointRange(cur_cp, pair[0].start - 1):
                     tst.add_char(cur_cp, default_prop)
                     cur_cp += 1

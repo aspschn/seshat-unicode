@@ -137,3 +137,32 @@ pub(crate) fn gc_name(prop: Gc) -> PropertyName {
         },
     }
 }
+
+pub(crate) fn hst_name(prop: Hst) -> PropertyName {
+    match prop {
+        Hst::L => PropertyName {
+            full: "Leading_Jamo",
+            abbr: "L",
+        },
+        Hst::LV => PropertyName {
+            full: "LV_Syllable",
+            abbr: "LV",
+        },
+        Hst::LVT => PropertyName {
+            full: "LVT_Syllable",
+            abbr: "LVT",
+        },
+        Hst::NA => PropertyName {
+            full: "Not_Applicable",
+            abbr: "NA",
+        },
+        Hst::T => PropertyName {
+            full: "Trailing_Jamo",
+            abbr: "T",
+        },
+        Hst::V => PropertyName {
+            full: "Vowel_Jamo",
+            abbr: "V",
+        },
+    }
+}

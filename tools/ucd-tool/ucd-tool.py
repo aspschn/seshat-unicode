@@ -21,7 +21,10 @@ UNICODE_DATA_DIR = 'data/{}.{}.{}'.format(
 property_info = {
     'gc': {
         'repr_size': 1,
-    }
+    },
+    'hst': {
+        'repr_size': 1,
+    },
 }
 
 
@@ -37,11 +40,13 @@ def to_snake_case(val: str):
 
 
 def select_minimal_tst(prop: str, data: List[Tuple[CodePointRange, str]], repr_size: int, default_prop: str=None) -> TwoStageTable:
+    print('Select minimal table for: {}'.format(prop))
     tables = {64: None, 128: None, 256: None, 512: None}
     for block_size in tables.keys():
         tst = TwoStageTable.make(prop, data, block_size, default_prop)
         print('Block size {}: {}'.format(block_size, tst.table_bytes(repr_size)))
         tables[block_size] = tst
+    print('----------------------------')
 
     return min(tables.values(), key=lambda x: x.table_bytes(repr_size))
 
@@ -161,4 +166,10 @@ if __name__ == '__main__':
     # Make na data table.
     f = open('../../src/unicode/ucd/na/na_table.rs', 'w')
     f.write(na_table_rs())
+    f.close()
+    # Make hst properties data.
+    hst_data = make_data('HangulSyllableType.json')
+    tst = select_minimal_tst('Hst', hst_data, property_info['hst']['repr_size'], default_prop='NA')
+    f = open('../../src/unicode/ucd/hst.rs', 'w')
+    f.write(tst.to_seshat())
     f.close()

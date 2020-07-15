@@ -41,6 +41,7 @@ impl std::fmt::Display for CodePoint {
 pub trait Ucd {
     fn na(&self) -> String;
     fn gc(&self) -> Gc;
+    fn hst(&self) -> Hst;
     fn wspace(&self) -> bool;
     fn bidi_c(&self) -> bool;
     fn join_c(&self) -> bool;
@@ -84,6 +85,10 @@ impl Ucd for CodePoint {
 
     fn gc(&self) -> Gc {
         ucd::gc::gc(self.code_point)
+    }
+
+    fn hst(&self) -> Hst {
+        ucd::hst::hst(self.code_point)
     }
 
     fn wspace(&self) -> bool {
@@ -230,6 +235,10 @@ impl Ucd for char {
 
     fn gc(&self) -> Gc {
         ucd::gc::gc(*self as u32)
+    }
+
+    fn hst(&self) -> Hst {
+        ucd::hst::hst(*self as u32)
     }
 
     fn wspace(&self) -> bool {
