@@ -23,4 +23,12 @@ mod tests {
             _ => panic!("Not Lo"),
         }
     }
+
+    #[test]
+    fn code_point_na() {
+        let c = '🦀';
+        if c.na() != "CRAB" {
+            panic!("Not \"CRAB\"");
+        }
+    }
 }
