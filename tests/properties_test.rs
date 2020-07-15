@@ -20,6 +20,9 @@ fn check_property(cp: CodePoint, val: &str, prop: &str, attrs: &Vec<OwnedAttribu
 }
 
 fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
+    // na (Name)
+    let cp_na = cp.na();
+    check_property(cp, &cp_na, "na", el);
     // gc (General_Category)
     let cp_gc = cp.gc().property_value_name().abbr;
     check_property(cp, cp_gc, "gc", el);
@@ -167,6 +170,9 @@ fn validate_properties() {
                             u32::from_str_radix(&last_cp.value, 16).unwrap()
                         ).unwrap();
                         println!("{}..{}", first_cp, last_cp);
+                        for cp in first_cp.to_u32()..last_cp.to_u32() + 1 {
+                            check_properties(CodePoint::new(cp).unwrap(), &attributes);
+                        }
                     }
                 }
             }

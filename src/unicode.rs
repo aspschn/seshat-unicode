@@ -16,6 +16,10 @@ impl CodePoint {
         }
         Ok(CodePoint { code_point: cp })
     }
+
+    pub fn to_u32(&self) -> u32 {
+        self.code_point
+    }
 }
 
 pub trait ToCodePoint {
@@ -35,6 +39,7 @@ impl std::fmt::Display for CodePoint {
 }
 
 pub trait Ucd {
+    fn na(&self) -> String;
     fn gc(&self) -> Gc;
     fn wspace(&self) -> bool;
     fn bidi_c(&self) -> bool;
@@ -73,6 +78,10 @@ pub trait Ucd {
 }
 
 impl Ucd for CodePoint {
+    fn na(&self) -> String {
+        ucd::na::na(self.code_point)
+    }
+
     fn gc(&self) -> Gc {
         ucd::gc::gc(self.code_point)
     }
@@ -215,6 +224,10 @@ impl Ucd for CodePoint {
 }
 
 impl Ucd for char {
+    fn na(&self) -> String {
+        ucd::na::na(*self as u32)
+    }
+
     fn gc(&self) -> Gc {
         ucd::gc::gc(*self as u32)
     }
