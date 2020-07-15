@@ -1,0 +1,7 @@
+/target
+Cargo.lock
+__pycache__/
+tests/data/ucd.nounihan.flat.xml
+
+*.code-workspace
+.idea/
