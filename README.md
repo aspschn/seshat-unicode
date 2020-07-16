@@ -15,16 +15,20 @@ Seshat (pronounce as Sehs-hat) is a Unicode library that written in Rust.
 It provides many of Unicode character data and standard algorithms.
 The goal of this project is to provide a ICU-like library in Rust.
 
-Installation
----------
-To include Seshat to your project, add this line to the `Cargo.toml` file.
-
-```
-[dependencies]
-seshat-unicode = "0.0.1"
-```
-
 Usage
+---------
+```toml
+[dependencies]
+seshat-unicode = "0.0.2"
+```
+
+```rust
+fn main() {
+    println!("🦀 is {}!", '🦀'.na());
+}
+```
+
+Features
 ---------
 Add later.
 
