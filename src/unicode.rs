@@ -83,6 +83,13 @@ pub trait Ucd {
     fn alpha(&self) -> bool;
     fn lower(&self) -> bool;
     fn upper(&self) -> bool;
+
+    fn emoji(&self) -> bool;
+    fn epres(&self) -> bool;
+    fn emod(&self) -> bool;
+    fn ebase(&self) -> bool;
+    fn ecomp(&self) -> bool;
+    fn ext_pict(&self) -> bool;
 }
 
 impl Ucd for CodePoint {
@@ -249,6 +256,30 @@ impl Ucd for CodePoint {
     fn upper(&self) -> bool {
         ucd::derived_props::upper(self.code_point)
     }
+
+    fn emoji(&self) -> bool {
+        ucd::emoji_props::emoji(self.code_point)
+    }
+
+    fn epres(&self) -> bool {
+        ucd::emoji_props::epres(self.code_point)
+    }
+
+    fn emod(&self) -> bool {
+        ucd::emoji_props::emod(self.code_point)
+    }
+
+    fn ebase(&self) -> bool {
+        ucd::emoji_props::ebase(self.code_point)
+    }
+
+    fn ecomp(&self) -> bool {
+        ucd::emoji_props::ecomp(self.code_point)
+    }
+
+    fn ext_pict(&self) -> bool {
+        ucd::emoji_props::ext_pict(self.code_point)
+    }
 }
 
 impl Ucd for char {
@@ -414,5 +445,29 @@ impl Ucd for char {
 
     fn upper(&self) -> bool {
         ucd::derived_props::upper(*self as u32)
+    }
+
+    fn emoji(&self) -> bool {
+        ucd::emoji_props::emoji(*self as u32)
+    }
+
+    fn epres(&self) -> bool {
+        ucd::emoji_props::epres(*self as u32)
+    }
+
+    fn emod(&self) -> bool {
+        ucd::emoji_props::emod(*self as u32)
+    }
+
+    fn ebase(&self) -> bool {
+        ucd::emoji_props::ebase(*self as u32)
+    }
+
+    fn ecomp(&self) -> bool {
+        ucd::emoji_props::ecomp(*self as u32)
+    }
+
+    fn ext_pict(&self) -> bool {
+        ucd::emoji_props::ext_pict(*self as u32)
     }
 }

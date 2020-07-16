@@ -2,7 +2,7 @@
 import os
 import json
 import re
-from typing import List, Tuple
+from typing import List, Tuple, Dict
 
 from ucd.collections import CodePointRange, TwoStageTable
 
@@ -30,6 +30,12 @@ property_info = {
 
 with open(os.path.join(UNICODE_DATA_DIR, 'PropertyAliases.json')) as f:
     property_aliases = json.load(f)
+
+
+def find_key_by_value(d: Dict, val: str) -> str:
+    for k, v in d.items():
+        if v == val:
+            return k
 
 
 def to_snake_case(val: str):
@@ -64,6 +70,24 @@ def make_data(filename: str):
     data = sorted(data, key=lambda x: x[0])
 
     return data
+
+
+def make_grouped_data(filename: str):
+    """e.g. emoji/emoji-data.json"""
+    filename = os.path.join(UNICODE_DATA_DIR, filename)
+    f = open(filename)
+    json_str = f.read()
+    f.close()
+    d = json.loads(json_str)
+    data_dict = {}
+    for prop, ranges in d.items():
+        data_dict[prop] = []
+        for rng in ranges:
+            rng = CodePointRange.parse(rng)
+            data_dict[prop].append((rng, "true"))
+        data_dict[prop] = sorted(data_dict[prop], key=lambda x: x[0])
+
+    return data_dict
 
 
 def binary_props_rs() -> str:
@@ -173,3 +197,15 @@ if __name__ == '__main__':
     f = open('../../src/unicode/ucd/hst.rs', 'w')
     f.write(tst.to_seshat())
     f.close()
+    # Make Emoji data properties data.
+    emoji_props_rs = ''
+    emoji_data_dict = make_grouped_data('emoji/emoji-data.json')
+    for i, prop in enumerate(emoji_data_dict.keys()):
+        use = False
+        if i == 0:
+            use = True
+        prop_alias = to_snake_case(find_key_by_value(property_aliases, prop))
+        tst = select_minimal_tst(prop_alias, emoji_data_dict[prop], 1, default_prop='false')
+        emoji_props_rs += tst.to_seshat(use=use, prefix=True, boolean=True)
+    with open('../../src/unicode/ucd/emoji_props.rs', 'w') as f:
+        f.write(emoji_props_rs)

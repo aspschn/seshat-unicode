@@ -58,12 +58,18 @@ class TwoStageTable:
             self._stage_1.append(idx)
             self._cur_block = []
 
-    def to_seshat(self) -> str:
-        txt = 'use crate::unicode::props::{};\n'.format(self.prop)
-        txt += 'use crate::collections::TwoStageTable;\n\n'
+    def to_seshat(self, prefix=False, use=True, boolean=False) -> str:
+        txt = ''
+        if use is True:
+            if boolean is False:
+                txt += 'use crate::unicode::props::{};\n'.format(self.prop)
+            txt += 'use crate::collections::TwoStageTable;\n\n'
+
+        prefix_lambda = lambda x: self.prop.upper() + '_' if x is True else ''
 
         # Stage-1
-        txt += 'const STAGE_1: [{int_type}; {size}] = ['.format(
+        txt += 'const {prefix}STAGE_1: [{int_type}; {size}] = ['.format(
+            prefix=prefix_lambda(prefix),
             int_type=self._index_t(),
             size=len(self._stage_1)
         )
@@ -76,8 +82,9 @@ class TwoStageTable:
         txt += '\n];\n\n'
 
         # Stage-2
-        txt += 'const STAGE_2: &[&[{enum_type}]] = &['.format(
-            enum_type=self.prop
+        txt += 'const {prefix}STAGE_2: &[&[{enum_type}]] = &['.format(
+            prefix=prefix_lambda(prefix),
+            enum_type=(lambda x: self.prop if boolean is False else 'bool')(self.prop)
             # block_size=self.block_size,
             # size=len(self._stage_2)
         )
@@ -87,15 +94,22 @@ class TwoStageTable:
             for j, val in enumerate(block):
                 if j % 8 == 0:
                     txt += '\n        '
-                txt += '{}::{},'.format(self.prop, val)
+                if boolean is False:
+                    txt += '{}::{},'.format(self.prop, val)
+                else:
+                    txt += '{},'.format(val)
                 if j % 8 != 7:
                     txt += ' '
             txt += '\n    ],'
         txt += '\n];\n\n'
 
-        txt += 'pub(crate) fn {fn_name}(cp: u32) -> {prop} {{\n'.format(fn_name=self.prop.lower(), prop=self.prop)
-        txt += '    let tst: TwoStageTable<{prop}, {index_t}> = TwoStageTable::new(&STAGE_1, STAGE_2, {block_size});\n'.format(
-            prop=self.prop,
+        txt += 'pub(crate) fn {fn_name}(cp: u32) -> {prop} {{\n'.format(
+            fn_name=self.prop.lower(),
+            prop=(lambda x: self.prop if boolean is False else 'bool')(self.prop)
+        )
+        txt += '    let tst: TwoStageTable<{prop}, {index_t}> = TwoStageTable::new(&{prefix}STAGE_1, {prefix}STAGE_2, {block_size});\n'.format(
+            prefix=prefix_lambda(prefix),
+            prop=(lambda x: self.prop if boolean is False else 'bool')(self.prop),
             index_t=self._index_t(),
             block_size=self.block_size
         )

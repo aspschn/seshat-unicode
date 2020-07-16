@@ -117,15 +117,27 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // Dia (Diacritic)
     let cp_dia = BinaryProperty::from(cp.dia()).property_value_name().abbr;
     check_property(cp, cp_dia, "Dia", el);
-    // EBase                    ; Emoji_Modifier_Base
-    // EComp                    ; Emoji_Component
-    // EMod                     ; Emoji_Modifier
-    // Emoji                    ; Emoji
-    // EPres                    ; Emoji_Presentation
+    // EBase (Emoji_Modifier_Base)
+    let cp_ebase = BinaryProperty::from(cp.ebase()).property_value_name().abbr;
+    check_property(cp, cp_ebase, "EBase", el);
+    // EComp (Emoji_Component)
+    let cp_ecomp = BinaryProperty::from(cp.ecomp()).property_value_name().abbr;
+    check_property(cp, cp_ecomp, "EComp", el);
+    // EMod (Emoji_Modifier)
+    let cp_emod = BinaryProperty::from(cp.emod()).property_value_name().abbr;
+    check_property(cp, cp_emod, "EMod", el);
+    // Emoji (Emoji)
+    let cp_emoji = BinaryProperty::from(cp.emoji()).property_value_name().abbr;
+    check_property(cp, cp_emoji, "Emoji", el);
+    // EPres (Emoji_Presentation)
+    let cp_epres = BinaryProperty::from(cp.epres()).property_value_name().abbr;
+    check_property(cp, cp_epres, "EPres", el);
     // Ext (Extender)
     let cp_ext = BinaryProperty::from(cp.ext()).property_value_name().abbr;
     check_property(cp, cp_ext, "Ext", el);
-    // ExtPict                  ; Extended_Pictographic
+    // ExtPict (Extended_Pictographic)
+    let cp_ext_pict = BinaryProperty::from(cp.ext_pict()).property_value_name().abbr;
+    check_property(cp, cp_ext_pict, "ExtPict", el);
     // Gr_Base                  ; Grapheme_Base
     // Gr_Ext                   ; Grapheme_Extend
     // Gr_Link                  ; Grapheme_Link
