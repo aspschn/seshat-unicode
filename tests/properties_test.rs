@@ -90,7 +90,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // AHex (ASCII_Hex_Digit)
     let cp_ahex = BinaryProperty::from(cp.ahex()).property_value_name().abbr;
     check_property(cp, cp_ahex, "AHex", el);
-    // Alpha                    ; Alphabetic
+    // Alpha (Alphabetic)
+    let cp_alpha = BinaryProperty::from(cp.alpha()).property_value_name().abbr;
+    check_property(cp, cp_alpha, "Alpha", el);
     // Bidi_C (Bidi_Control)
     let cp_bidi_c = BinaryProperty::from(cp.bidi_c()).property_value_name().abbr;
     check_property(cp, cp_bidi_c, "Bidi_C", el);
@@ -150,7 +152,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // LOE (Logical_Order_Exception)
     let cp_loe = BinaryProperty::from(cp.loe()).property_value_name().abbr;
     check_property(cp, cp_loe, "LOE", el);
-    // Lower                    ; Lowercase
+    // Lower (Lowercase)
+    let cp_lower = BinaryProperty::from(cp.lower()).property_value_name().abbr;
+    check_property(cp, cp_lower, "Lower", el);
     // Math (Math)
     let cp_math = BinaryProperty::from(cp.math()).property_value_name().abbr;
     check_property(cp, cp_math, "Math", el);
@@ -211,7 +215,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // UIdeo (Unified_Ideograph)
     let cp_uideo = BinaryProperty::from(cp.uideo()).property_value_name().abbr;
     check_property(cp, cp_uideo, "UIdeo", el);
-    // Upper                    ; Uppercase
+    // Upper (Uppercase)
+    let cp_upper = BinaryProperty::from(cp.upper()).property_value_name().abbr;
+    check_property(cp, cp_upper, "Upper", el);
     // VS (Variation_Selector)
     let cp_vs = BinaryProperty::from(cp.vs()).property_value_name().abbr;
     check_property(cp, cp_vs, "VS", el);

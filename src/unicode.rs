@@ -80,6 +80,9 @@ pub trait Ucd {
     fn ri(&self) -> bool;
 
     fn math(&self) -> bool;
+    fn alpha(&self) -> bool;
+    fn lower(&self) -> bool;
+    fn upper(&self) -> bool;
 }
 
 impl Ucd for CodePoint {
@@ -234,6 +237,18 @@ impl Ucd for CodePoint {
     fn math(&self) -> bool {
         ucd::derived_props::math(self.code_point)
     }
+
+    fn alpha(&self) -> bool {
+        ucd::derived_props::alpha(self.code_point)
+    }
+
+    fn lower(&self) -> bool {
+        ucd::derived_props::lower(self.code_point)
+    }
+
+    fn upper(&self) -> bool {
+        ucd::derived_props::upper(self.code_point)
+    }
 }
 
 impl Ucd for char {
@@ -387,5 +402,17 @@ impl Ucd for char {
 
     fn math(&self) -> bool {
         ucd::derived_props::math(*self as u32)
+    }
+
+    fn alpha(&self) -> bool {
+        ucd::derived_props::alpha(*self as u32)
+    }
+
+    fn lower(&self) -> bool {
+        ucd::derived_props::lower(*self as u32)
+    }
+
+    fn upper(&self) -> bool {
+        ucd::derived_props::upper(*self as u32)
     }
 }
