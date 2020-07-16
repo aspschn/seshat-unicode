@@ -23,6 +23,8 @@ seshat-unicode = "0.0.2"
 ```
 
 ```rust
+use seshat::unicode::Ucd;
+
 fn main() {
     println!("🦀 is {}!", '🦀'.na());
 }
