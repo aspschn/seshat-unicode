@@ -78,6 +78,8 @@ pub trait Ucd {
     fn pat_syn(&self) -> bool;
     fn pcm(&self) -> bool;
     fn ri(&self) -> bool;
+
+    fn math(&self) -> bool;
 }
 
 impl Ucd for CodePoint {
@@ -228,6 +230,10 @@ impl Ucd for CodePoint {
     fn ri(&self) -> bool {
         ucd::binary_props::ri(self.code_point)
     }
+
+    fn math(&self) -> bool {
+        ucd::derived_props::math(self.code_point)
+    }
 }
 
 impl Ucd for char {
@@ -377,5 +383,9 @@ impl Ucd for char {
 
     fn ri(&self) -> bool {
         ucd::binary_props::ri(*self as u32)
+    }
+
+    fn math(&self) -> bool {
+        ucd::derived_props::math(*self as u32)
     }
 }

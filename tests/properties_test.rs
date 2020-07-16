@@ -189,6 +189,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // RI (Regional_Indicator)
     let cp_ri = BinaryProperty::from(cp.ri()).property_value_name().abbr;
     check_property(cp, cp_ri, "RI", el);
+    // Math (Math)
+    let cp_math = BinaryProperty::from(cp.math()).property_value_name().abbr;
+    check_property(cp, cp_math, "Math", el);
 
     true
 }

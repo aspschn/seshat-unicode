@@ -8,4 +8,6 @@ pub(crate) mod jsn;
 
 pub(crate) mod binary_props;
 
+pub(crate) mod derived_props;
+
 pub(crate) mod property_names;
