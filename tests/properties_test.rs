@@ -36,15 +36,57 @@ fn check_na_property(cp: CodePoint, val: &str, attrs: &Vec<OwnedAttribute>) {
 }
 
 fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
+    //================================================
+    // Numeric Properties
+    //================================================
+    // cjkAccountingNumeric     ; kAccountingNumeric
+    // cjkOtherNumeric          ; kOtherNumeric
+    // cjkPrimaryNumeric        ; kPrimaryNumeric
+    // nv                       ; Numeric_Value
+ 
+    //================================================
+    // String Properties
+    //================================================
+    // cf                       ; Case_Folding
+    // cjkCompatibilityVariant  ; kCompatibilityVariant
+    // dm                       ; Decomposition_Mapping
+    // FC_NFKC                  ; FC_NFKC_Closure
+    // lc                       ; Lowercase_Mapping
+    // NFKC_CF                  ; NFKC_Casefold
+    // scf                      ; Simple_Case_Folding         ; sfc
+    // slc                      ; Simple_Lowercase_Mapping
+    // stc                      ; Simple_Titlecase_Mapping
+    // suc                      ; Simple_Uppercase_Mapping
+    // tc                       ; Titlecase_Mapping
+    // uc                       ; Uppercase_Mapping
+
+    //================================================
+    // Miscellaneous Properties
+    //================================================
     // na (Name)
     let cp_na = cp.na();
     check_na_property(cp, &cp_na, el);
+
+    //================================================
+    // Catalog Properties
+    //================================================
+    // age                      ; Age
+    // blk                      ; Block
+    // sc                       ; Script
+
+    //================================================
+    // Enumerated properties
+    //================================================
     // gc (General_Category)
     let cp_gc = cp.gc().property_value_name().abbr;
     check_property(cp, cp_gc, "gc", el);
     // hst (Hangul_Syllable_Type)
     let cp_hst = cp.hst().property_value_name().abbr;
     check_property(cp, cp_hst, "hst", el);
+
+    //================================================
+    // Binary Properties
+    //================================================
     // WSpace (White_Space)
     let cp_wspace = BinaryProperty::from(cp.wspace()).property_value_name().abbr;
     check_property(cp, cp_wspace, "WSpace", el);

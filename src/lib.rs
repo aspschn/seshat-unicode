@@ -1,3 +1,5 @@
+//! An integrated Unicode library
+
 pub mod unicode;
 
 pub mod collections;
