@@ -138,6 +138,83 @@ pub(crate) fn gc_name(prop: Gc) -> PropertyName {
     }
 }
 
+pub(crate) fn gcb_name(prop: Gcb) -> PropertyName {
+    match prop {
+        Gcb::CN => PropertyName {
+            full: "Control",
+            abbr: "CN",
+        },
+        Gcb::CR => PropertyName {
+            full: "CR",
+            abbr: "CR",
+        },
+        Gcb::EB => PropertyName {
+            full: "E_Base",
+            abbr: "EB",
+        },
+        Gcb::EBG => PropertyName {
+            full: "E_Base_GAZ",
+            abbr: "EBG",
+        },
+        Gcb::EM => PropertyName {
+            full: "E_Modifier",
+            abbr: "EM",
+        },
+        Gcb::EX => PropertyName {
+            full: "Extend",
+            abbr: "EX",
+        },
+        Gcb::GAZ => PropertyName {
+            full: "Glue_After_Zwj",
+            abbr: "GAZ",
+        },
+        Gcb::L => PropertyName {
+            full: "L",
+            abbr: "L",
+        }, 
+        Gcb::LF => PropertyName {
+            full: "LF",
+            abbr: "LF",
+        },
+        Gcb::LV => PropertyName {
+            full: "LV",
+            abbr: "LV",
+        },
+        Gcb::LVT => PropertyName {
+            full: "LVT",
+            abbr: "LVT",
+        },
+        Gcb::PP => PropertyName {
+            full: "Prepend",
+            abbr: "PP",
+        },
+        Gcb::RI => PropertyName {
+            full: "Regional_Indicator",
+            abbr: "RI",
+        },
+        Gcb::SM => PropertyName {
+            full: "SpacingMark",
+            abbr: "SM",
+        },
+        Gcb::T => PropertyName {
+            full: "T",
+            abbr: "T",
+        }, 
+        Gcb::V => PropertyName {
+            full: "V",
+            abbr: "V",
+        }, 
+        Gcb::XX => PropertyName {
+            full: "Other",
+            abbr: "XX",
+        },
+        Gcb::ZWJ => PropertyName {
+            full: "ZWJ",
+            abbr: "ZWJ",
+        },
+    }
+}
+
 pub(crate) fn hst_name(prop: Hst) -> PropertyName {
     match prop {
         Hst::L => PropertyName {

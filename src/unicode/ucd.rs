@@ -12,4 +12,6 @@ pub(crate) mod derived_props;
 
 pub(crate) mod emoji_props;
 
+pub(crate) mod gcb;
+
 pub(crate) mod property_names;

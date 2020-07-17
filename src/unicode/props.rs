@@ -97,3 +97,32 @@ impl UnicodeProperty for Hst {
         property_names::hst_name(*self)
     }
 }
+
+#[derive(Debug, PartialEq, Clone, Copy)]
+#[repr(u8)]
+pub enum Gcb {
+    CN,     // Control
+    CR,     // CR
+    EB,     // E_Base
+    EBG,    // E_Base_GAZ
+    EM,     // E_Modifier
+    EX,     // Extend
+    GAZ,    // Glue_After_Zwj
+    L,      // L
+    LF,     // LF
+    LV,     // LV
+    LVT,    // LVT
+    PP,     // Prepend
+    RI,     // Regional_Indicator
+    SM,     // SpacingMark
+    T,      // T
+    V,      // V
+    XX,     // Other
+    ZWJ,    // ZWJ
+}
+
+impl UnicodeProperty for Gcb {
+    fn property_value_name(&self) -> PropertyName {
+        property_names::gcb_name(*self)
+    }
+}

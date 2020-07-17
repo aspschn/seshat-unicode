@@ -25,11 +25,17 @@ property_info = {
     'hst': {
         'repr_size': 1,
     },
+    'gcb': {
+        'repr_size': 1,
+    },
 }
 
 
 with open(os.path.join(UNICODE_DATA_DIR, 'PropertyAliases.json')) as f:
     property_aliases = json.load(f)
+
+with open(os.path.join(UNICODE_DATA_DIR, 'PropertyValueAliases.json')) as f:
+    property_value_aliases = json.load(f)
 
 
 def find_key_by_value(d: Dict, val: str) -> str:
@@ -45,6 +51,18 @@ def to_snake_case(val: str):
     return val.lower()
 
 
+def data_value_as_abbr(data: List[Tuple[CodePointRange, str]], prop: str):
+    """Some property data file using (range, full_name) pair instead of (range, abbr_name).
+This function converts these data to abbr version."""
+    aliases = property_value_aliases[prop]
+    new_data = []
+    for pair in data:
+        new_pair = (pair[0], find_key_by_value(aliases, pair[1]))
+        new_data.append(new_pair)
+
+    return new_data
+
+
 def select_minimal_tst(prop: str, data: List[Tuple[CodePointRange, str]], repr_size: int, default_prop: str=None) -> TwoStageTable:
     print('Select minimal table for: {}'.format(prop))
     tables = {64: None, 128: None, 256: None, 512: None}
@@ -58,6 +76,8 @@ def select_minimal_tst(prop: str, data: List[Tuple[CodePointRange, str]], repr_s
 
 
 def make_data(filename: str):
+    """Make data used by argument of two-stage table.
+filename: str - Path of JSON file."""
     filename = os.path.join(UNICODE_DATA_DIR, filename)
     f = open(filename)
     json_str = f.read()
@@ -209,3 +229,9 @@ if __name__ == '__main__':
         emoji_props_rs += tst.to_seshat(use=use, prefix=True, boolean=True)
     with open('../../src/unicode/ucd/emoji_props.rs', 'w') as f:
         f.write(emoji_props_rs)
+    # Make GCB data.
+    gcb_data = make_data('auxiliary/GraphemeBreakProperty.json')
+    gcb_data = data_value_as_abbr(gcb_data, "GCB")
+    tst = select_minimal_tst('Gcb', gcb_data, property_info['gcb']['repr_size'], default_prop='XX')
+    with open('../../src/unicode/ucd/gcb.rs', 'w') as f:
+        f.write(tst.to_seshat())
