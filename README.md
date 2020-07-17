@@ -1,5 +1,7 @@
 Seshat
 =========
+[![crates.io](https://img.shields.io/crates/v/seshat-unicode.svg)](https://crates.io/crates/seshat-unicode)
+
 ![logo](https://raw.githubusercontent.com/hardboiled65/Seshat/master/docs/seshat-logo.png)
 
 A Unicode Library for Rust.
