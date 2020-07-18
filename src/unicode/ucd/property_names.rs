@@ -243,3 +243,100 @@ pub(crate) fn hst_name(prop: Hst) -> PropertyName {
         },
     }
 }
+
+pub(crate) fn bc_name(prop: Bc) -> PropertyName {
+    match prop {
+        Bc::AL => PropertyName {
+            full: "Arabic_Letter",
+            abbr: "AL",
+        },
+        Bc::AN => PropertyName {
+            full: "Arabic_Number",
+            abbr: "AN",
+        },
+        Bc::B => PropertyName {
+            full: "Paragraph_Separator",
+            abbr: "B",
+        },
+        Bc::BN => PropertyName {
+            full: "Boundary_Neutral",
+            abbr: "BN",
+        },
+        Bc::CS => PropertyName {
+            full: "Common_Separator",
+            abbr: "CS",
+        },
+        Bc::EN => PropertyName {
+            full: "European_Number",
+            abbr: "EN",
+        },
+        Bc::ES => PropertyName {
+            full: "European_Separator",
+            abbr: "ES",
+        },
+        Bc::ET => PropertyName {
+            full: "European_Terminator",
+            abbr: "ET",
+        },
+        Bc::FSI => PropertyName {
+            full: "First_Strong_Isolate",
+            abbr: "FSI",
+        },
+        Bc::L => PropertyName {
+            full: "Left_To_Right",
+            abbr: "L",
+        },
+        Bc::LRE => PropertyName {
+            full: "Left_To_Right_Embedding",
+            abbr: "LRE",
+        },
+        Bc::LRI => PropertyName {
+            full: "Left_To_Right_Isolate",
+            abbr: "LRI",
+        },
+        Bc::LRO => PropertyName {
+            full: "Left_To_Right_Override",
+            abbr: "LRO",
+        },
+        Bc::NSM => PropertyName {
+            full: "Nonspacing_Mark",
+            abbr: "NSM",
+        },
+        Bc::ON => PropertyName {
+            full: "Other_Neutral",
+            abbr: "ON",
+        },
+        Bc::PDF => PropertyName {
+            full: "Pop_Directional_Format",
+            abbr: "PDF",
+        },
+        Bc::PDI => PropertyName {
+            full: "Pop_Directional_Isolate",
+            abbr: "PDI",
+        },
+        Bc::R => PropertyName {
+            full: "Right_To_Left",
+            abbr: "R",
+        },
+        Bc::RLE => PropertyName {
+            full: "Right_To_Left_Embedding",
+            abbr: "RLE",
+        },
+        Bc::RLI => PropertyName {
+            full: "Right_To_Left_Isolate",
+            abbr: "RLI",
+        },
+        Bc::RLO => PropertyName {
+            full: "Right_To_Left_Override",
+            abbr: "RLO",
+        },
+        Bc::S => PropertyName {
+            full: "Segment_Separator",
+            abbr: "S",
+        },
+        Bc::WS => PropertyName {
+            full: "White_Space",
+            abbr: "WS",
+        },
+    }
+}

@@ -19,6 +19,9 @@ UNICODE_DATA_DIR = 'data/{}.{}.{}'.format(
 )
 
 property_info = {
+    'bc': {
+        'repr_size': 1,
+    },
     'gc': {
         'repr_size': 1,
     },
@@ -234,4 +237,9 @@ if __name__ == '__main__':
     gcb_data = data_value_as_abbr(gcb_data, "GCB")
     tst = select_minimal_tst('Gcb', gcb_data, property_info['gcb']['repr_size'], default_prop='XX')
     with open('../../src/unicode/ucd/gcb.rs', 'w') as f:
+        f.write(tst.to_seshat())
+    # Make bc data.
+    bc_data = make_data('extracted/DerivedBidiClass.json')
+    tst = select_minimal_tst('Bc', bc_data, property_info['bc']['repr_size'], default_prop='L')
+    with open('../../src/unicode/ucd/bc.rs', 'w') as f:
         f.write(tst.to_seshat())

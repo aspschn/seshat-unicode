@@ -77,6 +77,13 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     //================================================
     // Enumerated properties
     //================================================
+    // bc (Bidi_Class)
+    let cp_bc = cp.bc().property_value_name().abbr;
+    check_property(cp, cp_bc, "bc", el);
+    // bpt                      ; Bidi_Paired_Bracket_Type
+    // ccc                      ; Canonical_Combining_Class
+    // dt                       ; Decomposition_Type
+    // ea                       ; East_Asian_Width
     // gc (General_Category)
     let cp_gc = cp.gc().property_value_name().abbr;
     check_property(cp, cp_gc, "gc", el);
@@ -86,6 +93,19 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // hst (Hangul_Syllable_Type)
     let cp_hst = cp.hst().property_value_name().abbr;
     check_property(cp, cp_hst, "hst", el);
+    // InPC                     ; Indic_Positional_Category
+    // InSC                     ; Indic_Syllabic_Category
+    // jg                       ; Joining_Group
+    // jt                       ; Joining_Type
+    // lb                       ; Line_Break
+    // NFC_QC                   ; NFC_Quick_Check
+    // NFD_QC                   ; NFD_Quick_Check
+    // NFKC_QC                  ; NFKC_Quick_Check
+    // NFKD_QC                  ; NFKD_Quick_Check
+    // nt                       ; Numeric_Type
+    // SB                       ; Sentence_Break
+    // vo                       ; Vertical_Orientation
+    // WB                       ; Word_Break
 
     //================================================
     // Binary Properties
