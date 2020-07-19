@@ -42,7 +42,7 @@ use seshat::unicode::Segmentation;
 
 fn main() {
     let s = "Hi, 👨🏾‍🤝‍👨🏿";
-    for seg in s {
+    for seg in s.break_graphemes() {
         println!("{}", seg);
     }
 }
