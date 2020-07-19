@@ -4,6 +4,8 @@ pub(crate) mod ucd;
 
 pub(crate) mod hangul;
 
+pub(crate) mod seg;
+
 use self::props::*;
 
 #[derive(Clone, Copy)]
@@ -487,5 +489,121 @@ impl Ucd for char {
 
     fn ext_pict(&self) -> bool {
         ucd::emoji_props::ext_pict(*self as u32)
+    }
+}
+
+pub struct BreakGraphemes<'a> {
+    slice: &'a str,
+}
+
+impl<'a> Iterator for BreakGraphemes<'a> {
+    type Item = &'a str;
+
+    fn next(&mut self) -> Option<&'a str> {
+        // Not iterate if empty string.
+        if self.slice.len() == 0 {
+            return None;
+        }
+
+        let mut iter = self.slice.char_indices();
+        let mut curr = iter.next();
+        let mut next = iter.next();
+        loop {
+            let curr_ch = curr.unwrap();
+            let next_ch = next.unwrap_or((self.slice.len(), '\u{0000}'));
+            // Do not break between a CR and LF. Otherwise, break before and after controls.
+            // GB3:                  CR × LF
+            if seg::is_gb3(curr_ch.1, next_ch.1) {
+                curr = next;
+                next = iter.next();
+                continue;
+            }
+            // GB4: (Control | CR | LF) ÷
+            if seg::is_gb4(curr_ch.1) {
+                curr = next;
+                // next = iter.next();
+                break;
+            }
+            // GB5:                     ÷ (Control | CR | LF)
+            if seg::is_gb5(next_ch.1) {
+                curr = next;
+                // next = iter.next();
+                break;
+            }
+            // Do not break Hangul syllable sequences.
+            // GB6 	        L × (L | V | LV | LVT)
+            if seg::is_gb6(curr_ch.1, next_ch.1) {
+                curr = next;
+                next = iter.next();
+                continue;
+            }
+            // GB7:  (LV | V) × (V | T)
+            if seg::is_gb7(curr_ch.1, next_ch.1) {
+                curr = next;
+                next = iter.next();
+                continue;
+            }
+            // GB8: (LVT | T) × T
+            if seg::is_gb8(curr_ch.1, next_ch.1) {
+                curr = next;
+                next = iter.next();
+                continue;
+            }
+            // Do not break before extending characters or ZWJ.
+            // GB9:       × (Extend | ZWJ)
+            if seg::is_gb9(next_ch.1) {
+                curr = next;
+                next = iter.next();
+                continue;
+            }
+            // The GB9a and GB9b rules only apply to extended grapheme clusters:
+            // Do not break before SpacingMarks, or after Prepend characters.
+            // GB9a:         × SpacingMark
+            if seg::is_gb9a(next_ch.1) {
+                curr = next;
+                next = iter.next();
+                continue;
+            }
+            // GB9b: Prepend ×
+            if seg::is_gb9b(curr_ch.1) {
+                curr = next;
+                next = iter.next();
+                continue;
+            }
+            // Do not break within emoji modifier sequences or emoji zwj sequences.
+            // GB11 	\p{Extended_Pictographic} Extend* ZWJ 	× 	\p{Extended_Pictographic}
+            // Do not break within emoji flag sequences.
+            // That is, do not break between regional indicator (RI) symbols
+            // if there is an odd number of RI characters before the break point.
+            // GB12:   sot (RI RI)* RI × RI
+            // GB13: [^RI] (RI RI)* RI × RI
+
+            // GB999: Any ÷ Any
+            curr = next;
+            break;
+        }
+
+        let tmp = self.slice;
+        // println!("curr: {:?}", curr);
+        // println!("next: {:?}", next);
+        // println!("slice: {}", self.slice);
+        if curr.is_none() {
+            self.slice = &tmp[self.slice.len()..];
+            return Some(&tmp[..]);
+        } else {
+            self.slice = &tmp[curr.unwrap().0..];
+        }
+
+        Some(&tmp[..curr.unwrap().0])
+    }
+}
+
+pub trait Segmentation {
+    fn break_graphemes(&self) -> BreakGraphemes;
+}
+
+impl Segmentation for &str {
+    fn break_graphemes(&self) -> BreakGraphemes {
+        BreakGraphemes { slice: self }
     }
 }
