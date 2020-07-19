@@ -36,6 +36,28 @@ Features
 ---------
 Add later.
 
+### Grapheme cluster break
+```rust
+use seshat::unicode::Segmentation;
+
+fn main() {
+    let s = "Hi, 👨🏾🤝👨🏿";
+    for seg in s {
+        println!("{}", seg);
+    }
+}
+```
+
+This will prints
+```sh
+$ cargo run
+H
+i
+,
+ 
+👨🏾🤝👨🏿
+```
+
 Contribute
 ---------
 Add later.
