@@ -508,9 +508,19 @@ impl<'a> Iterator for BreakGraphemes<'a> {
         let mut iter = self.slice.char_indices();
         let mut curr = iter.next();
         let mut next = iter.next();
+        let mut in_ext_pict = false;
+        let mut ri_count = 0;
         loop {
             let curr_ch = curr.unwrap();
             let next_ch = next.unwrap_or((self.slice.len(), '\u{0000}'));
+            // Prepare for GB11
+            if curr_ch.1.ext_pict() {
+                in_ext_pict = true;
+            }
+            // Prepare for GB12, GB13
+            if curr_ch.1.gcb() == Gcb::RI {
+                ri_count += 1;
+            }
             // Do not break between a CR and LF. Otherwise, break before and after controls.
             // GB3:                  CR × LF
             if seg::is_gb3(curr_ch.1, next_ch.1) {
@@ -571,12 +581,55 @@ impl<'a> Iterator for BreakGraphemes<'a> {
                 continue;
             }
             // Do not break within emoji modifier sequences or emoji zwj sequences.
-            // GB11 	\p{Extended_Pictographic} Extend* ZWJ 	× 	\p{Extended_Pictographic}
+            // GB11: \p{ExtPict} Extend* ZWJ × \p{ExtPict}
+            if curr_ch.1.ext_pict() {
+                in_ext_pict = true;
+                curr = next;
+                next = iter.next();
+                continue;
+            }
+            if in_ext_pict
+                && (curr_ch.1.gcb() == Gcb::ZWJ
+                    && next_ch.1.ext_pict())
+            {
+                // ExtPict, ZWJ, ExtPict
+                curr = next;
+                next = iter.next();
+                in_ext_pict = false;
+                continue;
+            } else if in_ext_pict
+                && (curr_ch.1.gcb() == Gcb::EX
+                    && next_ch.1.gcb() == Gcb::EX)
+            {
+                // ExtPict, EX
+                curr = next;
+                next = iter.next();
+                continue;
+            } else if in_ext_pict
+                && (curr_ch.1.gcb() == Gcb::EX
+                    && next_ch.1.gcb() == Gcb::ZWJ)
+            {
+                // EX, ZWJ
+                curr = next;
+                next = iter.next();
+                if next.unwrap().1.ext_pict() {
+                    curr = next;
+                    continue;
+                }
+                break;
+            }
             // Do not break within emoji flag sequences.
             // That is, do not break between regional indicator (RI) symbols
             // if there is an odd number of RI characters before the break point.
             // GB12:   sot (RI RI)* RI × RI
             // GB13: [^RI] (RI RI)* RI × RI
+            if ri_count % 2 != 0 {
+                curr = next;
+                next = iter.next();
+                continue;
+            } else {
+                ri_count = 0;
+            }
 
             // GB999: Any ÷ Any
             curr = next;
