@@ -31,6 +31,9 @@ property_info = {
     'gcb': {
         'repr_size': 1,
     },
+    'ccc': {
+        'repr_size': 1,
+    },
 }
 
 
@@ -61,6 +64,16 @@ This function converts these data to abbr version."""
     new_data = []
     for pair in data:
         new_pair = (pair[0], find_key_by_value(aliases, pair[1]))
+        new_data.append(new_pair)
+
+    return new_data
+
+
+def data_value_as_abbr_ccc(data: List[Tuple[CodePointRange, str]]):
+    aliases = property_value_aliases['ccc']
+    new_data = []
+    for pair in data:
+        new_pair = (pair[0], aliases[pair[1]])
         new_data.append(new_pair)
 
     return new_data
@@ -242,4 +255,10 @@ if __name__ == '__main__':
     bc_data = make_data('extracted/DerivedBidiClass.json')
     tst = select_minimal_tst('Bc', bc_data, property_info['bc']['repr_size'], default_prop='L')
     with open('../../src/unicode/ucd/bc.rs', 'w') as f:
+        f.write(tst.to_seshat())
+    # Make ccc data.
+    ccc_data = make_data('extracted/DerivedCombiningClass.json')
+    ccc_data = data_value_as_abbr_ccc(ccc_data)
+    tst = select_minimal_tst('Ccc', ccc_data, property_info['ccc']['repr_size'], default_prop='NR')
+    with open('../../src/unicode/ucd/ccc.rs', 'w') as f:
         f.write(tst.to_seshat())

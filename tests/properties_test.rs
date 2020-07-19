@@ -81,7 +81,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     let cp_bc = cp.bc().property_value_name().abbr;
     check_property(cp, cp_bc, "bc", el);
     // bpt                      ; Bidi_Paired_Bracket_Type
-    // ccc                      ; Canonical_Combining_Class
+    // ccc (Canonical_Combining_Class)
+    let cp_ccc = cp.ccc() as u8;
+    check_property(cp, &cp_ccc.to_string(), "ccc", el);
     // dt                       ; Decomposition_Type
     // ea                       ; East_Asian_Width
     // gc (General_Category)

@@ -340,3 +340,240 @@ pub(crate) fn bc_name(prop: Bc) -> PropertyName {
         },
     }
 }
+
+pub(crate) fn ccc_name(prop: Ccc) -> PropertyName {
+    match prop {
+        Ccc::NR => PropertyName {
+            full: "Not_Reordered",
+            abbr: "NR",
+        },
+        Ccc::OV => PropertyName {
+            full: "Overlay",
+            abbr: "OV",
+        },
+        Ccc::HANR => PropertyName {
+            full: "Han_Reading",
+            abbr: "HANR",
+        },
+        Ccc::NK => PropertyName {
+            full: "Nukta",
+            abbr: "NK",
+        },
+        Ccc::KV => PropertyName {
+            full: "Kana_Voicing",
+            abbr: "KV",
+        },
+        Ccc::VR => PropertyName {
+            full: "Virama",
+            abbr: "VR",
+        },
+        Ccc::CCC10 => PropertyName {
+            full: "CCC10",
+            abbr: "CCC10",
+        },
+        Ccc::CCC11 => PropertyName {
+            full: "CCC11",
+            abbr: "CCC11",
+        },
+        Ccc::CCC12 => PropertyName {
+            full: "CCC12",
+            abbr: "CCC12",
+        },
+        Ccc::CCC13 => PropertyName {
+            full: "CCC13",
+            abbr: "CCC13",
+        },
+        Ccc::CCC14 => PropertyName {
+            full: "CCC14",
+            abbr: "CCC14",
+        },
+        Ccc::CCC15 => PropertyName {
+            full: "CCC15",
+            abbr: "CCC15",
+        },
+        Ccc::CCC16 => PropertyName {
+            full: "CCC16",
+            abbr: "CCC16",
+        },
+        Ccc::CCC17 => PropertyName {
+            full: "CCC17",
+            abbr: "CCC17",
+        },
+        Ccc::CCC18 => PropertyName {
+            full: "CCC18",
+            abbr: "CCC18",
+        },
+        Ccc::CCC19 => PropertyName {
+            full: "CCC19",
+            abbr: "CCC19",
+        },
+        Ccc::CCC20 => PropertyName {
+            full: "CCC20",
+            abbr: "CCC20",
+        },
+        Ccc::CCC21 => PropertyName {
+            full: "CCC21",
+            abbr: "CCC21",
+        },
+        Ccc::CCC22 => PropertyName {
+            full: "CCC22",
+            abbr: "CCC22",
+        },
+        Ccc::CCC23 => PropertyName {
+            full: "CCC23",
+            abbr: "CCC23",
+        },
+        Ccc::CCC24 => PropertyName {
+            full: "CCC24",
+            abbr: "CCC24",
+        },
+        Ccc::CCC25 => PropertyName {
+            full: "CCC25",
+            abbr: "CCC25",
+        },
+        Ccc::CCC26 => PropertyName {
+            full: "CCC26",
+            abbr: "CCC26",
+        },
+        Ccc::CCC27 => PropertyName {
+            full: "CCC27",
+            abbr: "CCC27",
+        },
+        Ccc::CCC28 => PropertyName {
+            full: "CCC28",
+            abbr: "CCC28",
+        },
+        Ccc::CCC29 => PropertyName {
+            full: "CCC29",
+            abbr: "CCC29",
+        },
+        Ccc::CCC30 => PropertyName {
+            full: "CCC30",
+            abbr: "CCC30",
+        },
+        Ccc::CCC31 => PropertyName {
+            full: "CCC31",
+            abbr: "CCC31",
+        },
+        Ccc::CCC32 => PropertyName {
+            full: "CCC32",
+            abbr: "CCC32",
+        },
+        Ccc::CCC33 => PropertyName {
+            full: "CCC33",
+            abbr: "CCC33",
+        },
+        Ccc::CCC34 => PropertyName {
+            full: "CCC34",
+            abbr: "CCC34",
+        },
+        Ccc::CCC35 => PropertyName {
+            full: "CCC35",
+            abbr: "CCC35",
+        },
+        Ccc::CCC36 => PropertyName {
+            full: "CCC36",
+            abbr: "CCC36",
+        },
+        Ccc::CCC84 => PropertyName {
+            full: "CCC84",
+            abbr: "CCC84",
+        },
+        Ccc::CCC91 => PropertyName {
+            full: "CCC91",
+            abbr: "CCC91",
+        },
+        Ccc::CCC103 => PropertyName {
+            full: "CCC103",
+            abbr: "CCC103",
+        },
+        Ccc::CCC107 => PropertyName {
+            full: "CCC107",
+            abbr: "CCC107",
+        },
+        Ccc::CCC118 => PropertyName {
+            full: "CCC118",
+            abbr: "CCC118",
+        },
+        Ccc::CCC122 => PropertyName {
+            full: "CCC122",
+            abbr: "CCC122",
+        },
+        Ccc::CCC129 => PropertyName {
+            full: "CCC129",
+            abbr: "CCC129",
+        },
+        Ccc::CCC130 => PropertyName {
+            full: "CCC130",
+            abbr: "CCC130",
+        },
+        Ccc::CCC132 => PropertyName {
+            full: "CCC132",
+            abbr: "CCC132",
+        },
+        Ccc::CCC133 => PropertyName {
+            full: "RESERVED",
+            abbr: "CCC133",
+        },
+        Ccc::ATBL => PropertyName {
+            full: "Attached_Below_Left",
+            abbr: "ATBL",
+        },
+        Ccc::ATB => PropertyName {
+            full: "Attached_Below",
+            abbr: "ATB",
+        },
+        Ccc::ATA => PropertyName {
+            full: "Attached_Above",
+            abbr: "ATA",
+        },
+        Ccc::ATAR => PropertyName {
+            full: "Attached_Above_Right",
+            abbr: "ATAR",
+        },
+        Ccc::BL => PropertyName {
+            full: "Below_Left",
+            abbr: "BL",
+        },
+        Ccc::B => PropertyName {
+            full: "Below",
+            abbr: "B",
+        },
+        Ccc::BR => PropertyName {
+            full: "Below_Right",
+            abbr: "BR",
+        },
+        Ccc::L => PropertyName {
+            full: "Left",
+            abbr: "L",
+        },
+        Ccc::R => PropertyName {
+            full: "Right",
+            abbr: "R",
+        },
+        Ccc::AL => PropertyName {
+            full: "Above_Left",
+            abbr: "AL",
+        },
+        Ccc::A => PropertyName {
+            full: "Above",
+            abbr: "A",
+        },
+        Ccc::AR => PropertyName {
+            full: "Above_Right",
+            abbr: "AR",
+        },
+        Ccc::DB => PropertyName {
+            full: "Double_Below",
+            abbr: "DB",
+        },
+        Ccc::DA => PropertyName {
+            full: "Double_Above",
+            abbr: "DA",
+        },
+        Ccc::IS => PropertyName {
+            full: "Iota_Subscript",
+            abbr: "IS",
+        },
+    }
+}

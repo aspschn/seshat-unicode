@@ -6,6 +6,8 @@ pub(crate) mod hangul;
 
 pub(crate) mod seg;
 
+pub(crate) mod normalization;
+
 use self::props::*;
 
 #[derive(Clone, Copy)]
@@ -45,6 +47,7 @@ impl std::fmt::Display for CodePoint {
 pub trait Ucd {
     fn na(&self) -> String;
     fn bc(&self) -> Bc;
+    fn ccc(&self) -> Ccc;
     fn gc(&self) -> Gc;
     fn gcb(&self) -> Gcb;
     fn hst(&self) -> Hst;
@@ -103,6 +106,10 @@ impl Ucd for CodePoint {
 
     fn bc(&self) -> Bc {
         ucd::bc::bc(self.code_point)
+    }
+
+    fn ccc(&self) -> Ccc {
+        ucd::ccc::ccc(self.code_point)
     }
 
     fn gc(&self) -> Gc {
@@ -301,6 +308,10 @@ impl Ucd for char {
 
     fn bc(&self) -> Bc {
         ucd::bc::bc(*self as u32)
+    }
+
+    fn ccc(&self) -> Ccc {
+        ucd::ccc::ccc(*self as u32)
     }
 
     fn gc(&self) -> Gc {
