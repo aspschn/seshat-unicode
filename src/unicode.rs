@@ -655,7 +655,7 @@ pub trait Segmentation {
     fn break_graphemes(&self) -> BreakGraphemes;
 }
 
-impl Segmentation for &str {
+impl Segmentation for str {
     fn break_graphemes(&self) -> BreakGraphemes {
         BreakGraphemes { slice: self }
     }
