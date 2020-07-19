@@ -41,7 +41,7 @@ Add later.
 use seshat::unicode::Segmentation;
 
 fn main() {
-    let s = "Hi, 👨🏾🤝👨🏿";
+    let s = "Hi, 👨🏾‍🤝‍👨🏿";
     for seg in s {
         println!("{}", seg);
     }
@@ -55,7 +55,7 @@ H
 i
 ,
  
-👨🏾🤝👨🏿
+👨🏾‍🤝‍👨🏿
 ```
 
 Contribute
