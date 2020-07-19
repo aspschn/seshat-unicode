@@ -509,7 +509,7 @@ impl<'a> Iterator for BreakGraphemes<'a> {
         let mut curr = iter.next();
         let mut next = iter.next();
         let mut in_ext_pict = false;
-        let mut ri_count = 0;
+        let mut _ri_count = 0; // Ignore compiler not used warning.
         loop {
             let curr_ch = curr.unwrap();
             let next_ch = next.unwrap_or((self.slice.len(), '\u{0000}'));
@@ -519,7 +519,7 @@ impl<'a> Iterator for BreakGraphemes<'a> {
             }
             // Prepare for GB12, GB13
             if curr_ch.1.gcb() == Gcb::RI {
-                ri_count += 1;
+                _ri_count += 1;
             }
             // Do not break between a CR and LF. Otherwise, break before and after controls.
             // GB3:                  CR × LF
@@ -623,12 +623,12 @@ impl<'a> Iterator for BreakGraphemes<'a> {
             // if there is an odd number of RI characters before the break point.
             // GB12:   sot (RI RI)* RI × RI
             // GB13: [^RI] (RI RI)* RI × RI
-            if ri_count % 2 != 0 {
+            if _ri_count % 2 != 0 {
                 curr = next;
                 next = iter.next();
                 continue;
             } else {
-                ri_count = 0;
+                _ri_count = 0;
             }
 
             // GB999: Any ÷ Any
