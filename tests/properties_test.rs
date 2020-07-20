@@ -19,6 +19,7 @@ fn check_property(cp: CodePoint, val: &str, prop: &str, attrs: &Vec<OwnedAttribu
     }
 }
 
+// dt in the XML file exceptionally using lower case rather than title case.
 fn check_dt_property(cp: CodePoint, val: &str, attrs: &Vec<OwnedAttribute>) {
     match attrs.iter().find(|&attr| attr.name.local_name == "dt") {
         Some(should) => {
