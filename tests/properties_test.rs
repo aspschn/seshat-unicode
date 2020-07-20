@@ -19,6 +19,18 @@ fn check_property(cp: CodePoint, val: &str, prop: &str, attrs: &Vec<OwnedAttribu
     }
 }
 
+fn check_dt_property(cp: CodePoint, val: &str, attrs: &Vec<OwnedAttribute>) {
+    match attrs.iter().find(|&attr| attr.name.local_name == "dt") {
+        Some(should) => {
+            let val = val.to_lowercase();
+            if val != should.value {
+                panic!("{}: Not equal. Should `{}` but found `{}`.", cp, should, val);
+            }
+        }
+        None => panic!("Attribute dt is not in XML file!"),
+    }
+}
+
 fn check_na_property(cp: CodePoint, val: &str, attrs: &Vec<OwnedAttribute>) {
     match attrs.iter().find(|&attr| attr.name.local_name == "na") {
         Some(should) => {
@@ -84,7 +96,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // ccc (Canonical_Combining_Class)
     let cp_ccc = cp.ccc() as u8;
     check_property(cp, &cp_ccc.to_string(), "ccc", el);
-    // dt                       ; Decomposition_Type
+    // dt (Decomposition_Type)
+    let cp_dt = cp.dt().property_value_name().abbr;
+    check_dt_property(cp, cp_dt, el);
     // ea                       ; East_Asian_Width
     // gc (General_Category)
     let cp_gc = cp.gc().property_value_name().abbr;

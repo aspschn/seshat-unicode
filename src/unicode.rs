@@ -48,6 +48,7 @@ pub trait Ucd {
     fn na(&self) -> String;
     fn bc(&self) -> Bc;
     fn ccc(&self) -> Ccc;
+    fn dt(&self) -> Dt;
     fn gc(&self) -> Gc;
     fn gcb(&self) -> Gcb;
     fn hst(&self) -> Hst;
@@ -110,6 +111,10 @@ impl Ucd for CodePoint {
 
     fn ccc(&self) -> Ccc {
         ucd::ccc::ccc(self.code_point)
+    }
+
+    fn dt(&self) -> Dt {
+        ucd::dt::dt(self.code_point)
     }
 
     fn gc(&self) -> Gc {
@@ -312,6 +317,10 @@ impl Ucd for char {
 
     fn ccc(&self) -> Ccc {
         ucd::ccc::ccc(*self as u32)
+    }
+
+    fn dt(&self) -> Dt {
+        ucd::dt::dt(*self as u32)
     }
 
     fn gc(&self) -> Gc {

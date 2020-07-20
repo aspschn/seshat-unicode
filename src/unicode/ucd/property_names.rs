@@ -577,3 +577,80 @@ pub(crate) fn ccc_name(prop: Ccc) -> PropertyName {
         },
     }
 }
+
+pub(crate) fn dt_name(prop: Dt) -> PropertyName {
+    match prop {
+        Dt::Can => PropertyName {
+            full: "Canonical",
+            abbr: "Can",
+        },
+        Dt::Com => PropertyName {
+            full: "Compat",
+            abbr: "Com",
+        },
+        Dt::Enc => PropertyName {
+            full: "Circle",
+            abbr: "Enc",
+        },
+        Dt::Fin => PropertyName {
+            full: "Final",
+            abbr: "Fin",
+        },
+        Dt::Font => PropertyName {
+            full: "Font",
+            abbr: "Font",
+        },
+        Dt::Fra => PropertyName {
+            full: "Fraction",
+            abbr: "Fra",
+        },
+        Dt::Init => PropertyName {
+            full: "Initial",
+            abbr: "Init",
+        },
+        Dt::Iso => PropertyName {
+            full: "Isolated",
+            abbr: "Iso",
+        },
+        Dt::Med => PropertyName {
+            full: "Medial",
+            abbr: "Med",
+        },
+        Dt::Nar => PropertyName {
+            full: "Narrow",
+            abbr: "Nar",
+        },
+        Dt::Nb => PropertyName {
+            full: "Nobreak",
+            abbr: "Nb",
+        },
+        Dt::None => PropertyName {
+            full: "None",
+            abbr: "None",
+        },
+        Dt::Sml => PropertyName {
+            full: "Small",
+            abbr: "Sml",
+        },
+        Dt::Sqr => PropertyName {
+            full: "Square",
+            abbr: "Sqr",
+        },
+        Dt::Sub => PropertyName {
+            full: "Sub",
+            abbr: "Sub",
+        },
+        Dt::Sup => PropertyName {
+            full: "Super",
+            abbr: "Sup",
+        },
+        Dt::Vert => PropertyName {
+            full: "Vertical",
+            abbr: "Vert",
+        },
+        Dt::Wide => PropertyName {
+            full: "Wide",
+            abbr: "Wide",
+        },
+    }
+}

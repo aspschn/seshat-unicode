@@ -34,6 +34,9 @@ property_info = {
     'ccc': {
         'repr_size': 1,
     },
+    'dt': {
+        'repr_size': 1,
+    },
 }
 
 
@@ -261,4 +264,10 @@ if __name__ == '__main__':
     ccc_data = data_value_as_abbr_ccc(ccc_data)
     tst = select_minimal_tst('Ccc', ccc_data, property_info['ccc']['repr_size'], default_prop='NR')
     with open('../../src/unicode/ucd/ccc.rs', 'w') as f:
+        f.write(tst.to_seshat())
+    # Make dt data.
+    dt_data = make_data('extracted/DerivedDecompositionType.json')
+    dt_data = data_value_as_abbr(dt_data, 'dt')
+    tst = select_minimal_tst('Dt', dt_data, property_info['dt']['repr_size'], default_prop='None')
+    with open('../../src/unicode/ucd/dt.rs', 'w') as f:
         f.write(tst.to_seshat())

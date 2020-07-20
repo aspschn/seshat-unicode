@@ -229,3 +229,32 @@ impl UnicodeProperty for Ccc {
         property_names::ccc_name(*self)
     }
 }
+
+#[derive(Debug, PartialEq, Clone, Copy)]
+#[repr(u8)]
+pub enum Dt {
+    Can,    // Canonical
+    Com,    // Compat
+    Enc,    // Circle
+    Fin,    // Final
+    Font,   // Font
+    Fra,    // Fraction
+    Init,   // Initial
+    Iso,    // Isolated
+    Med,    // Medial
+    Nar,    // Narrow
+    Nb,     // Nobreak
+    None,   // None
+    Sml,    // Small
+    Sqr,    // Square
+    Sub,    // Sub
+    Sup,    // Super
+    Vert,   // Vertical
+    Wide,   // Wide
+}
+
+impl UnicodeProperty for Dt {
+    fn property_value_name(&self) -> PropertyName {
+        property_names::dt_name(*self)
+    }
+}
