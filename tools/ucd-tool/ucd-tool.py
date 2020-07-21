@@ -4,13 +4,10 @@ import json
 import re
 from typing import List, Tuple, Dict
 
+from ucd.unicode import UNICODE_VERSION_MAJOR, UNICODE_VERSION_MINOR, UNICODE_VERSION_UPDATE
+from ucd.unicode import EMOJI_VERSION_MAJOR, EMOJI_VERSION_MINOR
 from ucd.collections import CodePointRange, TwoStageTable
 
-UNICODE_VERSION_MAJOR = 13
-UNICODE_VERSION_MINOR = 0
-UNICODE_VERSION_UPDATE = 0
-EMOJI_VERSION_MAJOR = 13
-EMOJI_VERSION_MINOR = 0
 
 UNICODE_DATA_DIR = 'data/{}.{}.{}'.format(
     UNICODE_VERSION_MAJOR,
@@ -36,6 +33,9 @@ property_info = {
     },
     'dt': {
         'repr_size': 1,
+    },
+    'blk': {
+        'repr_size': 2,
     },
 }
 
