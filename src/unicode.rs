@@ -45,6 +45,8 @@ impl std::fmt::Display for CodePoint {
 }
 
 pub trait Ucd {
+    fn dm(&self) -> String;
+
     fn na(&self) -> String;
     fn bc(&self) -> Bc;
     fn ccc(&self) -> Ccc;
@@ -101,6 +103,10 @@ pub trait Ucd {
 }
 
 impl Ucd for CodePoint {
+    fn dm(&self) -> String {
+        ucd::dm::dm(self.code_point)
+    }
+
     fn na(&self) -> String {
         ucd::na::na(self.code_point)
     }
@@ -307,6 +313,10 @@ impl Ucd for CodePoint {
 }
 
 impl Ucd for char {
+    fn dm(&self) -> String {
+        ucd::dm::dm(*self as u32)
+    }
+
     fn na(&self) -> String {
         ucd::na::na(*self as u32)
     }

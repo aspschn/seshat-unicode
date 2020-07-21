@@ -48,6 +48,24 @@ fn check_na_property(cp: CodePoint, val: &str, attrs: &Vec<OwnedAttribute>) {
     }
 }
 
+fn check_dm_property(cp: CodePoint, val: &str, attrs: &Vec<OwnedAttribute>) {
+    match attrs.iter().find(|&attr| attr.name.local_name == "dm") {
+        Some(should) => {
+            let mut cmp = val.chars()
+                .map(|x| format!("{:04X}", x as u32))
+                .collect::<Vec<String>>()
+                .join(" ");
+            if cmp == "" {
+                cmp = String::from("#");
+            }
+            if cmp != should.value {
+                panic!("{}: Not equal. Should \"{}\" but found \"{}\".", cp, should, cmp);
+            }
+        }
+        None => panic!("Attribute `dm` is not in XML file!"),
+    }
+}
+
 fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     //================================================
     // Numeric Properties
@@ -62,7 +80,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     //================================================
     // cf                       ; Case_Folding
     // cjkCompatibilityVariant  ; kCompatibilityVariant
-    // dm                       ; Decomposition_Mapping
+    // dm (Decomposition_Mapping)
+    let cp_dm = cp.dm();
+    check_dm_property(cp, &cp_dm, el);
     // FC_NFKC                  ; FC_NFKC_Closure
     // lc                       ; Lowercase_Mapping
     // NFKC_CF                  ; NFKC_Casefold

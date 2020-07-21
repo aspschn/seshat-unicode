@@ -213,12 +213,12 @@ def na_table_rs() -> str:
     return txt
 
 
-def dm_rs():
+def dm_map_rs():
     filename = os.path.join(UNICODE_DATA_DIR, 'UnicodeData.json')
     with open(filename) as f:
         json_str = f.read()
     unicode_data = json.loads(json_str)
-    txt = 'pub(super) const DM_MAP: (u32, &str) = &[\n'
+    txt = 'pub(super) const DM_MAP: &[(u32, &str)] = &[\n'
     for k, props in unicode_data.items():
         dm_raw = props['dm']
         if dm_raw == '':
@@ -295,5 +295,5 @@ if __name__ == '__main__':
     with open('../../src/unicode/ucd/dt.rs', 'w') as f:
         f.write(tst.to_seshat())
     # Make dm data.
-    with open('../../src/unicode/ucd/dm.rs', 'w') as f:
-        f.write(dm_rs())
+    with open('../../src/unicode/ucd/dm/dm_map.rs', 'w') as f:
+        f.write(dm_map_rs())
