@@ -573,3 +573,9 @@ pub enum Blk {
     Yijing,
     ZanabazarSquare,
 }
+
+impl UnicodeProperty for Blk {
+    fn property_value_name(&self) -> PropertyName {
+        property_names::blk_name(*self)
+    }
+}
