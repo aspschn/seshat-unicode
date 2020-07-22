@@ -9,6 +9,7 @@ mod tests {
     use super::unicode::CodePoint;
     // use super::unicode::ToCodePoint;
     use super::unicode::Ucd;
+    use super::unicode::Normalization;
     use super::unicode::props::*;
 
     #[test]
@@ -32,6 +33,12 @@ mod tests {
         if c.na() != "CRAB" {
             panic!("Not \"CRAB\"");
         }
+    }
+
+    #[test]
+    fn str_nfd() {
+        let s = "각";
+        assert_eq!(s.to_nfd(), "\u{1100}\u{1161}\u{11A8}");
     }
 
     //==============================

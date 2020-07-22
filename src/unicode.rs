@@ -708,3 +708,19 @@ impl Segmentation for str {
         BreakGraphemes { slice: self }
     }
 }
+
+pub trait Normalization {
+    fn to_nfd(&self) -> String;
+}
+
+impl Normalization for str {
+    fn to_nfd(&self) -> String {
+        let mut result = String::new();
+        let v = normalization::nfd(self);
+        for ch in v.iter() {
+            result.push(*ch);
+        }
+
+        result
+    }
+}

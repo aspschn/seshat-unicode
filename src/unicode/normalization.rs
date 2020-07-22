@@ -38,7 +38,9 @@ pub(crate) fn starter(cp: u32) -> bool {
 }
 
 pub(super) fn reorderable_pair(pair: (u32, u32)) -> bool {
-    pair.0 > pair.1 && pair.1 > 0
+    let a = CodePoint::new(pair.0).unwrap();
+    let b = CodePoint::new(pair.1).unwrap();
+    a.ccc() as u8 > b.ccc() as u8 && b.ccc() as u8 > 0
 }
 
 pub(super) fn canonical_ordering(sequence: &mut Vec<char>) {
@@ -115,4 +117,12 @@ pub(crate) fn non_starter_decomposition(cp: u32) -> bool {
     }
 
     false
+}
+
+pub(crate) fn nfd(s: &str) -> Vec<char> {
+    let seq = s.chars().collect::<Vec<char>>();
+    let mut seq = canonical_decomposition(seq);
+    canonical_ordering(&mut seq);
+
+    seq
 }
