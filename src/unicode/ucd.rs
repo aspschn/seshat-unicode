@@ -16,7 +16,11 @@ pub(crate) mod jsn;
 
 pub(crate) mod binary_props;
 
+pub(crate) mod ce;
+
 pub(crate) mod derived_props;
+
+pub(crate) mod normalization_props;
 
 pub(crate) mod emoji_props;
 

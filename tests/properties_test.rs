@@ -158,9 +158,13 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     check_property(cp, cp_bidi_c, "Bidi_C", el);
     // Bidi_M                   ; Bidi_Mirrored
     // Cased                    ; Cased
-    // CE                       ; Composition_Exclusion
+    // CE (Composition_Exclusion)
+    let cp_ce = BinaryProperty::from(cp.ce()).property_value_name().abbr;
+    check_property(cp, cp_ce, "CE", el);
     // CI                       ; Case_Ignorable
-    // Comp_Ex                  ; Full_Composition_Exclusion
+    // Comp_Ex (Full_Composition_Exclusion)
+    let cp_comp_ex = BinaryProperty::from(cp.comp_ex()).property_value_name().abbr;
+    check_property(cp, cp_comp_ex, "Comp_Ex", el);
     // CWCF                     ; Changes_When_Casefolded
     // CWCM                     ; Changes_When_Casemapped
     // CWKCF                    ; Changes_When_NFKC_Casefolded

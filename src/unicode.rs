@@ -88,6 +88,8 @@ pub trait Ucd {
     fn pat_syn(&self) -> bool;
     fn pcm(&self) -> bool;
     fn ri(&self) -> bool;
+    fn ce(&self) -> bool;
+    fn comp_ex(&self) -> bool;
 
     fn math(&self) -> bool;
     fn alpha(&self) -> bool;
@@ -269,6 +271,14 @@ impl Ucd for CodePoint {
 
     fn ri(&self) -> bool {
         ucd::binary_props::ri(self.code_point)
+    }
+
+    fn ce(&self) -> bool {
+        ucd::ce::ce(self.code_point)
+    }
+
+    fn comp_ex(&self) -> bool {
+        ucd::normalization_props::comp_ex(self.code_point)
     }
 
     fn math(&self) -> bool {
@@ -479,6 +489,14 @@ impl Ucd for char {
 
     fn ri(&self) -> bool {
         ucd::binary_props::ri(*self as u32)
+    }
+
+    fn ce(&self) -> bool {
+        ucd::ce::ce(*self as u32)
+    }
+
+    fn comp_ex(&self) -> bool {
+        ucd::normalization_props::comp_ex(*self as u32)
     }
 
     fn math(&self) -> bool {

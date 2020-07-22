@@ -236,6 +236,33 @@ def dm_map_rs():
     return txt
 
 
+def normalization_props_data_rs():
+    filename = os.path.join(UNICODE_DATA_DIR, 'DerivedNormalizationProps.json')
+    with open(filename) as f:
+        json_str = f.read()
+    normalization_props_data = json.loads(json_str)
+    # Comp_Ex (Full_Composition_Exclusion)
+    # NFD_QC
+
+
+def ce_rs():
+    filename = os.path.join(UNICODE_DATA_DIR, 'CompositionExclusions.json')
+    with open(filename) as f:
+        json_str = f.read()
+    ce_data = json.loads(json_str)
+    txt = 'const CE_LIST: &[u32] = &[\n'
+    for code in ce_data:
+        txt += '    0x{:04X},\n'.format(CodePointRange.parse(code).start)
+    txt += '];\n\n'
+    txt += 'pub(crate) fn ce(cp: u32) -> bool {\n'
+    txt += '    if CE_LIST.contains(&cp) {\n'
+    txt += '        return true;\n'
+    txt += '    }\n'
+    txt += '    false\n'
+    txt += '}\n'
+    return txt
+
+
 if __name__ == '__main__':
     from pprint import pprint
 
@@ -297,3 +324,6 @@ if __name__ == '__main__':
     # Make dm data.
     with open('../../src/unicode/ucd/dm/dm_map.rs', 'w') as f:
         f.write(dm_map_rs())
+    # Make CE data.
+    with open('../../src/unicode/ucd/ce.rs', 'w') as f:
+        f.write(ce_rs())
