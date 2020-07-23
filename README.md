@@ -38,7 +38,6 @@ fn main() {
 
 Features
 ---------
-Add later.
 
 ### Grapheme cluster break
 ```rust
