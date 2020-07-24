@@ -50,5 +50,10 @@ fn validate_normalizations() {
         // NFKC
 
         // NFKD
+        assert_eq!(c5, c1.to_nfkd(), "c5 != c1.to_nfkd() - source: {}", c1);
+        assert_eq!(c5, c2.to_nfkd(), "c5 != c2.to_nfkd() - source: {}", c1);
+        assert_eq!(c5, c3.to_nfkd(), "c5 != c3.to_nfkd() - source: {}", c1);
+        assert_eq!(c5, c4.to_nfkd(), "c5 != c4.to_nfkd() - source: {}", c1);
+        assert_eq!(c5, c5.to_nfkd(), "c5 != c5.to_nfkd() - source: {}", c1);
     }
 }

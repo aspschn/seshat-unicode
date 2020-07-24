@@ -63,6 +63,32 @@ pub(super) fn canonical_ordering(sequence: &mut Vec<char>) {
     }
 }
 
+pub(super) fn compatibility_decomposition(s: &Vec<char>) -> Vec<char> {
+    let mut count = 0;
+    let mut decomposed = vec![];
+    for ch in s.iter() {
+        if ch.dm() == "" {
+            decomposed.push(*ch);
+        } else {
+            match ch.dt() {
+                Dt::None => {
+                    decomposed.push(*ch);
+                }
+                _ => {
+                    for decomposed_char in ch.dm().chars() {
+                        decomposed.push(decomposed_char);
+                        count += 1;
+                    }
+                }
+            }
+        }
+    }
+    if count == 0 {
+        return decomposed;
+    }
+    compatibility_decomposition(&decomposed)
+}
+
 pub(super) fn canonical_decomposition(s: Vec<char>) -> Vec<char>{
     let mut count = 0;
     let mut decomposed = vec![];
@@ -122,6 +148,14 @@ pub(crate) fn non_starter_decomposition(cp: u32) -> bool {
 pub(crate) fn nfd(s: &str) -> Vec<char> {
     let seq = s.chars().collect::<Vec<char>>();
     let mut seq = canonical_decomposition(seq);
+    canonical_ordering(&mut seq);
+
+    seq
+}
+
+pub(crate) fn nfkd(s: &str) -> Vec<char> {
+    let seq = s.chars().collect::<Vec<char>>();
+    let mut seq = compatibility_decomposition(&seq);
     canonical_ordering(&mut seq);
 
     seq
