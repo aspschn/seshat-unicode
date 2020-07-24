@@ -75,6 +75,12 @@ pub(crate) fn arithmetic_primary_composite_mapping(l_part: u32, v_part: u32, t_p
     }
 }
 
+pub(crate) fn arithmetic_primary_composite_mapping_lv_t(lv_part: u32, t_part: u32) -> u32 {
+    let t_index = t_part - T_BASE;
+
+    lv_part + t_index
+}
+
 pub(crate) fn syllable_name(cp: u32) -> String {
     let decomposed = decompose(cp);
     let mut name = String::from("HANGUL SYLLABLE ");

@@ -1,5 +1,7 @@
 pub(self) mod dm_map;
 
+use crate::unicode::Ucd;
+use crate::unicode::props::Hst;
 use crate::unicode::hangul;
 
 pub(crate) fn dm(cp: u32) -> String {
@@ -26,6 +28,7 @@ pub(crate) fn dm(cp: u32) -> String {
 // If not composed, returns 0.
 pub(crate) fn rdm(s: &str) -> u32 {
     // For hangul.
+    // <L, V>
     let chars = s.chars().collect::<Vec<char>>();
     if chars.len() == 2
         && ((0x1100..=0x1112).contains(&(chars[0] as u32))
@@ -36,10 +39,20 @@ pub(crate) fn rdm(s: &str) -> u32 {
             = hangul::arithmetic_primary_composite_mapping(l, v, 0);
         return composed;
     }
+    // <LV, T>
+    if chars.len() == 2
+        && (chars[0].hst() == Hst::LV
+            && (0x11A8..=0x11C2).contains(&(chars[1] as u32)))
+    {
+        let (lv, t) = (chars[0] as u32, chars[1] as u32);
+
+        return hangul::arithmetic_primary_composite_mapping_lv_t(lv, t);
+    }
+    // <L, V, T>
     if chars.len() == 3
         && ((0x1100..=0x1112).contains(&(chars[0] as u32))
             && (0x1161..=0x1175).contains(&(chars[1] as u32))
-            && (0x11A8..0x11C2).contains(&(chars[2] as u32)))
+            && (0x11A8..=0x11C2).contains(&(chars[2] as u32)))
     {
         let (l, v, t) = (chars[0] as u32, chars[1] as u32, chars[2] as u32);
         let composed

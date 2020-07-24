@@ -184,13 +184,21 @@ pub(super) fn canonical_composition(s: &mut Vec<char>) {
     while offset < s.len() {
         let i = offset;
         let mut back_i = i - 1;
-        // Seek back (left) in the coded character sequence from the
+        // R1 - Seek back (left) in the coded character sequence from the
         // character C to find the last Starter L preceding C in the
         // character sequence.
         while back_i != 0 && !starter(s[back_i] as u32) {
             back_i -= 1;
         }
-        let mapping = crate::unicode::ucd::dm::rdm(&s[back_i..=i].iter().collect::<String>());
+        // R2 - If there is such an L, and C is not blocked from L, and there
+        // exists a Primary Composite P which is canonically equivalent to the
+        // sequence <L, C>, then replace L by P in the sequence and delete C
+        // from the sequence.
+        let mut lc = String::new();
+        lc.push(s[back_i]);
+        lc.push(s[i]);
+
+        let mapping = crate::unicode::ucd::dm::rdm(&lc);
         let is_primary_composite = primary_composite(mapping);
         if (starter(s[back_i] as u32)
             && !blocked(&s[back_i..=i]))
