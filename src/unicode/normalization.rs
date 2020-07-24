@@ -166,7 +166,7 @@ fn blocked(sequence: &[char]) -> bool {
         return false;
     }
     if sequence[last_i - 1].ccc() as u8 == 0
-        || sequence[last_i - 1].ccc() as u8 > sequence[last_i].ccc() as u8
+        || sequence[last_i - 1].ccc() as u8 >= sequence[last_i].ccc() as u8
     {
         return true;
     }
@@ -244,5 +244,12 @@ mod tests {
             s1,
             vec!['a', '\u{05AE}', '\u{0305}', '\u{0300}', '\u{0315}', 'b']
         )
+    }
+
+    #[test]
+    fn test_blocked() {
+        let s1 = &['A', 'B'];
+        assert_eq!(super::blocked(s1), false);
+        assert_eq!(super::blocked(&['a', '\u{05AE}', '\u{0305}', '\u{0300}']), true);
     }
 }
