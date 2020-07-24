@@ -51,8 +51,8 @@ pub(super) fn canonical_ordering(sequence: &mut Vec<char>) {
 
     let mut last_idx = sequence.len() - 1;
     while last_idx > 0 {
-        for i in 0..sequence.len() {
-            if i + 1 == sequence.len() {
+        for i in 0..=last_idx {
+            if i + 1 == last_idx + 1 {
                 continue;
             }
             if reorderable_pair((sequence[i] as u32, sequence[i + 1] as u32)) {
@@ -233,4 +233,16 @@ pub(crate) fn nfc(s: &str) -> Vec<char> {
     canonical_composition(&mut seq);
 
     seq
+}
+
+mod tests {
+    #[test]
+    fn test_canonical_ordering() {
+        let mut s1 = vec!['a', '\u{0305}', '\u{0315}', '\u{0300}', '\u{05AE}', 'b'];
+        super::canonical_ordering(&mut s1);
+        assert_eq!(
+            s1,
+            vec!['a', '\u{05AE}', '\u{0305}', '\u{0300}', '\u{0315}', 'b']
+        )
+    }
 }
