@@ -712,6 +712,7 @@ impl Segmentation for str {
 pub trait Normalization {
     fn to_nfd(&self) -> String;
     fn to_nfkd(&self) -> String;
+    fn to_nfc(&self) -> String;
 }
 
 impl Normalization for str {
@@ -728,6 +729,16 @@ impl Normalization for str {
     fn to_nfkd(&self) -> String {
         let mut result = String::new();
         let v = normalization::nfkd(self);
+        for ch in v.iter() {
+            result.push(*ch);
+        }
+
+        result
+    }
+
+    fn to_nfc(&self) -> String {
+        let mut result = String::new();
+        let v = normalization::nfc(self);
         for ch in v.iter() {
             result.push(*ch);
         }

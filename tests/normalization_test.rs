@@ -39,6 +39,11 @@ fn validate_normalizations() {
         let c5 = case.4;
 
         // NFC
+        assert_eq!(c2, c1.to_nfc(), "c2 != c1.to_nfc() - source: {}", c1);
+        assert_eq!(c2, c2.to_nfc(), "c2 != c2.to_nfc() - source: {}", c1);
+        assert_eq!(c2, c3.to_nfc(), "c2 != c3.to_nfc() - source: {}", c1);
+        assert_eq!(c4, c4.to_nfc(), "c4 != c4.to_nfc() - source: {}", c1);
+        assert_eq!(c4, c5.to_nfc(), "c4 != c5.to_nfc() - source: {}", c1);
 
         // NFD
         assert_eq!(c3, c1.to_nfd(), "c3 != c1.to_nfd() - source: {}", c1);

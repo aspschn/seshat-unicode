@@ -60,6 +60,14 @@ def to_snake_case(val: str):
     return val.lower()
 
 
+def str_as_escaped(s: str) -> str:
+    escaped = ''
+    for ch in s:
+        escaped += '\\u{{{:04X}}}'.format(ord(ch))
+
+    return escaped
+
+
 def data_value_as_abbr(data: List[Tuple[CodePointRange, str]], prop: str):
     """Some property data file using (range, full_name) pair instead of (range, abbr_name).
 This function converts these data to abbr version."""
@@ -218,6 +226,7 @@ def dm_map_rs():
     with open(filename) as f:
         json_str = f.read()
     unicode_data = json.loads(json_str)
+    # Make DM_MAP.
     txt = 'pub(super) const DM_MAP: &[(u32, &str)] = &[\n'
     for k, props in unicode_data.items():
         dm_raw = props['dm']
@@ -231,6 +240,22 @@ def dm_map_rs():
         for code in dm_raw.split(' '):
             dm_str += '\\u{{{}}}'.format(code)
         txt += '    (0x{:04X}, "{}"),\n'.format(cp.start, dm_str)
+    txt += '];\n\n'
+    # Make RDM_MAP.
+    rdm_list = []
+    txt += 'pub(super) const RDM_MAP: &[(&str, u32)] = &[\n'
+    for k, props in unicode_data.items():
+        dm_raw = props['dm']
+        if dm_raw == '':
+            continue
+        if dm_raw.startswith('<'):
+            continue
+            dm_raw = re.sub('<.+> ', '', dm_raw)
+        dm_str = ''.join(map(lambda x: chr(int(x, 16)), dm_raw.split(' ')))
+        rdm_list.append((dm_str, k))
+    rdm_list = sorted(rdm_list, key=lambda x: x[0])
+    for pair in rdm_list:
+        txt += '    ("{}", 0x{}),\n'.format(str_as_escaped(pair[0]), pair[1])
     txt += '];\n'
 
     return txt

@@ -21,3 +21,35 @@ pub(crate) fn dm(cp: u32) -> String {
         Err(_) => String::from(""),
     }
 }
+
+// Returns reversed decomposition map as u32.
+// If not composed, returns 0.
+pub(crate) fn rdm(s: &str) -> u32 {
+    // For hangul.
+    let chars = s.chars().collect::<Vec<char>>();
+    if chars.len() == 2
+        && ((0x1100..=0x1112).contains(&(chars[0] as u32))
+            && (0x1161..=0x1175).contains(&(chars[1] as u32)))
+    {
+        let (l, v) = (chars[0] as u32, chars[1] as u32);
+        let composed
+            = hangul::arithmetic_primary_composite_mapping(l, v, 0);
+        return composed;
+    }
+    if chars.len() == 3
+        && ((0x1100..=0x1112).contains(&(chars[0] as u32))
+            && (0x1161..=0x1175).contains(&(chars[1] as u32))
+            && (0x11A8..0x11C2).contains(&(chars[2] as u32)))
+    {
+        let (l, v, t) = (chars[0] as u32, chars[1] as u32, chars[2] as u32);
+        let composed
+            = hangul::arithmetic_primary_composite_mapping(l, v, t);
+        return composed;
+    }
+
+    let found = dm_map::RDM_MAP.binary_search_by_key(&s, |&(k,_)| k);
+    match found {
+        Ok(idx) => dm_map::RDM_MAP[idx].1,
+        Err(_) => 0,
+    }
+}

@@ -69,4 +69,26 @@ mod tests {
         let cp2 = 0x0F73;
         assert_eq!(crate::unicode::normalization::non_starter_decomposition(cp2), true);
     }
+
+    #[test]
+    fn test_rdm() {
+        let s1 = "\u{003B}";
+        let composed = crate::unicode::ucd::dm::rdm(s1);
+        assert_eq!(composed, 0x037E);
+
+        let s2 = "\u{1100}\u{1161}";
+        let composed = crate::unicode::ucd::dm::rdm(s2);
+        assert_eq!(composed, 0xAC00);
+    }
+
+    #[test]
+    fn test_nfc() {
+        let s1 = "\u{0065}\u{0301}";
+        let composed = crate::unicode::normalization::nfc(s1);
+        assert_eq!(composed, vec!['é']);
+
+        let s2 = "\u{1100}\u{1161}";
+        let composed = crate::unicode::normalization::nfc(s2);
+        assert_eq!(composed, vec!['가']);
+    }
 }

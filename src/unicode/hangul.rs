@@ -57,6 +57,24 @@ pub(crate) fn decompose(s: u32) -> Vec<u32> {
     }
 }
 
+// If TPart is not exists, pass to t_part.
+pub(crate) fn arithmetic_primary_composite_mapping(l_part: u32, v_part: u32, t_part: u32) -> u32 {
+    if t_part == 0 {
+        let l_index = l_part - L_BASE;
+        let v_index = v_part - V_BASE;
+        let lv_index = l_index * N_COUNT + v_index * T_COUNT;
+
+        S_BASE + lv_index
+    } else {
+        let l_index = l_part - L_BASE;
+        let v_index = v_part - V_BASE;
+        let t_index = t_part - T_BASE;
+        let lv_index = l_index * N_COUNT + v_index * T_COUNT;
+
+        S_BASE + lv_index + t_index
+    }
+}
+
 pub(crate) fn syllable_name(cp: u32) -> String {
     let decomposed = decompose(cp);
     let mut name = String::from("HANGUL SYLLABLE ");

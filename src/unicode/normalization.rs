@@ -145,6 +145,65 @@ pub(crate) fn non_starter_decomposition(cp: u32) -> bool {
     false
 }
 
+// D114
+fn primary_composite(cp: u32) -> bool {
+    let code_point = CodePoint::new(cp).unwrap();
+    if code_point.dt() == Dt::Can && !code_point.comp_ex() {
+        return true;
+    }
+
+    false
+}
+
+// D115
+fn blocked(sequence: &[char]) -> bool {
+    if sequence[0].ccc() as u8 != 0 {
+        return false;
+    }
+    let first_i = 0;
+    let last_i = sequence.len() - 1;
+    if last_i - 1 == first_i {
+        return false;
+    }
+    if sequence[last_i - 1].ccc() as u8 == 0
+        || sequence[last_i - 1].ccc() as u8 > sequence[last_i].ccc() as u8
+    {
+        return true;
+    }
+
+    false
+}
+
+// D117
+pub(super) fn canonical_composition(s: &mut Vec<char>) {
+    if s.len() == 1 {
+        return ();
+    }
+
+    let mut offset = 1;
+    while offset < s.len() {
+        let i = offset;
+        let mut back_i = i - 1;
+        // Seek back (left) in the coded character sequence from the
+        // character C to find the last Starter L preceding C in the
+        // character sequence.
+        while back_i != 0 && !starter(s[back_i] as u32) {
+            back_i -= 1;
+        }
+        let mapping = crate::unicode::ucd::dm::rdm(&s[back_i..=i].iter().collect::<String>());
+        let is_primary_composite = primary_composite(mapping);
+        if (starter(s[back_i] as u32)
+            && !blocked(&s[back_i..=i]))
+            && (mapping != 0x0 && is_primary_composite)
+        {
+            s[back_i] = std::char::from_u32(mapping).unwrap();
+            s.remove(i);
+            offset -= 1;
+        }
+        offset += 1;
+    }
+}
+
 pub(crate) fn nfd(s: &str) -> Vec<char> {
     let seq = s.chars().collect::<Vec<char>>();
     let mut seq = canonical_decomposition(seq);
@@ -157,6 +216,13 @@ pub(crate) fn nfkd(s: &str) -> Vec<char> {
     let seq = s.chars().collect::<Vec<char>>();
     let mut seq = compatibility_decomposition(&seq);
     canonical_ordering(&mut seq);
+
+    seq
+}
+
+pub(crate) fn nfc(s: &str) -> Vec<char> {
+    let mut seq = nfd(s);
+    canonical_composition(&mut seq);
 
     seq
 }
