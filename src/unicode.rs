@@ -713,6 +713,7 @@ pub trait Normalization {
     fn to_nfd(&self) -> String;
     fn to_nfkd(&self) -> String;
     fn to_nfc(&self) -> String;
+    fn to_nfkc(&self) -> String;
 }
 
 impl Normalization for str {
@@ -739,6 +740,16 @@ impl Normalization for str {
     fn to_nfc(&self) -> String {
         let mut result = String::new();
         let v = normalization::nfc(self);
+        for ch in v.iter() {
+            result.push(*ch);
+        }
+
+        result
+    }
+
+    fn to_nfkc(&self) -> String {
+        let mut result = String::new();
+        let v = normalization::nfkc(self);
         for ch in v.iter() {
             result.push(*ch);
         }

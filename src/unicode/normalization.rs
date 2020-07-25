@@ -235,6 +235,13 @@ pub(crate) fn nfc(s: &str) -> Vec<char> {
     seq
 }
 
+pub(crate) fn nfkc(s: &str) -> Vec<char> {
+    let mut seq = nfkd(s);
+    canonical_composition(&mut seq);
+
+    seq
+}
+
 mod tests {
     #[test]
     fn test_canonical_ordering() {
