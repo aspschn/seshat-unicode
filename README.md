@@ -61,6 +61,22 @@ i
 👨🏾‍🤝‍👨🏿
 ```
 
+### Normalization
+```rust
+use seshat::unicode::Normalization;
+
+fn main() {
+    let s1 = "Å";
+    println!("{:?}", s1.to_nfd()); // Will prints "A\u{30a}"
+
+    let s2 = "㌀";
+    println!("{}", s2.to_nfkd()); // Will prints アパート
+
+    let s3 = "e\u{0301}";
+    println!("{}", s3.to_nfc()); // Will prints é
+}
+```
+
 Contribute
 ---------
 Add later.
