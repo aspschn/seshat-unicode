@@ -1,4 +1,4 @@
-Seshat
+Seshat 𓋇𓏏𓁐
 =========
 [![crates.io](https://img.shields.io/crates/v/seshat-unicode.svg)](https://crates.io/crates/seshat-unicode)
 
