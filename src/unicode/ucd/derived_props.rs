@@ -44,9 +44,14 @@ pub(crate) fn upper(cp: u32) -> bool {
     cp.gc() == Gc::Lu || cp.oupper()
 }
 
-// Derived Property:   Cased (Cased)
-//  As defined by Unicode Standard Definition D135
-//  C has the Lowercase or Uppercase property or has a General_Category value of Titlecase_Letter.
+pub(crate) fn cased(cp: u32) -> bool {
+    // Derived Property:   Cased (Cased)
+    //  As defined by Unicode Standard Definition D135
+    //  C has the Lowercase or Uppercase property or has a General_Category value of Titlecase_Letter.
+    let cp = CodePoint::new(cp).unwrap();
+
+    cp.lower() || cp.upper() || cp.gc() == Gc::Lt
+}
 
 // Derived Property:   Case_Ignorable (CI)
 //  As defined by Unicode Standard Definition D136

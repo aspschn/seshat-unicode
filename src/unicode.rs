@@ -95,6 +95,7 @@ pub trait Ucd {
     fn alpha(&self) -> bool;
     fn lower(&self) -> bool;
     fn upper(&self) -> bool;
+    fn cased(&self) -> bool;
 
     fn emoji(&self) -> bool;
     fn epres(&self) -> bool;
@@ -295,6 +296,10 @@ impl Ucd for CodePoint {
 
     fn upper(&self) -> bool {
         ucd::derived_props::upper(self.code_point)
+    }
+
+    fn cased(&self) -> bool {
+        ucd::derived_props::cased(self.code_point)
     }
 
     fn emoji(&self) -> bool {
@@ -513,6 +518,10 @@ impl Ucd for char {
 
     fn upper(&self) -> bool {
         ucd::derived_props::upper(*self as u32)
+    }
+
+    fn cased(&self) -> bool {
+        ucd::derived_props::cased(*self as u32)
     }
 
     fn emoji(&self) -> bool {
