@@ -157,7 +157,7 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     let cp_bidi_c = BinaryProperty::from(cp.bidi_c()).property_value_name().abbr;
     check_property(cp, cp_bidi_c, "Bidi_C", el);
     // Bidi_M                   ; Bidi_Mirrored
-    // Cased                    ; Cased
+    // Cased (Cased)
     let cp_cased = BinaryProperty::from(cp.cased()).property_value_name().abbr;
     check_property(cp, cp_cased, "Cased", el);
     // CE (Composition_Exclusion)
