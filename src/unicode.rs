@@ -10,12 +10,17 @@ pub(crate) mod normalization;
 
 use self::props::*;
 
+/// A Unicode code point.
+/// The valid code point ranges are 0x0 to 0x10FFFF.
 #[derive(Clone, Copy)]
 pub struct CodePoint {
     code_point: u32,
 }
 
 impl CodePoint {
+    /// Create new `CodePoint` with value `cp`.
+    ///
+    /// If `cp` is greater than 0x10FFFF, returns Err.
     pub fn new(cp: u32) -> Result<CodePoint, &'static str> {
         if cp > 0x10FFFF {
             return Err("IllegalCodePoint: Code point cannot be over U+10FFFF.");
