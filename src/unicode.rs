@@ -28,6 +28,7 @@ impl CodePoint {
         Ok(CodePoint { code_point: cp })
     }
 
+    /// Convert `CodePoint` to `u32`.
     pub fn to_u32(&self) -> u32 {
         self.code_point
     }
