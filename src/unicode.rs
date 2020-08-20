@@ -34,7 +34,11 @@ impl CodePoint {
     }
 }
 
+/// Trait that convert type to `CodePoint`.
+///
+/// The source type should always in valid code point range.
 pub trait ToCodePoint {
+    /// Creates new `CodePoint` struct from the source.
     fn to_code_point(&self) -> CodePoint;
 }
 
