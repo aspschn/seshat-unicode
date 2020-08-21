@@ -54,9 +54,12 @@ impl std::fmt::Display for CodePoint {
     }
 }
 
+/// Trait `Ucd` is a collection of Unicode UCD property methods.
 pub trait Ucd {
     fn dm(&self) -> String;
 
+    /// Get the Unicode Name(na) property. If there is no Name property, then
+    /// returns empty string.
     fn na(&self) -> String;
     fn bc(&self) -> Bc;
     fn ccc(&self) -> Ccc;
