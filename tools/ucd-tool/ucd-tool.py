@@ -53,11 +53,34 @@ def find_key_by_value(d: Dict, val: str) -> str:
             return k
 
 
+def find_key_by_value_ci(d: Dict, val: str) -> str:
+    """Case insensitive version of find_key_by_value function."""
+    for k, v in d.items():
+        value = val.replace('-', ' ')
+        value = value.replace('_', ' ')
+        value = value.upper()
+
+        cmp_val = v.replace('_', ' ')
+        cmp_val = cmp_val.replace('-', ' ')
+        cmp_val = cmp_val.upper()
+
+        if value == cmp_val:
+            return k
+
+
 def to_snake_case(val: str):
     if val == 'ExtPict':
         return 'ext_pict'
 
     return val.lower()
+
+
+def to_pascal_case(val: str) -> str:
+    """Convert underscore_delimitered_string to PacalCase string."""
+    words = val.split('_')
+    result = ''.join(list(map(lambda x: x.title(), words)))
+
+    return result
 
 
 def str_as_escaped(s: str) -> str:
@@ -85,6 +108,23 @@ def data_value_as_abbr_ccc(data: List[Tuple[CodePointRange, str]]):
     new_data = []
     for pair in data:
         new_pair = (pair[0], aliases[pair[1]])
+        new_data.append(new_pair)
+
+    return new_data
+
+
+def data_value_as_abbr_blk(data: List[Tuple[CodePointRange, str]]):
+    """Specialized version function for Block property."""
+    aliases = property_value_aliases['blk']
+    new_data = []
+    for pair in data:
+        # Replace all delimiter to underscore.
+        value = pair[1].replace(' ', '_')
+        value = value.replace('-', '_')
+
+        key = find_key_by_value_ci(aliases, value)
+
+        new_pair = (pair[0], to_pascal_case(key))
         new_data.append(new_pair)
 
     return new_data
@@ -295,6 +335,13 @@ if __name__ == '__main__':
     gc_data = make_data('extracted/DerivedGeneralCategory.json')
     tst = select_minimal_tst('Gc', gc_data, property_info['gc']['repr_size'])
     f = open('../../src/unicode/ucd/gc.rs', 'w')
+    f.write(tst.to_seshat())
+    f.close()
+    # Make blk data.
+    blk_data = make_data('Blocks.json')
+    blk_data = data_value_as_abbr_blk(blk_data)
+    tst = select_minimal_tst('Blk', blk_data, property_info['blk']['repr_size'], default_prop='Nb')
+    f = open('../../src/unicode/ucd/blk.rs', 'w')
     f.write(tst.to_seshat())
     f.close()
     # Make binary properties data.

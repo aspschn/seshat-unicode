@@ -104,7 +104,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // Catalog Properties
     //================================================
     // age                      ; Age
-    // blk                      ; Block
+    // blk (Block)              ; Block
+    let cp_blk = cp.blk().property_value_name().abbr;
+    check_property(cp, cp_blk, "blk", el);
     // sc                       ; Script
 
     //================================================

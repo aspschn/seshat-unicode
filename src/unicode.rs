@@ -104,6 +104,9 @@ pub trait Ucd {
     fn ce(&self) -> bool;
     fn comp_ex(&self) -> bool;
 
+    /// Get the Unicode Block(blk) property.
+    fn blk(&self) -> Blk;
+
     fn math(&self) -> bool;
     fn alpha(&self) -> bool;
     fn lower(&self) -> bool;
@@ -293,6 +296,10 @@ impl Ucd for CodePoint {
 
     fn comp_ex(&self) -> bool {
         ucd::normalization_props::comp_ex(self.code_point)
+    }
+
+    fn blk(&self) -> Blk {
+        ucd::blk::blk(self.code_point)
     }
 
     fn math(&self) -> bool {
@@ -515,6 +522,10 @@ impl Ucd for char {
 
     fn comp_ex(&self) -> bool {
         ucd::normalization_props::comp_ex(*self as u32)
+    }
+
+    fn blk(&self) -> Blk {
+        ucd::blk::blk(*self as u32)
     }
 
     fn math(&self) -> bool {
