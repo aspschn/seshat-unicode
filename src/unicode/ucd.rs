@@ -28,4 +28,6 @@ pub(crate) mod gcb;
 
 pub(crate) mod blk;
 
+pub(crate) mod sc;
+
 pub(crate) mod property_names;

@@ -37,6 +37,9 @@ property_info = {
     'blk': {
         'repr_size': 2,
     },
+    'sc': {
+        'repr_size': 1,
+    }
 }
 
 
@@ -342,6 +345,13 @@ if __name__ == '__main__':
     blk_data = data_value_as_abbr_blk(blk_data)
     tst = select_minimal_tst('Blk', blk_data, property_info['blk']['repr_size'], default_prop='Nb')
     f = open('../../src/unicode/ucd/blk.rs', 'w')
+    f.write(tst.to_seshat())
+    f.close()
+    # Make sc data.
+    sc_data = make_data('Scripts.json')
+    sc_data = data_value_as_abbr(sc_data, 'sc')
+    tst = select_minimal_tst('Sc', sc_data, property_info['sc']['repr_size'], default_prop='Zzzz')
+    f = open('../../src/unicode/ucd/sc.rs', 'w')
     f.write(tst.to_seshat())
     f.close()
     # Make binary properties data.

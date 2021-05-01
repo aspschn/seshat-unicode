@@ -106,6 +106,8 @@ pub trait Ucd {
 
     /// Get the Unicode Block(blk) property.
     fn blk(&self) -> Blk;
+    /// Get the Unicode Script(sc) property.
+    fn sc(&self) -> Sc;
 
     fn math(&self) -> bool;
     fn alpha(&self) -> bool;
@@ -300,6 +302,10 @@ impl Ucd for CodePoint {
 
     fn blk(&self) -> Blk {
         ucd::blk::blk(self.code_point)
+    }
+
+    fn sc(&self) -> Sc {
+        ucd::sc::sc(self.code_point)
     }
 
     fn math(&self) -> bool {
@@ -526,6 +532,10 @@ impl Ucd for char {
 
     fn blk(&self) -> Blk {
         ucd::blk::blk(*self as u32)
+    }
+
+    fn sc(&self) -> Sc {
+        ucd::sc::sc(*self as u32)
     }
 
     fn math(&self) -> bool {
