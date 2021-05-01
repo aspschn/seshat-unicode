@@ -129,6 +129,8 @@ pub trait Ucd {
     fn blk(&self) -> Blk;
     /// Get the Unicode Script(sc) property.
     fn sc(&self) -> Sc;
+    /// Get the Unicode Age(age) property.
+    fn age(&self) -> Age;
 
     fn math(&self) -> bool;
     fn alpha(&self) -> bool;
@@ -327,6 +329,10 @@ impl Ucd for CodePoint {
 
     fn sc(&self) -> Sc {
         ucd::sc::sc(self.code_point)
+    }
+
+    fn age(&self) -> Age {
+        ucd::age::age(self.code_point)
     }
 
     fn math(&self) -> bool {
@@ -557,6 +563,10 @@ impl Ucd for char {
 
     fn sc(&self) -> Sc {
         ucd::sc::sc(*self as u32)
+    }
+
+    fn age(&self) -> Age {
+        ucd::age::age(*self as u32)
     }
 
     fn math(&self) -> bool {

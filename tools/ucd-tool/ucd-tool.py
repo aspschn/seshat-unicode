@@ -39,7 +39,10 @@ property_info = {
     },
     'sc': {
         'repr_size': 1,
-    }
+    },
+    'age': {
+        'repr_size': 1,
+    },
 }
 
 
@@ -160,6 +163,16 @@ filename: str - Path of JSON file."""
     data = sorted(data, key=lambda x: x[0])
 
     return data
+
+
+def to_age_data(data: List[Tuple[CodePointRange, str]]):
+    """Use this function after make_data for age property."""
+    new_data = []
+    for pair in data:
+        ver = pair[1].split('.')
+        new_data.append((pair[0], 'V{}_{}'.format(ver[0], ver[1])))
+
+    return new_data
 
 
 def make_grouped_data(filename: str):
@@ -352,6 +365,13 @@ if __name__ == '__main__':
     sc_data = data_value_as_abbr(sc_data, 'sc')
     tst = select_minimal_tst('Sc', sc_data, property_info['sc']['repr_size'], default_prop='Zzzz')
     f = open('../../src/unicode/ucd/sc.rs', 'w')
+    f.write(tst.to_seshat())
+    f.close()
+    # Make age data.
+    age_data = make_data('DerivedAge.json')
+    age_data = to_age_data(age_data)
+    tst = select_minimal_tst('Age', age_data, property_info['age']['repr_size'], default_prop='NA')
+    f = open('../../src/unicode/ucd/age.rs', 'w')
     f.write(tst.to_seshat())
     f.close()
     # Make binary properties data.

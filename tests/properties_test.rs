@@ -19,6 +19,21 @@ fn check_property(cp: CodePoint, val: &str, prop: &str, attrs: &Vec<OwnedAttribu
     }
 }
 
+fn check_age_property(cp: CodePoint, val: &str, prop: &str, attrs: &Vec<OwnedAttribute>) {
+    let mut cmp_val = val;
+    if cmp_val == "NA" {
+        cmp_val = "unassigned";
+    }
+    match attrs.iter().find(|&attr| attr.name.local_name == prop) {
+        Some(should) => {
+            if cmp_val != should.value {
+                panic!("{}: Not equal. Should `{}` but found `{}`.", cp, should, val);
+            }
+        }
+        None => panic!("Attribute {} is not in XML file!", prop),
+    }
+}
+
 // dt in the XML file exceptionally using lower case rather than title case.
 fn check_dt_property(cp: CodePoint, val: &str, attrs: &Vec<OwnedAttribute>) {
     match attrs.iter().find(|&attr| attr.name.local_name == "dt") {
@@ -104,6 +119,8 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // Catalog Properties
     //================================================
     // age                      ; Age
+    let cp_age = cp.age().property_value_name().abbr;
+    check_age_property(cp, cp_age, "age", el);
     // blk (Block)              ; Block
     let cp_blk = cp.blk().property_value_name().abbr;
     check_property(cp, cp_blk, "blk", el);

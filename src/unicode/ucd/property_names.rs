@@ -2534,3 +2534,104 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
         },
     }
 }
+
+pub(crate) fn age_name(prop: Age) -> PropertyName {
+    match prop {
+        Age::V1_1 => PropertyName {
+            full: "V1_1",
+            abbr: "1.1",
+        },
+        Age::V2_0 => PropertyName {
+            full: "V2_0",
+            abbr: "2.0",
+        },
+        Age::V2_1 => PropertyName {
+            full: "V2_1",
+            abbr: "2.1",
+        },
+        Age::V3_0 => PropertyName {
+            full: "V3_0",
+            abbr: "3.0",
+        },
+        Age::V3_1 => PropertyName {
+            full: "V3_1",
+            abbr: "3.1",
+        },
+        Age::V3_2 => PropertyName {
+            full: "V3_2",
+            abbr: "3.2",
+        },
+        Age::V4_0 => PropertyName {
+            full: "V4_0",
+            abbr: "4.0",
+        },
+        Age::V4_1 => PropertyName {
+            full: "V4_1",
+            abbr: "4.1",
+        },
+        Age::V5_0 => PropertyName {
+            full: "V5_0",
+            abbr: "5.0",
+        },
+        Age::V5_1 => PropertyName {
+            full: "V5_1",
+            abbr: "5.1",
+        },
+        Age::V5_2 => PropertyName {
+            full: "V5_2",
+            abbr: "5.2",
+        },
+        Age::V6_0 => PropertyName {
+            full: "V6_0",
+            abbr: "6.0",
+        },
+        Age::V6_1 => PropertyName {
+            full: "V6_1",
+            abbr: "6.1",
+        },
+        Age::V6_2 => PropertyName {
+            full: "V6_2",
+            abbr: "6.2",
+        },
+        Age::V6_3 => PropertyName {
+            full: "V6_3",
+            abbr: "6.3",
+        },
+        Age::V7_0 => PropertyName {
+            full: "V7_0",
+            abbr: "7.0",
+        },
+        Age::V8_0 => PropertyName {
+            full: "V8_0",
+            abbr: "8.0",
+        },
+        Age::V9_0 => PropertyName {
+            full: "V9_0",
+            abbr: "9.0",
+        },
+        Age::V10_0 => PropertyName {
+            full: "V10_0",
+            abbr: "10.0",
+        },
+        Age::V11_0 => PropertyName {
+            full: "V11_0",
+            abbr: "11.0",
+        },
+        Age::V12_0 => PropertyName {
+            full: "V12_0",
+            abbr: "12.0",
+        },
+        Age::V12_1 => PropertyName {
+            full: "V12_1",
+            abbr: "12.1",
+        },
+        Age::V13_0 => PropertyName {
+            full: "V13_0",
+            abbr: "13.0",
+        },
+        Age::NA => PropertyName {
+            full: "Unassigned",
+            abbr: "NA",
+        },
+     }
+}
