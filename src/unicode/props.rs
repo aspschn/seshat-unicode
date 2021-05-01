@@ -750,3 +750,24 @@ impl UnicodeProperty for Sc {
         property_names::sc_name(*self)
     }
 }
+
+/// Unicode property Age(age).
+#[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
+pub enum Age {
+    Version(u32, u32),
+    NA,
+}
+
+impl ToString for Age {
+    fn to_string(&self) -> String {
+        match self {
+            Age::Version(major, minor) => {
+                return format!("{}.{}", major, minor);
+            },
+            Age::NA => {
+                return String::from("NA");
+            },
+        }
+
+    }
+}

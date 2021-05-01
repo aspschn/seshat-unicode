@@ -10,6 +10,13 @@ pub(crate) mod normalization;
 
 use self::props::*;
 
+/// Current Unicode version.
+pub const UNICODE_VERSION: UnicodeVersion = UnicodeVersion {
+    major: 13,
+    minor: 0,
+    update: 0,
+};
+
 /// A Unicode code point.
 /// The valid code point ranges are 0x0 to 0x10FFFF.
 #[derive(Clone, Copy)]
@@ -31,6 +38,20 @@ impl CodePoint {
     /// Convert `CodePoint` to `u32`.
     pub fn to_u32(&self) -> u32 {
         self.code_point
+    }
+}
+
+/// A struct for contain Unicode version.
+#[derive(Debug, PartialEq, PartialOrd, Clone, Copy)]
+pub struct UnicodeVersion {
+    pub major: u32,
+    pub minor: u32,
+    pub update: u32,
+}
+
+impl ToString for UnicodeVersion {
+    fn to_string(&self) -> String {
+        format!("{}.{}.{}", self.major, self.minor, self.update)
     }
 }
 

@@ -6,11 +6,12 @@ pub mod collections;
 
 #[cfg(test)]
 mod tests {
-    use super::unicode::CodePoint;
+    use super::unicode::{CodePoint, UnicodeVersion};
     // use super::unicode::ToCodePoint;
     use super::unicode::Ucd;
     use super::unicode::Normalization;
     use super::unicode::props::*;
+    use super::unicode::UNICODE_VERSION;
 
     #[test]
     fn code_point_to_string() {
@@ -39,6 +40,16 @@ mod tests {
     fn str_nfd() {
         let s = "각";
         assert_eq!(s.to_nfd(), "\u{1100}\u{1161}\u{11A8}");
+    }
+
+    #[test]
+    fn version_check() {
+        let ver = UnicodeVersion {
+            major: 13,
+            minor: 0,
+            update: 0,
+        };
+        assert_eq!(ver, UNICODE_VERSION);
     }
 
     //==============================
