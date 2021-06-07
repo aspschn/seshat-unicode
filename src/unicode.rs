@@ -704,6 +704,13 @@ impl<'a> Iterator for BreakGraphemes<'a> {
             }
             // Do not break within emoji modifier sequences or emoji zwj sequences.
             // GB11: \p{ExtPict} Extend* ZWJ × \p{ExtPict}
+            if curr_ch.1.ext_pict()
+                && (next_ch.1.ext_pict())
+            {
+                curr = next;
+                // next = iter.next();
+                break;
+            }
             if curr_ch.1.ext_pict() {
                 in_ext_pict = true;
                 curr = next;
