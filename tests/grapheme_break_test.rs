@@ -14,4 +14,19 @@ fn validate_grapheme_break() {
             assert_eq!(grapheme, breaks[i]);
         }
     }
+
+    // Additional test cases.
+    let s1 = "\u{1F469}\u{200D}\u{2764}\u{FE0F}\u{200D}\u{1F469}-\u{1F468}\u{200D}\u{2764}\u{FE0F}\u{200D}\u{1F468}";
+    let mut iter = s1.break_graphemes();
+    assert_eq!(iter.next(), Some("\u{1F469}\u{200D}\u{2764}\u{FE0F}\u{200D}\u{1F469}"));
+    assert_eq!(iter.next(), Some("-"));
+    assert_eq!(iter.next(), Some("\u{1F468}\u{200D}\u{2764}\u{FE0F}\u{200D}\u{1F468}"));
+    assert_eq!(iter.next(), None);
+
+    let s2 = " \u{1F1F0}\u{1F1F7}\u{1F1F7}";
+    let mut iter = s2.break_graphemes();
+    assert_eq!(iter.next(), Some(" "));
+    assert_eq!(iter.next(), Some("\u{1F1F0}\u{1F1F7}"));
+    assert_eq!(iter.next(), Some("\u{1F1F7}"));
+    assert_eq!(iter.next(), None);
 }
