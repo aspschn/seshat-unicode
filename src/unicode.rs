@@ -711,6 +711,12 @@ impl<'a> Iterator for BreakGraphemes<'a> {
                 // next = iter.next();
                 break;
             }
+            if curr_ch.1.ext_pict()
+                && (!next_ch.1.ext_pict())
+            {
+                curr = next;
+                break;
+            }
             if curr_ch.1.ext_pict() {
                 in_ext_pict = true;
                 curr = next;
@@ -752,7 +758,8 @@ impl<'a> Iterator for BreakGraphemes<'a> {
             // if there is an odd number of RI characters before the break point.
             // GB12:   sot (RI RI)* RI × RI
             // GB13: [^RI] (RI RI)* RI × RI
-            if _ri_count % 2 != 0 {
+            if (curr_ch.1.gcb() == Gcb::RI && next_ch.1.gcb() == Gcb::RI)
+                    && _ri_count % 2 != 0 {
                 curr = next;
                 next = iter.next();
                 continue;
