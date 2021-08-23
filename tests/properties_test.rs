@@ -200,7 +200,8 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // Dep (Deprecated)
     let cp_dep = BinaryProperty::from(cp.dep()).property_value_name().abbr;
     check_property(cp, cp_dep, "Dep", el);
-    // DI                       ; Default_Ignorable_Code_Point
+    // Default_Ignorable_Code_Point (DI)
+    let cp_di = BinaryProperty::from(cp.di()).property_value_name().abbr;
     // Dia (Diacritic)
     let cp_dia = BinaryProperty::from(cp.dia()).property_value_name().abbr;
     check_property(cp, cp_dia, "Dia", el);

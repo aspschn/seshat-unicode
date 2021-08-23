@@ -184,6 +184,8 @@ pub trait Ucd {
     fn upper(&self) -> bool;
     /// Get the Unicode Cased(Cased) property.
     fn cased(&self) -> bool;
+    /// Get the Unicode Default_Ignorable_Code_Point(DI) property.
+    fn di(&self) -> bool;
 
     /// Get the Unicode Emoji(Emoji) property.
     fn emoji(&self) -> bool;
@@ -406,6 +408,10 @@ impl Ucd for CodePoint {
 
     fn cased(&self) -> bool {
         ucd::derived_props::cased(self.code_point)
+    }
+
+    fn di(&self) -> bool {
+        ucd::derived_props::di(self.code_point)
     }
 
     fn emoji(&self) -> bool {
@@ -640,6 +646,10 @@ impl Ucd for char {
 
     fn cased(&self) -> bool {
         ucd::derived_props::cased(*self as u32)
+    }
+
+    fn di(&self) -> bool {
+        ucd::derived_props::di(*self as u32)
     }
 
     fn emoji(&self) -> bool {

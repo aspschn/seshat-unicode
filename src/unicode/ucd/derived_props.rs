@@ -117,15 +117,22 @@ pub(crate) fn cased(cp: u32) -> bool {
 // #        Merely ensures that if isIdentifer(string) then isIdentifier(NFKx(string))
 // #  NOTE: See UAX #31 for more information
 
-// # Derived Property: Default_Ignorable_Code_Point
-// #  Generated from
-// #    Other_Default_Ignorable_Code_Point
-// #  + Cf (Format characters)
-// #  + Variation_Selector
-// #  - White_Space
-// #  - FFF9..FFFB (Interlinear annotation format characters)
-// #  - 13430..13438 (Egyptian hieroglyph format characters)
-// #  - Prepended_Concatenation_Mark (Exceptional format characters that should be visible)
+pub(crate) fn di(cp: u32) -> bool {
+    // # Derived Property: Default_Ignorable_Code_Point
+    // #  Generated from
+    // #    Other_Default_Ignorable_Code_Point
+    // #  + Cf (Format characters)
+    // #  + Variation_Selector
+    // #  - White_Space
+    // #  - FFF9..FFFB (Interlinear annotation format characters)
+    // #  - 13430..13438 (Egyptian hieroglyph format characters)
+    // #  - Prepended_Concatenation_Mark (Exceptional format characters that should be visible)
+    let cp = CodePoint::new(cp).unwrap();
+    cp.odi() || cp.gc() == Gc::Cf || cp.vs() || !cp.wspace() ||
+        (0xFFF9..=0xFFFB).contains(&cp.to_u32()) ||
+        (0x13430..=0x13438).contains(&cp.to_u32()) ||
+        !cp.pcm()
+}
 
 // # Derived Property: Grapheme_Extend
 // #  Generated from: Me + Mn + Other_Grapheme_Extend
