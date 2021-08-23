@@ -82,47 +82,89 @@ pub trait Ucd {
     /// Get the Unicode Name(na) property. If there is no Name property, then
     /// returns empty string.
     fn na(&self) -> String;
+    /// Get the Unicode Bidi_Class(bc) property.
     fn bc(&self) -> Bc;
+    /// Get the Unicode Canonical_Combining_Class(ccc) property.
     fn ccc(&self) -> Ccc;
+    /// Get the Unicode Decomposition_Type(dt) property.
     fn dt(&self) -> Dt;
+    /// Get the Unicode General_Category(gc) property.
     fn gc(&self) -> Gc;
+    /// Get the Unicode Grapheme_Cluster_Break(GCB) property.
     fn gcb(&self) -> Gcb;
+    /// Get the Unicode Hangul_Syllable_Type(hst) property.
     fn hst(&self) -> Hst;
+    /// Get the Unicode White_Space(WSpace) property.
     fn wspace(&self) -> bool;
+    /// Get the Unicode Bidi_Control(Bidi_C) property.
     fn bidi_c(&self) -> bool;
+    /// Get the Unicode Join_Control(Join_C) property.
     fn join_c(&self) -> bool;
+    /// Get the Unicode Dash(Dash) property.
     fn dash(&self) -> bool;
+    /// Get the Unicode Hyphen(Hyphen) property.
     fn hyphen(&self) -> bool;
+    /// Get the Unicode Quotation_Mark(QMark) property.
     fn qmark(&self) -> bool;
+    /// Get the Unicode Terminal_Punctuation(Term) property.
     fn term(&self) -> bool;
+    /// Get the Unicode Other_Math(OMath) property.
     fn omath(&self) -> bool;
+    /// Get the Unicode Hex_Digit(Hex) property.
     fn hex(&self) -> bool;
+    /// Get the Unicode ASCII_Hex_Digit(AHex) property.
     fn ahex(&self) -> bool;
+    /// Get the Unicode Other_Alphabetic(OAlpha) property.
     fn oalpha(&self) -> bool;
+    /// Get the Unicode Ideographic(Ideo) property.
     fn ideo(&self) -> bool;
+    /// Get the Unicode Diacritic(Dia) property.
     fn dia(&self) -> bool;
+    /// Get the Unicode Extender(Ext) property.
     fn ext(&self) -> bool;
+    /// Get the Unicode Other_Lowercase(OLower) property.
     fn olower(&self) -> bool;
+    /// Get the Unicode Other_Uppercase(OUpper) property.
     fn oupper(&self) -> bool;
+    /// Get the Unicode Noncharacter_Code_Point(NChar) property.
     fn nchar(&self) -> bool;
+    /// Get the Unicode Other_Grapheme_Extend(OGr_Ext) property.
     fn ogr_ext(&self) -> bool;
+    /// Get the Unicode IDS_Binary_Operator(IDSB) property.
     fn idsb(&self) -> bool;
+    /// Get the Unicode IDS_Trinary_Operator(IDST) property.
     fn idst(&self) -> bool;
+    /// Get the Unicode Radical(Radical) property.
     fn radical(&self) -> bool;
+    /// Get the Unicode Unified_Ideograph(UIdeo) property.
     fn uideo(&self) -> bool;
+    /// Get the Unicode Other_Default_Ignorable_Code_Point(ODI) property.
     fn odi(&self) -> bool;
+    /// Get the Unicode Deprecated(Dep) property.
     fn dep(&self) -> bool;
+    /// Get the Unicode Soft_Dotted(SD) property.
     fn sd(&self) -> bool;
+    /// Get the Unicode Logical_Order_Exception(LOE) property.
     fn loe(&self) -> bool;
+    /// Get the Unicode Other_ID_Start(OIDS) property.
     fn oids(&self) -> bool;
+    /// Get the Unicode Other_ID_Continue(OIDC) property.
     fn oidc(&self) -> bool;
+    /// Get the Unicode Sentence_Terminal(STerm) property.
     fn sterm(&self) -> bool;
+    /// Get the Unicode Variation_Selector(VS) property.
     fn vs(&self) -> bool;
+    /// Get the Unicode Pattern_White_Space(Pat_WS) property.
     fn pat_ws(&self) -> bool;
+    /// Get the Unicode Pattern_Syntax(Pat_Syn) property.
     fn pat_syn(&self) -> bool;
+    /// Get the Unicode Prepended_Concatenation_Mark(PCM) property.
     fn pcm(&self) -> bool;
+    /// Get the Unicode Regional_Indicator(RI) property.
     fn ri(&self) -> bool;
+    /// Get the Unicode Composition_Exclusion(CE) property.
     fn ce(&self) -> bool;
+    /// Get the Unicode Full_Composition_Exclusion(Comp_Ex) property.
     fn comp_ex(&self) -> bool;
 
     /// Get the Unicode Block(blk) property.
