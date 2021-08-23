@@ -174,17 +174,28 @@ pub trait Ucd {
     /// Get the Unicode Age(age) property.
     fn age(&self) -> Age;
 
+    /// Get the Unicode Math(Math) property.
     fn math(&self) -> bool;
+    /// Get the Unicode Alphabetic(Alpha) property.
     fn alpha(&self) -> bool;
+    /// Get the Unicode Lowercase(Lower) property.
     fn lower(&self) -> bool;
+    /// Get the Unicode Uppercase(Upper) property.
     fn upper(&self) -> bool;
+    /// Get the Unicode Cased(Cased) property.
     fn cased(&self) -> bool;
 
+    /// Get the Unicode Emoji(Emoji) property.
     fn emoji(&self) -> bool;
+    /// Get the Unicode Emoji_Presentation(EPres) property.
     fn epres(&self) -> bool;
+    /// Get the Unicode Emoji_Modifier(EMod) property.
     fn emod(&self) -> bool;
+    /// Get the Unicode Emoji_Modifier_Base(EBase) property.
     fn ebase(&self) -> bool;
+    /// Get the Unicode Emoji_Component(EComp) property.
     fn ecomp(&self) -> bool;
+    /// Get the Unicode Extended_Pictographic(ExtPict) property.
     fn ext_pict(&self) -> bool;
 }
 
