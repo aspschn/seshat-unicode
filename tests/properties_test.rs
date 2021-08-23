@@ -200,8 +200,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // Dep (Deprecated)
     let cp_dep = BinaryProperty::from(cp.dep()).property_value_name().abbr;
     check_property(cp, cp_dep, "Dep", el);
-    // Default_Ignorable_Code_Point (DI)
+    // DI (Default_Ignorable_Code_Point)
     let cp_di = BinaryProperty::from(cp.di()).property_value_name().abbr;
+    check_property(cp, cp_di, "DI", el);
     // Dia (Diacritic)
     let cp_dia = BinaryProperty::from(cp.dia()).property_value_name().abbr;
     check_property(cp, cp_dia, "Dia", el);
@@ -227,7 +228,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     let cp_ext_pict = BinaryProperty::from(cp.ext_pict()).property_value_name().abbr;
     check_property(cp, cp_ext_pict, "ExtPict", el);
     // Gr_Base                  ; Grapheme_Base
-    // Gr_Ext                   ; Grapheme_Extend
+    // Gr_Ext (Grapheme_Extend)
+    let cp_gr_ext = BinaryProperty::from(cp.gr_ext()).property_value_name().abbr;
+    check_property(cp, cp_gr_ext, "Gr_Ext", el);
     // Gr_Link                  ; Grapheme_Link
     // Hex (Hex_Digit)
     let cp_hex = BinaryProperty::from(cp.hex()).property_value_name().abbr;

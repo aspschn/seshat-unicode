@@ -128,16 +128,24 @@ pub(crate) fn di(cp: u32) -> bool {
     // #  - 13430..13438 (Egyptian hieroglyph format characters)
     // #  - Prepended_Concatenation_Mark (Exceptional format characters that should be visible)
     let cp = CodePoint::new(cp).unwrap();
-    cp.odi() || cp.gc() == Gc::Cf || cp.vs() || !cp.wspace() ||
-        (0xFFF9..=0xFFFB).contains(&cp.to_u32()) ||
-        (0x13430..=0x13438).contains(&cp.to_u32()) ||
-        !cp.pcm()
+    if cp.odi() || cp.gc() == Gc::Cf || cp.vs() {
+        if !cp.wspace() && !(0xFFF9..=0xFFFB).contains(&cp.to_u32()) &&
+                !(0x13430..=0x13438).contains(&cp.to_u32()) &&
+                !cp.pcm() {
+            return true;
+        }
+    }
+    return false;
 }
 
-// # Derived Property: Grapheme_Extend
-// #  Generated from: Me + Mn + Other_Grapheme_Extend
-// #  Note: depending on an application's interpretation of Co (private use),
-// #  they may be either in Grapheme_Base, or in Grapheme_Extend, or in neither.
+pub(crate) fn gr_ext(cp: u32) -> bool {
+    // # Derived Property: Grapheme_Extend
+    // #  Generated from: Me + Mn + Other_Grapheme_Extend
+    // #  Note: depending on an application's interpretation of Co (private use),
+    // #  they may be either in Grapheme_Base, or in Grapheme_Extend, or in neither.
+    let cp = CodePoint::new(cp).unwrap();
+    cp.gc() == Gc::Me || cp.gc() == Gc::Mn || cp.ogr_ext()
+}
 
 // # Derived Property: Grapheme_Base
 // #  Generated from: [0..10FFFF] - Cc - Cf - Cs - Co - Cn - Zl - Zp - Grapheme_Extend

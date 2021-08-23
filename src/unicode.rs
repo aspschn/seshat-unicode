@@ -186,6 +186,8 @@ pub trait Ucd {
     fn cased(&self) -> bool;
     /// Get the Unicode Default_Ignorable_Code_Point(DI) property.
     fn di(&self) -> bool;
+    /// Get the Unicode Grapheme_Extend(Gr_Ext) property.
+    fn gr_ext(&self) -> bool;
 
     /// Get the Unicode Emoji(Emoji) property.
     fn emoji(&self) -> bool;
@@ -412,6 +414,10 @@ impl Ucd for CodePoint {
 
     fn di(&self) -> bool {
         ucd::derived_props::di(self.code_point)
+    }
+
+    fn gr_ext(&self) -> bool {
+        ucd::derived_props::gr_ext(self.code_point)
     }
 
     fn emoji(&self) -> bool {
@@ -650,6 +656,10 @@ impl Ucd for char {
 
     fn di(&self) -> bool {
         ucd::derived_props::di(*self as u32)
+    }
+
+    fn gr_ext(&self) -> bool {
+        ucd::derived_props::gr_ext(*self as u32)
     }
 
     fn emoji(&self) -> bool {
