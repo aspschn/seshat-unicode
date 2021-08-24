@@ -25,7 +25,7 @@ Usage
 ---------
 ```toml
 [dependencies]
-seshat-unicode = "0.0.13"
+seshat-unicode = "0.0.14"
 ```
 
 ```rust
@@ -33,6 +33,15 @@ use seshat::unicode::Ucd;
 
 fn main() {
     println!("🦀 is {}!", '🦀'.na());
+}
+```
+
+### Check the Unicode Version
+```rust
+use seshat::unicode::UNICODE_VERSION;
+
+fn main() {
+    println!("{}", UNICODE_VERSION.to_string());
 }
 ```
 
