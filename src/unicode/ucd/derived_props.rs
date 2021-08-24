@@ -53,11 +53,19 @@ pub(crate) fn cased(cp: u32) -> bool {
     cp.lower() || cp.upper() || cp.gc() == Gc::Lt
 }
 
-// Derived Property:   Case_Ignorable (CI)
-//  As defined by Unicode Standard Definition D136
-//  C is defined to be case-ignorable if
-//    Word_Break(C) = MidLetter or MidNumLet or Single_Quote, or
-//    General_Category(C) = Nonspacing_Mark (Mn), Enclosing_Mark (Me), Format (Cf), Modifier_Letter (Lm), or Modifier_Symbol (Sk).
+pub(crate) fn ci(cp: u32) -> bool {
+    // Derived Property:   Case_Ignorable (CI)
+    //  As defined by Unicode Standard Definition D136
+    //  C is defined to be case-ignorable if
+    //    Word_Break(C) = MidLetter or MidNumLet or Single_Quote, or
+    //    General_Category(C) = Nonspacing_Mark (Mn), Enclosing_Mark (Me), Format (Cf), Modifier_Letter (Lm), or Modifier_Symbol (Sk).
+    let cp = CodePoint::new(cp).unwrap();
+    let wb = cp.wb();
+    let gc = cp.gc();
+
+    wb == Wb::ML || wb == Wb::MB || wb == Wb::SQ ||
+        gc == Gc::Mn || gc == Gc::Me || gc == Gc::Cf || gc == Gc::Lm || gc == Gc::Sk
+}
 
 // Derived Property:   Changes_When_Lowercased (CWL)
 //  Characters whose normalized forms are not stable under a toLowercase mapping.

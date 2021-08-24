@@ -43,6 +43,9 @@ property_info = {
     'age': {
         'repr_size': 1,
     },
+    'wb': {
+        'repr_size': 1,
+    },
 }
 
 
@@ -429,3 +432,10 @@ if __name__ == '__main__':
     # Make CE data.
     with open('../../src/unicode/ucd/ce.rs', 'w') as f:
         f.write(ce_rs())
+    # Make WB data.
+    wb_data = make_data('auxiliary/WordBreakProperty.json')
+    wb_data = data_value_as_abbr(wb_data, 'WB')
+    tst = select_minimal_tst('Wb', wb_data, property_info['wb']['repr_size'],
+        default_prop='XX')
+    with open('../../src/unicode/ucd/wb.rs', 'w') as f:
+        f.write(tst.to_seshat())

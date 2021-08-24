@@ -785,3 +785,37 @@ impl UnicodeProperty for Age {
         property_names::age_name(*self)
     }
 }
+
+/// Unicode property Word_Break(WB).
+#[derive(Debug, PartialEq, Clone, Copy)]
+pub enum Wb {
+    CR,     // CR
+    DQ,     // Double_Quote
+    EB,     // E_Base
+    EBG,    // E_Base_GAZ
+    EM,     // E_Modifier
+    EX,     // ExtendNumLet
+    Extend, // Extend
+    FO,     // Format
+    GAZ,    // Glue_After_Zwj
+    HL,     // Hebrew_Letter
+    KA,     // Katakana
+    LE,     // ALetter
+    LF,     // LF
+    MB,     // MidNumLet
+    ML,     // MidLetter
+    MN,     // MidNum
+    NL,     // Newline
+    NU,     // Numeric
+    RI,     // Regional_Indicator
+    SQ,     // Single_Quote
+    WSegSpace,  // WSegSpace
+    XX,     // Other
+    ZWJ,    // ZWJ
+}
+
+impl UnicodeProperty for Wb {
+    fn property_value_name(&self) -> PropertyName {
+        property_names::wb_name(*self)
+    }
+}

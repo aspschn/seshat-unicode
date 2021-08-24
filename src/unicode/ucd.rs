@@ -26,6 +26,8 @@ pub(crate) mod emoji_props;
 
 pub(crate) mod gcb;
 
+pub(crate) mod wb;
+
 pub(crate) mod blk;
 
 pub(crate) mod sc;

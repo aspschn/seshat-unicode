@@ -92,6 +92,8 @@ pub trait Ucd {
     fn gc(&self) -> Gc;
     /// Get the Unicode Grapheme_Cluster_Break(GCB) property.
     fn gcb(&self) -> Gcb;
+    /// Get the Unicode Word_Break(WB) property.
+    fn wb(&self) -> Wb;
     /// Get the Unicode Hangul_Syllable_Type(hst) property.
     fn hst(&self) -> Hst;
     /// Get the Unicode White_Space(WSpace) property.
@@ -164,6 +166,8 @@ pub trait Ucd {
     fn ri(&self) -> bool;
     /// Get the Unicode Composition_Exclusion(CE) property.
     fn ce(&self) -> bool;
+    /// Get the Unicode Case_Ignorable(CI) property.
+    fn ci(&self) -> bool;
     /// Get the Unicode Full_Composition_Exclusion(Comp_Ex) property.
     fn comp_ex(&self) -> bool;
 
@@ -230,6 +234,10 @@ impl Ucd for CodePoint {
 
     fn gcb(&self) -> Gcb {
         ucd::gcb::gcb(self.code_point)
+    }
+
+    fn wb(&self) -> Wb {
+        ucd::wb::wb(self.code_point)
     }
 
     fn hst(&self) -> Hst {
@@ -376,6 +384,10 @@ impl Ucd for CodePoint {
         ucd::ce::ce(self.code_point)
     }
 
+    fn ci(&self) -> bool {
+        ucd::derived_props::ci(self.code_point)
+    }
+
     fn comp_ex(&self) -> bool {
         ucd::normalization_props::comp_ex(self.code_point)
     }
@@ -472,6 +484,10 @@ impl Ucd for char {
 
     fn gcb(&self) -> Gcb {
         ucd::gcb::gcb(*self as u32)
+    }
+
+    fn wb(&self) -> Wb {
+        ucd::wb::wb(*self as u32)
     }
 
     fn hst(&self) -> Hst {
@@ -616,6 +632,10 @@ impl Ucd for char {
 
     fn ce(&self) -> bool {
         ucd::ce::ce(*self as u32)
+    }
+
+    fn ci(&self) -> bool {
+        ucd::derived_props::ci(*self as u32)
     }
 
     fn comp_ex(&self) -> bool {

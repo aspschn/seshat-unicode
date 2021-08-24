@@ -163,7 +163,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // nt                       ; Numeric_Type
     // SB                       ; Sentence_Break
     // vo                       ; Vertical_Orientation
-    // WB                       ; Word_Break
+    // WB (Word_Break)
+    let cp_wb = cp.wb().property_value_name().abbr;
+    check_property(cp, cp_wb, "WB", el);
 
     //================================================
     // Binary Properties
@@ -184,7 +186,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // CE (Composition_Exclusion)
     let cp_ce = BinaryProperty::from(cp.ce()).property_value_name().abbr;
     check_property(cp, cp_ce, "CE", el);
-    // CI                       ; Case_Ignorable
+    // CI (Case_Ignorable)
+    let cp_ci = BinaryProperty::from(cp.ci()).property_value_name().abbr;
+    check_property(cp, cp_ci, "CI", el);
     // Comp_Ex (Full_Composition_Exclusion)
     let cp_comp_ex = BinaryProperty::from(cp.comp_ex()).property_value_name().abbr;
     check_property(cp, cp_comp_ex, "Comp_Ex", el);

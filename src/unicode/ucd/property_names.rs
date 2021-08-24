@@ -2635,3 +2635,100 @@ pub(crate) fn age_name(prop: Age) -> PropertyName {
         },
      }
 }
+
+pub(crate) fn wb_name(prop: Wb) -> PropertyName {
+    match prop {
+        Wb::CR => PropertyName {
+            full: "CR",
+            abbr: "CR",
+        },
+        Wb::DQ => PropertyName {
+            full: "Double_Quote",
+            abbr: "DQ",
+        },
+        Wb::EB => PropertyName {
+            full: "E_Base",
+            abbr: "EB",
+        },
+        Wb::EBG => PropertyName {
+            full: "E_Base_GAZ",
+            abbr: "EBG",
+        },
+        Wb::EM => PropertyName {
+            full: "E_Modifier",
+            abbr: "EM",
+        },
+        Wb::EX => PropertyName {
+            full: "ExtendNumLet",
+            abbr: "EX",
+        },
+        Wb::Extend => PropertyName {
+            full: "Extend",
+            abbr: "Extend",
+        },
+        Wb::FO => PropertyName {
+            full: "Format",
+            abbr: "FO",
+        },
+        Wb::GAZ => PropertyName {
+            full: "Glue_After_Zwj",
+            abbr: "GAZ",
+        },
+        Wb::HL => PropertyName {
+            full: "Hebrew_Letter",
+            abbr: "HL",
+        },
+        Wb::KA => PropertyName {
+            full: "Katakana",
+            abbr: "KA",
+        },
+        Wb::LE => PropertyName {
+            full: "ALetter",
+            abbr: "LE",
+        },
+        Wb::LF => PropertyName {
+            full: "LF",
+            abbr: "LF",
+        },
+        Wb::MB => PropertyName {
+            full: "MidNumLet",
+            abbr: "MB",
+        },
+        Wb::ML => PropertyName {
+            full: "MidLetter",
+            abbr: "ML",
+        },
+        Wb::MN => PropertyName {
+            full: "MidNum",
+            abbr: "MN",
+        },
+        Wb::NL => PropertyName {
+            full: "Newline",
+            abbr: "NL",
+        },
+        Wb::NU => PropertyName {
+            full: "Numeric",
+            abbr: "NU",
+        },
+        Wb::RI => PropertyName {
+            full: "Regional_Indicator",
+            abbr: "RI",
+        },
+        Wb::SQ => PropertyName {
+            full: "Single_Quote",
+            abbr: "SQ",
+        },
+        Wb::WSegSpace => PropertyName {
+            full: "WSegSpace",
+            abbr: "WSegSpace",
+        },
+        Wb::XX => PropertyName {
+            full: "Other",
+            abbr: "XX",
+        },
+        Wb::ZWJ => PropertyName {
+            full: "ZWJ",
+            abbr: "ZWJ",
+        },
+    }
+}
