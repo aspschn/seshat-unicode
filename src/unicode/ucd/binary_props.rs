@@ -104,6 +104,9 @@ pub(crate) fn dash(cp: u32) -> bool {
     if (0x2E40..0x2E40 + 1).contains(&cp) {
         return true;
     }
+    if (0x2E5D..0x2E5D + 1).contains(&cp) {
+        return true;
+    }
     if (0x301C..0x301C + 1).contains(&cp) {
         return true;
     }
@@ -290,7 +293,7 @@ pub(crate) fn term(cp: u32) -> bool {
     if (0x061B..0x061B + 1).contains(&cp) {
         return true;
     }
-    if (0x061E..0x061F + 1).contains(&cp) {
+    if (0x061D..0x061F + 1).contains(&cp) {
         return true;
     }
     if (0x06D4..0x06D4 + 1).contains(&cp) {
@@ -362,6 +365,9 @@ pub(crate) fn term(cp: u32) -> bool {
     if (0x1B5D..0x1B5F + 1).contains(&cp) {
         return true;
     }
+    if (0x1B7D..0x1B7E + 1).contains(&cp) {
+        return true;
+    }
     if (0x1C3B..0x1C3F + 1).contains(&cp) {
         return true;
     }
@@ -387,6 +393,9 @@ pub(crate) fn term(cp: u32) -> bool {
         return true;
     }
     if (0x2E4E..0x2E4F + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E53..0x2E54 + 1).contains(&cp) {
         return true;
     }
     if (0x3001..0x3002 + 1).contains(&cp) {
@@ -477,6 +486,9 @@ pub(crate) fn term(cp: u32) -> bool {
         return true;
     }
     if (0x10F55..0x10F59 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10F86..0x10F89 + 1).contains(&cp) {
         return true;
     }
     if (0x11047..0x1104D + 1).contains(&cp) {
@@ -1672,6 +1684,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x1ABF..0x1AC0 + 1).contains(&cp) {
         return true;
     }
+    if (0x1ACC..0x1ACE + 1).contains(&cp) {
+        return true;
+    }
     if (0x1B00..0x1B03 + 1).contains(&cp) {
         return true;
     }
@@ -1930,6 +1945,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x11038..0x11045 + 1).contains(&cp) {
         return true;
     }
+    if (0x11073..0x11074 + 1).contains(&cp) {
+        return true;
+    }
     if (0x11082..0x11082 + 1).contains(&cp) {
         return true;
     }
@@ -1940,6 +1958,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
         return true;
     }
     if (0x110B7..0x110B8 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x110C2..0x110C2 + 1).contains(&cp) {
         return true;
     }
     if (0x11100..0x11102 + 1).contains(&cp) {
@@ -2334,7 +2355,7 @@ pub(crate) fn ideo(cp: u32) -> bool {
     if (0x3400..0x4DBF + 1).contains(&cp) {
         return true;
     }
-    if (0x4E00..0x9FFC + 1).contains(&cp) {
+    if (0x4E00..0x9FFF + 1).contains(&cp) {
         return true;
     }
     if (0xF900..0xFA6D + 1).contains(&cp) {
@@ -2358,10 +2379,10 @@ pub(crate) fn ideo(cp: u32) -> bool {
     if (0x1B170..0x1B2FB + 1).contains(&cp) {
         return true;
     }
-    if (0x20000..0x2A6DD + 1).contains(&cp) {
+    if (0x20000..0x2A6DF + 1).contains(&cp) {
         return true;
     }
-    if (0x2A700..0x2B734 + 1).contains(&cp) {
+    if (0x2A700..0x2B738 + 1).contains(&cp) {
         return true;
     }
     if (0x2B740..0x2B81D + 1).contains(&cp) {
@@ -2507,6 +2528,15 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x0818..0x0819 + 1).contains(&cp) {
         return true;
     }
+    if (0x0898..0x089F + 1).contains(&cp) {
+        return true;
+    }
+    if (0x08C9..0x08C9 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x08CA..0x08D2 + 1).contains(&cp) {
+        return true;
+    }
     if (0x08E3..0x08FE + 1).contains(&cp) {
         return true;
     }
@@ -2553,6 +2583,9 @@ pub(crate) fn dia(cp: u32) -> bool {
         return true;
     }
     if (0x0BCD..0x0BCD + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0C3C..0x0C3C + 1).contains(&cp) {
         return true;
     }
     if (0x0C4D..0x0C4D + 1).contains(&cp) {
@@ -2636,6 +2669,12 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x135D..0x135F + 1).contains(&cp) {
         return true;
     }
+    if (0x1714..0x1714 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1715..0x1715 + 1).contains(&cp) {
+        return true;
+    }
     if (0x17C9..0x17D3 + 1).contains(&cp) {
         return true;
     }
@@ -2652,6 +2691,12 @@ pub(crate) fn dia(cp: u32) -> bool {
         return true;
     }
     if (0x1AB0..0x1ABD + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1ABE..0x1ABE + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1AC1..0x1ACB + 1).contains(&cp) {
         return true;
     }
     if (0x1B34..0x1B34 + 1).contains(&cp) {
@@ -2708,10 +2753,7 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x1DC4..0x1DCF + 1).contains(&cp) {
         return true;
     }
-    if (0x1DF5..0x1DF9 + 1).contains(&cp) {
-        return true;
-    }
-    if (0x1DFD..0x1DFF + 1).contains(&cp) {
+    if (0x1DF5..0x1DFF + 1).contains(&cp) {
         return true;
     }
     if (0x1FBD..0x1FBD + 1).contains(&cp) {
@@ -2876,6 +2918,15 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x102E0..0x102E0 + 1).contains(&cp) {
         return true;
     }
+    if (0x10780..0x10785 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10787..0x107B0 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x107B2..0x107BA + 1).contains(&cp) {
+        return true;
+    }
     if (0x10AE5..0x10AE6 + 1).contains(&cp) {
         return true;
     }
@@ -2886,6 +2937,15 @@ pub(crate) fn dia(cp: u32) -> bool {
         return true;
     }
     if (0x10F46..0x10F50 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10F82..0x10F85 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11046..0x11046 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11070..0x11070 + 1).contains(&cp) {
         return true;
     }
     if (0x110B9..0x110BA + 1).contains(&cp) {
@@ -2999,6 +3059,21 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x16FF0..0x16FF1 + 1).contains(&cp) {
         return true;
     }
+    if (0x1AFF0..0x1AFF3 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1AFF5..0x1AFFB + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1AFFD..0x1AFFE + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1CF00..0x1CF2D + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1CF30..0x1CF46 + 1).contains(&cp) {
+        return true;
+    }
     if (0x1D167..0x1D169 + 1).contains(&cp) {
         return true;
     }
@@ -3015,6 +3090,9 @@ pub(crate) fn dia(cp: u32) -> bool {
         return true;
     }
     if (0x1E130..0x1E136 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1E2AE..0x1E2AE + 1).contains(&cp) {
         return true;
     }
     if (0x1E2EC..0x1E2EF + 1).contains(&cp) {
@@ -3106,6 +3184,9 @@ pub(crate) fn ext(cp: u32) -> bool {
     if (0xFF70..0xFF70 + 1).contains(&cp) {
         return true;
     }
+    if (0x10781..0x10782 + 1).contains(&cp) {
+        return true;
+    }
     if (0x1135D..0x1135D + 1).contains(&cp) {
         return true;
     }
@@ -3193,6 +3274,18 @@ pub(crate) fn olower(cp: u32) -> bool {
         return true;
     }
     if (0xAB5C..0xAB5F + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10780..0x10780 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10783..0x10785 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10787..0x107B0 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x107B2..0x107BA + 1).contains(&cp) {
         return true;
     }
 
@@ -3395,7 +3488,7 @@ pub(crate) fn uideo(cp: u32) -> bool {
     if (0x3400..0x4DBF + 1).contains(&cp) {
         return true;
     }
-    if (0x4E00..0x9FFC + 1).contains(&cp) {
+    if (0x4E00..0x9FFF + 1).contains(&cp) {
         return true;
     }
     if (0xFA0E..0xFA0F + 1).contains(&cp) {
@@ -3419,10 +3512,10 @@ pub(crate) fn uideo(cp: u32) -> bool {
     if (0xFA27..0xFA29 + 1).contains(&cp) {
         return true;
     }
-    if (0x20000..0x2A6DD + 1).contains(&cp) {
+    if (0x20000..0x2A6DF + 1).contains(&cp) {
         return true;
     }
-    if (0x2A700..0x2B734 + 1).contains(&cp) {
+    if (0x2A700..0x2B738 + 1).contains(&cp) {
         return true;
     }
     if (0x2B740..0x2B81D + 1).contains(&cp) {
@@ -3605,6 +3698,9 @@ pub(crate) fn sd(cp: u32) -> bool {
     if (0x1D692..0x1D693 + 1).contains(&cp) {
         return true;
     }
+    if (0x1DF1A..0x1DF1A + 1).contains(&cp) {
+        return true;
+    }
 
     false
 }
@@ -3682,7 +3778,7 @@ pub(crate) fn sterm(cp: u32) -> bool {
     if (0x0589..0x0589 + 1).contains(&cp) {
         return true;
     }
-    if (0x061E..0x061F + 1).contains(&cp) {
+    if (0x061D..0x061F + 1).contains(&cp) {
         return true;
     }
     if (0x06D4..0x06D4 + 1).contains(&cp) {
@@ -3739,6 +3835,9 @@ pub(crate) fn sterm(cp: u32) -> bool {
     if (0x1B5E..0x1B5F + 1).contains(&cp) {
         return true;
     }
+    if (0x1B7D..0x1B7E + 1).contains(&cp) {
+        return true;
+    }
     if (0x1C3B..0x1C3C + 1).contains(&cp) {
         return true;
     }
@@ -3755,6 +3854,9 @@ pub(crate) fn sterm(cp: u32) -> bool {
         return true;
     }
     if (0x2E3C..0x2E3C + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E53..0x2E54 + 1).contains(&cp) {
         return true;
     }
     if (0x3002..0x3002 + 1).contains(&cp) {
@@ -3815,6 +3917,9 @@ pub(crate) fn sterm(cp: u32) -> bool {
         return true;
     }
     if (0x10F55..0x10F59 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10F86..0x10F89 + 1).contains(&cp) {
         return true;
     }
     if (0x11047..0x11048 + 1).contains(&cp) {
@@ -3904,6 +4009,9 @@ pub(crate) fn sterm(cp: u32) -> bool {
 
 pub(crate) fn vs(cp: u32) -> bool {
     if (0x180B..0x180D + 1).contains(&cp) {
+        return true;
+    }
+    if (0x180F..0x180F + 1).contains(&cp) {
         return true;
     }
     if (0xFE00..0xFE0F + 1).contains(&cp) {
@@ -4594,10 +4702,37 @@ pub(crate) fn pat_syn(cp: u32) -> bool {
     if (0x2E50..0x2E51 + 1).contains(&cp) {
         return true;
     }
-    if (0x2E52..0x2E52 + 1).contains(&cp) {
+    if (0x2E52..0x2E54 + 1).contains(&cp) {
         return true;
     }
-    if (0x2E53..0x2E7F + 1).contains(&cp) {
+    if (0x2E55..0x2E55 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E56..0x2E56 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E57..0x2E57 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E58..0x2E58 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E59..0x2E59 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E5A..0x2E5A + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E5B..0x2E5B + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E5C..0x2E5C + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E5D..0x2E5D + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2E5E..0x2E7F + 1).contains(&cp) {
         return true;
     }
     if (0x3001..0x3003 + 1).contains(&cp) {
@@ -4696,6 +4831,9 @@ pub(crate) fn pcm(cp: u32) -> bool {
         return true;
     }
     if (0x070F..0x070F + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0890..0x0891 + 1).contains(&cp) {
         return true;
     }
     if (0x08E2..0x08E2 + 1).contains(&cp) {
