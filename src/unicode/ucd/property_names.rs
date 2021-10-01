@@ -702,6 +702,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Arabic_Extended_A",
             abbr: "Arabic_Ext_A",
         },
+        Blk::ArabicExtB => PropertyName {
+            full: "Arabic_Extended_B",
+            abbr: "Arabic_Ext_B",
+        },
         Blk::ArabicMath => PropertyName {
             full: "Arabic_Mathematical_Alphabetic_Symbols",
             abbr: "Arabic_Math",
@@ -926,6 +930,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Cypriot_Syllabary",
             abbr: "Cypriot_Syllabary",
         },
+        Blk::CyproMinoan => PropertyName {
+            full: "Cypro_Minoan",
+            abbr: "Cypro_Minoan",
+        },
         Blk::Cyrillic => PropertyName {
             full: "Cyrillic",
             abbr: "Cyrillic",
@@ -1045,6 +1053,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::EthiopicExtA => PropertyName {
             full: "Ethiopic_Extended_A",
             abbr: "Ethiopic_Ext_A",
+        },
+        Blk::EthiopicExtB => PropertyName {
+            full: "Ethiopic_Extended_B",
+            abbr: "Ethiopic_Ext_B",
         },
         Blk::EthiopicSup => PropertyName {
             full: "Ethiopic_Supplement",
@@ -1202,6 +1214,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Kana_Extended_A",
             abbr: "Kana_Ext_A",
         },
+        Blk::KanaExtB => PropertyName {
+            full: "Kana_Extended_B",
+            abbr: "Kana_Ext_B",
+        },
         Blk::KanaSup => PropertyName {
             full: "Kana_Supplement",
             abbr: "Kana_Sup",
@@ -1285,6 +1301,14 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::LatinExtE => PropertyName {
             full: "Latin_Extended_E",
             abbr: "Latin_Ext_E",
+        },
+        Blk::LatinExtF => PropertyName {
+            full: "Latin_Extended_F",
+            abbr: "Latin_Ext_F",
+        },
+        Blk::LatinExtG => PropertyName {
+            full: "Latin_Extended_G",
+            abbr: "Latin_Ext_G",
         },
         Blk::Lepcha => PropertyName {
             full: "Lepcha",
@@ -1550,6 +1574,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Old_Turkic",
             abbr: "Old_Turkic",
         },
+        Blk::OldUyghur => PropertyName {
+            full: "Old_Uyghur",
+            abbr: "Old_Uyghur",
+        },
         Blk::Oriya => PropertyName {
             full: "Oriya",
             abbr: "Oriya",
@@ -1794,6 +1822,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Tamil_Supplement",
             abbr: "Tamil_Sup",
         },
+        Blk::Tangsa => PropertyName {
+            full: "Tangsa",
+            abbr: "Tangsa",
+        },
         Blk::Tangut => PropertyName {
             full: "Tangut",
             abbr: "Tangut",
@@ -1830,6 +1862,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Tirhuta",
             abbr: "Tirhuta",
         },
+        Blk::Toto => PropertyName {
+            full: "Toto",
+            abbr: "Toto",
+        },
         Blk::TransportAndMap => PropertyName {
             full: "Transport_And_Map_Symbols",
             abbr: "Transport_And_Map",
@@ -1841,6 +1877,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::UcasExt => PropertyName {
             full: "Unified_Canadian_Aboriginal_Syllabics_Extended",
             abbr: "UCAS_Ext",
+        },
+        Blk::UcasExtA => PropertyName {
+            full: "Unified_Canadian_Aboriginal_Syllabics_Extended_A",
+            abbr: "UCAS_Ext_A",
         },
         Blk::Ugaritic => PropertyName {
             full: "Ugaritic",
@@ -1857,6 +1897,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::VerticalForms => PropertyName {
             full: "Vertical_Forms",
             abbr: "Vertical_Forms",
+        },
+        Blk::Vithkuqi => PropertyName {
+            full: "Vithkuqi",
+            abbr: "Vithkuqi",
         },
         Blk::Vs => PropertyName {
             full: "Variation_Selectors",
@@ -1893,6 +1937,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::ZanabazarSquare => PropertyName {
             full: "Zanabazar_Square",
             abbr: "Zanabazar_Square",
+        },
+        Blk::ZnamennyMusic => PropertyName {
+            full: "Znamenny_Musical_Notation",
+            abbr: "Znamenny_Music",
         },
     }
 }
