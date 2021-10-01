@@ -2048,6 +2048,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
             full: "Coptic",
             abbr: "Copt",
         },
+        Sc::Cpmn => PropertyName {
+            full: "Cypro_Minoan",
+            abbr: "Cpmn",
+        },
         Sc::Cprt => PropertyName {
             full: "Cypriot",
             abbr: "Cprt",
@@ -2364,6 +2368,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
             full: "Osmanya",
             abbr: "Osma",
         },
+        Sc::Ougr => PropertyName {
+            full: "Old_Uyghur",
+            abbr: "Ougr",
+        },
         Sc::Palm => PropertyName {
             full: "Palmyrene",
             abbr: "Palm",
@@ -2532,6 +2540,14 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
             full: "Tirhuta",
             abbr: "Tirh",
         },
+        Sc::Tnsa => PropertyName {
+            full: "Tangsa",
+            abbr: "Tnsa",
+        },
+        Sc::Toto => PropertyName {
+            full: "Toto",
+            abbr: "Toto",
+        },
         Sc::Ugar => PropertyName {
             full: "Ugaritic",
             abbr: "Ugar",
@@ -2539,6 +2555,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
         Sc::Vaii => PropertyName {
             full: "Vai",
             abbr: "Vaii",
+        },
+        Sc::Vith => PropertyName {
+            full: "Vithkuqi",
+            abbr: "Vith",
         },
         Sc::Wara => PropertyName {
             full: "Warang_Citi",
