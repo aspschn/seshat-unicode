@@ -19,7 +19,7 @@ The goal of this project is to provide a ICU-like library in Rust.
 
 Version
 ---------
-Seshat follows the latest version of Unicode. Currently using version 13.0.0.
+Seshat follows the latest version of Unicode. Currently using version 14.0.0.
 
 Usage
 ---------
