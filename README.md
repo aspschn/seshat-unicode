@@ -83,6 +83,9 @@ fn main() {
 
     let s3 = "e\u{0301}";
     println!("{}", s3.to_nfc()); // Will prints é
+
+    let s4 = "ｱｲｳｴｵ";
+    assert_eq!("アイウエオ", s4.to_nfkc());
 }
 ```
 
