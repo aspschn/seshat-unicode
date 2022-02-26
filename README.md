@@ -8,7 +8,6 @@ A Unicode Library for Rust.
 
 Demo
 -----
-! _This demo is using C++ version of Seshat._
 [Seshat Web Demo](https://seshat-demo.herokuapp.com)
 
 Introduction
