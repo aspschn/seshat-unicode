@@ -706,6 +706,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Arabic_Extended_B",
             abbr: "Arabic_Ext_B",
         },
+        Blk::ArabicExtC => PropertyName {
+            full: "Arabic_Extended_C",
+            abbr: "Arabic_Ext_C",
+        },
         Blk::ArabicMath => PropertyName {
             full: "Arabic_Mathematical_Alphabetic_Symbols",
             abbr: "Arabic_Math",
@@ -882,6 +886,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "CJK_Unified_Ideographs_Extension_G",
             abbr: "CJK_Ext_G",
         },
+        Blk::CjkExtH => PropertyName {
+            full: "CJK_Unified_Ideographs_Extension_H",
+            abbr: "CJK_Ext_H",
+        },
         Blk::CjkRadicalsSup => PropertyName {
             full: "CJK_Radicals_Supplement",
             abbr: "CJK_Radicals_Sup",
@@ -950,6 +958,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Cyrillic_Extended_C",
             abbr: "Cyrillic_Ext_C",
         },
+        Blk::CyrillicExtD => PropertyName {
+            full: "Cyrillic_Extended_D",
+            abbr: "Cyrillic_Ext_D",
+        },
         Blk::CyrillicSup => PropertyName {
             full: "Cyrillic_Supplement",
             abbr: "Cyrillic_Sup",
@@ -965,6 +977,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::DevanagariExt => PropertyName {
             full: "Devanagari_Extended",
             abbr: "Devanagari_Ext",
+        },
+        Blk::DevanagariExtA => PropertyName {
+            full: "Devanagari_Extended_A",
+            abbr: "Devanagari_Ext_A",
         },
         Blk::Diacriticals => PropertyName {
             full: "Combining_Diacritical_Marks",
@@ -1210,6 +1226,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Kaithi",
             abbr: "Kaithi",
         },
+        Blk::KaktovikNumerals => PropertyName {
+            full: "Kaktovik_Numerals",
+            abbr: "Kaktovik_Numerals",
+        },
         Blk::KanaExtA => PropertyName {
             full: "Kana_Extended_A",
             abbr: "Kana_Ext_A",
@@ -1241,6 +1261,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::KatakanaExt => PropertyName {
             full: "Katakana_Phonetic_Extensions",
             abbr: "Katakana_Ext",
+        },
+        Blk::Kawi => PropertyName {
+            full: "Kawi",
+            abbr: "Kawi",
         },
         Blk::KayahLi => PropertyName {
             full: "Kayah_Li",
@@ -1497,6 +1521,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::Nabataean => PropertyName {
             full: "Nabataean",
             abbr: "Nabataean",
+        },
+        Blk::NagMundari => PropertyName {
+            full: "Nag_Mundari",
+            abbr: "Nag_Mundari",
         },
         Blk::Nandinagari => PropertyName {
             full: "Nandinagari",
