@@ -2701,6 +2701,10 @@ pub(crate) fn age_name(prop: Age) -> PropertyName {
             full: "V14_0",
             abbr: "14.0",
         },
+        Age::V15_0 => PropertyName {
+            full: "V15_0",
+            abbr: "15.0",
+        },
         Age::NA => PropertyName {
             full: "Unassigned",
             abbr: "NA",
