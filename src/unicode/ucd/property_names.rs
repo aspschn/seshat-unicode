@@ -2220,6 +2220,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
             full: "Katakana",
             abbr: "Kana",
         },
+        Sc::Kawi => PropertyName {
+            full: "Kawi",
+            abbr: "Kawi",
+        },
         Sc::Khar => PropertyName {
             full: "Kharoshthi",
             abbr: "Khar",
@@ -2347,6 +2351,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
         Sc::Mymr => PropertyName {
             full: "Myanmar",
             abbr: "Mymr",
+        },
+        Sc::Nagm => PropertyName {
+            full: "Nag_Mundari",
+            abbr: "Nagm",
         },
         Sc::Nand => PropertyName {
             full: "Nandinagari",
