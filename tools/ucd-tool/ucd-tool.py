@@ -6,7 +6,7 @@ from typing import List, Tuple, Dict
 
 from ucd.unicode import UNICODE_VERSION_MAJOR, UNICODE_VERSION_MINOR, UNICODE_VERSION_UPDATE
 from ucd.unicode import EMOJI_VERSION_MAJOR, EMOJI_VERSION_MINOR
-from ucd.collections import CodePointRange, TwoStageTable
+from ucd.collections import CodePointRange, TwoStageTable, Missing
 
 
 UNICODE_DATA_DIR = 'data/{}.{}.{}'.format(
@@ -18,18 +18,23 @@ UNICODE_DATA_DIR = 'data/{}.{}.{}'.format(
 property_info = {
     'bc': {
         'repr_size': 1,
+        'alias_key': 'bc',
     },
     'gc': {
         'repr_size': 1,
+        'alias_key': 'gc',
     },
     'hst': {
         'repr_size': 1,
+        'alias_key': 'hst',
     },
     'gcb': {
         'repr_size': 1,
+        'alias_key': 'GCB',
     },
     'ccc': {
         'repr_size': 1,
+        'alias_key': 'ccc',
     },
     'dt': {
         'repr_size': 1,
@@ -139,11 +144,13 @@ def data_value_as_abbr_blk(data: List[Tuple[CodePointRange, str]]):
     return new_data
 
 
-def select_minimal_tst(prop: str, data: List[Tuple[CodePointRange, str]], repr_size: int, default_prop: str=None) -> TwoStageTable:
+def select_minimal_tst(prop: str, data: List[Tuple[CodePointRange, str]],
+        repr_size: int, default_prop: str=None,
+        missing: Missing=None) -> TwoStageTable:
     print('Select minimal table for: {}'.format(prop))
     tables = {64: None, 128: None, 256: None, 512: None}
     for block_size in tables.keys():
-        tst = TwoStageTable.make(prop, data, block_size, default_prop)
+        tst = TwoStageTable.make(prop, data, block_size, default_prop, missing)
         print('Block size {}: {}'.format(block_size, tst.table_bytes(repr_size)))
         tables[block_size] = tst
     print('----------------------------')
@@ -166,6 +173,25 @@ filename: str - Path of JSON file."""
     data = sorted(data, key=lambda x: x[0])
 
     return data
+
+
+def patch_data(filename: str, prop: str) -> Missing:
+    filename = os.path.join(UNICODE_DATA_DIR, filename)
+    f = open(filename)
+    json_str = f.read()
+    f.close()
+
+    alias_key = property_info[prop]['alias_key']
+
+    d = json.loads(json_str)
+    missing = Missing()
+    for k, v in d.items():
+        alias = find_key_by_value(property_value_aliases[alias_key], v)
+        cp_range = CodePointRange.parse(k)
+        missing.append(cp_range, alias)
+
+    return missing
+
 
 
 def to_age_data(data: List[Tuple[CodePointRange, str]]):
@@ -229,6 +255,7 @@ def binary_props_rs() -> str:
 
 
 def na_table_rs() -> str:
+    # Unicode Table 4-8.
     filename = os.path.join(UNICODE_DATA_DIR, 'extracted/DerivedName.json')
     f = open(filename)
     json_str = f.read()
@@ -244,11 +271,11 @@ def na_table_rs() -> str:
         # Ignore `CJK UNIFIED IDEOGRAPH-` prefix.
         if cp.start in CodePointRange.parse('3400..4DBF'):
             continue
-        if cp.start in CodePointRange.parse('4E00..9FFC'):
+        if cp.start in CodePointRange.parse('4E00..9FFF'):
             continue
-        if cp.start in CodePointRange.parse('20000..2A6DD'):
+        if cp.start in CodePointRange.parse('20000..2A6DF'):
             continue
-        if cp.start in CodePointRange.parse('2A700..2B734'):
+        if cp.start in CodePointRange.parse('2A700..2B739'):
             continue
         if cp.start in CodePointRange.parse('2B740..2B81D'):
             continue
@@ -257,6 +284,8 @@ def na_table_rs() -> str:
         if cp.start in CodePointRange.parse('2CEB0..2EBE0'):
             continue
         if cp.start in CodePointRange.parse('30000..3134A'):
+            continue
+        if cp.start in CodePointRange.parse('31350..323AF'):
             continue
         # Ignore `TANGUT IDEOGRAPH-` prefix.
         if cp.start in CodePointRange.parse('17000..187F7'):
@@ -411,7 +440,8 @@ if __name__ == '__main__':
         f.write(tst.to_seshat())
     # Make bc data.
     bc_data = make_data('extracted/DerivedBidiClass.json')
-    tst = select_minimal_tst('Bc', bc_data, property_info['bc']['repr_size'], default_prop='L')
+    bc_missing = patch_data('extracted/DerivedBidiClass.missing.json', 'bc')
+    tst = select_minimal_tst('Bc', bc_data, property_info['bc']['repr_size'], default_prop='L', missing=bc_missing)
     with open('../../src/unicode/ucd/bc.rs', 'w') as f:
         f.write(tst.to_seshat())
     # Make ccc data.

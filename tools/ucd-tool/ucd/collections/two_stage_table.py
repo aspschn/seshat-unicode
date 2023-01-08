@@ -1,6 +1,7 @@
 from typing import List, Tuple, Dict
 
 from .code_point_range import CodePointRange
+from .missing import Missing
 
 
 class TwoStageTable:
@@ -126,7 +127,9 @@ class TwoStageTable:
         return stage_1_bytes + stage_2_bytes
 
     @staticmethod
-    def make(prop: str, data: List[Tuple[CodePointRange, str]], block_size: int, default_prop: str=None):
+    def make(prop: str, data: List[Tuple[CodePointRange, str]],
+            block_size: int, default_prop: str=None,
+            missing: Missing=None):
         tst = TwoStageTable(prop, block_size)
         cur_cp = 0
 
@@ -134,7 +137,10 @@ class TwoStageTable:
             # Fill default property for implicit ranges.
             if cur_cp not in pair[0]:
                 for cp in CodePointRange(cur_cp, pair[0].start - 1):
-                    tst.add_char(cur_cp, default_prop)
+                    default = default_prop
+                    if missing is not None and missing.default_value_for(cur_cp) is not None:
+                        default = missing.default_value_for(cur_cp)
+                    tst.add_char(cur_cp, default)
                     cur_cp += 1
             # Add each characters in range.
             for cp in pair[0]:
@@ -143,7 +149,10 @@ class TwoStageTable:
         # Fill default property for remains characters.
         if cur_cp <= 0x10FFFF:
             for cp in CodePointRange(cur_cp, 0x10FFFF):
-                tst.add_char(cur_cp, default_prop)
+                default = default_prop
+                if missing is not None and missing.default_value_for(cur_cp) is not None:
+                    default = missing.default_value_for(cur_cp)
+                tst.add_char(cur_cp, default)
                 cur_cp += 1
 
         return tst

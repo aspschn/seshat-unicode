@@ -557,6 +557,9 @@ pub(crate) fn term(cp: u32) -> bool {
     if (0x11EF7..0x11EF8 + 1).contains(&cp) {
         return true;
     }
+    if (0x11F43..0x11F44 + 1).contains(&cp) {
+        return true;
+    }
     if (0x12470..0x12474 + 1).contains(&cp) {
         return true;
     }
@@ -1393,6 +1396,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x0C01..0x0C03 + 1).contains(&cp) {
         return true;
     }
+    if (0x0C04..0x0C04 + 1).contains(&cp) {
+        return true;
+    }
     if (0x0C3E..0x0C40 + 1).contains(&cp) {
         return true;
     }
@@ -1442,6 +1448,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
         return true;
     }
     if (0x0CE2..0x0CE3 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0CF3..0x0CF3 + 1).contains(&cp) {
         return true;
     }
     if (0x0D00..0x0D01 + 1).contains(&cp) {
@@ -1516,7 +1525,7 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x0F7F..0x0F7F + 1).contains(&cp) {
         return true;
     }
-    if (0x0F80..0x0F81 + 1).contains(&cp) {
+    if (0x0F80..0x0F83 + 1).contains(&cp) {
         return true;
     }
     if (0x0F8D..0x0F97 + 1).contains(&cp) {
@@ -1948,6 +1957,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x11073..0x11074 + 1).contains(&cp) {
         return true;
     }
+    if (0x11080..0x11081 + 1).contains(&cp) {
+        return true;
+    }
     if (0x11082..0x11082 + 1).contains(&cp) {
         return true;
     }
@@ -2015,6 +2027,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
         return true;
     }
     if (0x1123E..0x1123E + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11241..0x11241 + 1).contains(&cp) {
         return true;
     }
     if (0x112DF..0x112DF + 1).contains(&cp) {
@@ -2293,6 +2308,24 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x11EF5..0x11EF6 + 1).contains(&cp) {
         return true;
     }
+    if (0x11F00..0x11F01 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11F03..0x11F03 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11F34..0x11F35 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11F36..0x11F3A + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11F3E..0x11F3F + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11F40..0x11F40 + 1).contains(&cp) {
+        return true;
+    }
     if (0x16F4F..0x16F4F + 1).contains(&cp) {
         return true;
     }
@@ -2321,6 +2354,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
         return true;
     }
     if (0x1E026..0x1E02A + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1E08F..0x1E08F + 1).contains(&cp) {
         return true;
     }
     if (0x1E947..0x1E947 + 1).contains(&cp) {
@@ -2382,7 +2418,7 @@ pub(crate) fn ideo(cp: u32) -> bool {
     if (0x20000..0x2A6DF + 1).contains(&cp) {
         return true;
     }
-    if (0x2A700..0x2B738 + 1).contains(&cp) {
+    if (0x2A700..0x2B739 + 1).contains(&cp) {
         return true;
     }
     if (0x2B740..0x2B81D + 1).contains(&cp) {
@@ -2398,6 +2434,9 @@ pub(crate) fn ideo(cp: u32) -> bool {
         return true;
     }
     if (0x30000..0x3134A + 1).contains(&cp) {
+        return true;
+    }
+    if (0x31350..0x323AF + 1).contains(&cp) {
         return true;
     }
 
@@ -2936,6 +2975,9 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x10D24..0x10D27 + 1).contains(&cp) {
         return true;
     }
+    if (0x10EFD..0x10EFF + 1).contains(&cp) {
+        return true;
+    }
     if (0x10F46..0x10F50 + 1).contains(&cp) {
         return true;
     }
@@ -3044,6 +3086,9 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x11D97..0x11D97 + 1).contains(&cp) {
         return true;
     }
+    if (0x13447..0x13455 + 1).contains(&cp) {
+        return true;
+    }
     if (0x16AF0..0x16AF4 + 1).contains(&cp) {
         return true;
     }
@@ -3087,6 +3132,9 @@ pub(crate) fn dia(cp: u32) -> bool {
         return true;
     }
     if (0x1D1AA..0x1D1AD + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1E030..0x1E06D + 1).contains(&cp) {
         return true;
     }
     if (0x1E130..0x1E136 + 1).contains(&cp) {
@@ -3237,6 +3285,9 @@ pub(crate) fn olower(cp: u32) -> bool {
     if (0x037A..0x037A + 1).contains(&cp) {
         return true;
     }
+    if (0x10FC..0x10FC + 1).contains(&cp) {
+        return true;
+    }
     if (0x1D2C..0x1D6A + 1).contains(&cp) {
         return true;
     }
@@ -3270,10 +3321,16 @@ pub(crate) fn olower(cp: u32) -> bool {
     if (0xA770..0xA770 + 1).contains(&cp) {
         return true;
     }
+    if (0xA7F2..0xA7F4 + 1).contains(&cp) {
+        return true;
+    }
     if (0xA7F8..0xA7F9 + 1).contains(&cp) {
         return true;
     }
     if (0xAB5C..0xAB5F + 1).contains(&cp) {
+        return true;
+    }
+    if (0xAB69..0xAB69 + 1).contains(&cp) {
         return true;
     }
     if (0x10780..0x10780 + 1).contains(&cp) {
@@ -3286,6 +3343,9 @@ pub(crate) fn olower(cp: u32) -> bool {
         return true;
     }
     if (0x107B2..0x107BA + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1E030..0x1E06D + 1).contains(&cp) {
         return true;
     }
 
@@ -3515,7 +3575,7 @@ pub(crate) fn uideo(cp: u32) -> bool {
     if (0x20000..0x2A6DF + 1).contains(&cp) {
         return true;
     }
-    if (0x2A700..0x2B738 + 1).contains(&cp) {
+    if (0x2A700..0x2B739 + 1).contains(&cp) {
         return true;
     }
     if (0x2B740..0x2B81D + 1).contains(&cp) {
@@ -3528,6 +3588,9 @@ pub(crate) fn uideo(cp: u32) -> bool {
         return true;
     }
     if (0x30000..0x3134A + 1).contains(&cp) {
+        return true;
+    }
+    if (0x31350..0x323AF + 1).contains(&cp) {
         return true;
     }
 
@@ -3699,6 +3762,12 @@ pub(crate) fn sd(cp: u32) -> bool {
         return true;
     }
     if (0x1DF1A..0x1DF1A + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1E04C..0x1E04D + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1E068..0x1E068 + 1).contains(&cp) {
         return true;
     }
 
@@ -3980,6 +4049,9 @@ pub(crate) fn sterm(cp: u32) -> bool {
         return true;
     }
     if (0x11EF7..0x11EF8 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11F43..0x11F44 + 1).contains(&cp) {
         return true;
     }
     if (0x16A6E..0x16A6F + 1).contains(&cp) {
