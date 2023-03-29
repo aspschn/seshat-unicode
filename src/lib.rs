@@ -45,7 +45,7 @@ mod tests {
     #[test]
     fn version_check() {
         let ver = UnicodeVersion {
-            major: 14,
+            major: 15,
             minor: 0,
             update: 0,
         };

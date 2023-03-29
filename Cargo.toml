@@ -2,7 +2,7 @@
 name = "seshat-unicode"
 version = "0.0.15"
 authors = ["Yujeonja <hardboiled65@gmail.com>"]
-description = "A Unicode Library for Rust. Unicode 14.0.0 ready."
+description = "A Unicode Library for Rust. Unicode 15.0.0 ready."
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/hardboiled65/seshat-unicode"
