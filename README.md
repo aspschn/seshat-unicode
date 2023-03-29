@@ -24,7 +24,7 @@ Usage
 ---------
 ```toml
 [dependencies]
-seshat-unicode = "0.0.15"
+seshat-unicode = "0.1.0"
 ```
 
 ```rust
