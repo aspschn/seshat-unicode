@@ -3,6 +3,7 @@ Cargo.lock
 __pycache__/
 tests/data/ucd.nounihan.flat.zip
 tests/data/ucd.nounihan.flat.xml
+.env
 
 *.code-workspace
 .idea/

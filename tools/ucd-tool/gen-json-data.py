@@ -74,6 +74,7 @@ files = [
     {
         'source': 'extracted/DerivedBidiClass.txt',
         'target': 'extracted/DerivedBidiClass.json',
+        'missing': 'extracted/DerivedBidiClass.missing.json',
     },
     {
         'source': 'extracted/DerivedCombiningClass.txt',
@@ -101,25 +102,28 @@ def load_env(path):
             if line.startswith('#'):
                 continue
             (k, v) = line.split('=')
-            os.environ[k] = v
+            os.environ[k] = v.strip()
         f.close()
     except FileNotFoundError:
         return
 
 if __name__ == '__main__':
     load_env('.env')
-    ucd_json_path = os.environ.get('UCD_JSON_DIR', None)
-    if ucd_json_path is None:
+    ucd_json_dir = os.environ.get('UCD_JSON_DIR', None)
+    if ucd_json_dir is None:
         print('UCD_JSON_DIR is not set.')
         exit(1)
-    ucd_json_dir = os.environ.get('UCD_JSON_DIR')
+    ucd_json = os.path.join(ucd_json_dir, 'ucd-json')
 
     os.system(f'mkdir -p {UNICODE_DATA_DIR}')
     os.system(f'mkdir -p {UNICODE_DATA_DIR}/emoji')
     os.system(f'mkdir -p {UNICODE_DATA_DIR}/extracted')
     os.system(f'mkdir -p {UNICODE_DATA_DIR}/auxiliary')
-    for file in files:
 
+    for file in files:
         source = file['source']
         target = file['target']
-        os.system(f'{ucd_json_dir}/ucd-json {source} > {UNICODE_DATA_DIR}/{target}')
+        missing = file.get('missing', None)
+        if missing is not None:
+            os.system(f'{ucd_json} --missing {source} > {UNICODE_DATA_DIR}/{missing}')
+        os.system(f'{ucd_json} {source} > {UNICODE_DATA_DIR}/{target}')

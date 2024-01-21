@@ -1,27 +1,29 @@
-Seshat 𓋇𓏏𓁐
-=========
+# Seshat 𓋇𓏏𓁐
+
 [![crates.io](https://img.shields.io/crates/v/seshat-unicode.svg)](https://crates.io/crates/seshat-unicode)
 
 ![logo](https://raw.githubusercontent.com/hardboiled65/Seshat/master/docs/seshat-logo.png)
 
 A Unicode Library for Rust.
 
+<!--
 Demo
 -----
 [Seshat Web Demo](https://seshat-demo.herokuapp.com)
+-->
 
-Introduction
----------
+## Introduction
+
 Seshat (pronounce as Sehs-hat) is a Unicode library that written in Rust.
 It provides many of Unicode character data and standard algorithms.
 The goal of this project is to provide a ICU-like library in Rust.
 
-Version
----------
+## Version
+
 Seshat follows the latest version of Unicode. Currently using version 15.0.0.
 
-Usage
----------
+## Usage
+
 ```toml
 [dependencies]
 seshat-unicode = "0.1.0"
@@ -44,10 +46,11 @@ fn main() {
 }
 ```
 
-Features
----------
+## Features
+
 
 ### Grapheme cluster break
+
 ```rust
 use seshat::unicode::Segmentation;
 
@@ -70,6 +73,7 @@ i
 ```
 
 ### Normalization
+
 ```rust
 use seshat::unicode::Normalization;
 
@@ -88,13 +92,14 @@ fn main() {
 }
 ```
 
-Contribute
----------
+## Contribute
+
 Add later.
 
-License
----------
+## License
+
 All logo images are copyright [Frybits Inc.](https://github.com/frybitsinc)
 and should not be used out of this project without permission.
 
 Seshat is developed under MIT License. For the detail, see the LICENSE file.
+
