@@ -6,6 +6,24 @@ pub struct PropertyName {
     pub abbr: &'static str,
 }
 
+/// The Unicode property enums should implement this trait.
+///
+/// # Examples
+///
+/// ```
+/// use seshat::unicode::Ucd;
+/// use seshat::unicode::props::Sc;
+/// use seshat::unicode::props::UnicodeProperty;
+///
+/// fn main() {
+///     let capital_a = 'A';
+///     let sc_prop: Sc = capital_a.sc();
+///     let sc_name = sc_prop.property_value_name();
+///
+///     println!("{} ({})", sc_name.full, sc_name.abbr);
+///     // This will prints "Latin (Latn)".
+/// }
+/// ```
 pub trait UnicodeProperty {
     fn property_value_name(&self) -> PropertyName;
 }
@@ -32,6 +50,7 @@ impl UnicodeProperty for BinaryProperty {
     }
 }
 
+/// General_Category (gc)
 #[derive(Debug, PartialEq, Clone, Copy)]
 #[repr(u8)]
 pub enum Gc {
@@ -81,6 +100,7 @@ impl UnicodeProperty for Gc {
     }
 }
 
+/// Hangul_Syllable_Type (hst)
 #[derive(Debug, PartialEq, Clone, Copy)]
 #[repr(u8)]
 pub enum Hst {
@@ -98,6 +118,7 @@ impl UnicodeProperty for Hst {
     }
 }
 
+/// Grapheme_Cluster_Break (GCB)
 #[derive(Debug, PartialEq, Clone, Copy)]
 #[repr(u8)]
 pub enum Gcb {
@@ -127,6 +148,7 @@ impl UnicodeProperty for Gcb {
     }
 }
 
+/// Bidi_Class (bc)
 #[derive(Debug, PartialEq, Clone, Copy)]
 #[repr(u8)]
 pub enum Bc {
@@ -161,6 +183,7 @@ impl UnicodeProperty for Bc {
     }
 }
 
+/// Canonical_Combining_Class (ccc)
 #[derive(Debug, PartialEq, Clone, Copy)]
 #[repr(u8)]
 pub enum Ccc {
@@ -230,6 +253,7 @@ impl UnicodeProperty for Ccc {
     }
 }
 
+/// Decomposition_Type (dt)
 #[derive(Debug, PartialEq, Clone, Copy)]
 #[repr(u8)]
 pub enum Dt {
@@ -259,6 +283,7 @@ impl UnicodeProperty for Dt {
     }
 }
 
+/// Block (blk)
 #[derive(Debug, PartialEq, Clone, Copy)]
 #[repr(u16)]
 pub enum Blk {
@@ -599,7 +624,7 @@ impl UnicodeProperty for Blk {
     }
 }
 
-/// Unicode property Script(sc).
+/// Unicode property Script (sc).
 #[derive(Debug, PartialEq, Clone, Copy)]
 #[repr(u8)]
 pub enum Sc {
@@ -814,7 +839,7 @@ impl UnicodeProperty for Age {
     }
 }
 
-/// Unicode property Word_Break(WB).
+/// Unicode property Word_Break (WB).
 #[derive(Debug, PartialEq, Clone, Copy)]
 pub enum Wb {
     CR,     // CR
