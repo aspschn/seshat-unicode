@@ -53,6 +53,30 @@ property_info = {
     },
 }
 
+# Unicode Table 4-8.
+# List of the ranges that na (Name) property is derived from it's code point or
+# special derivation rule (currently only for hangul).
+derived_na_ranges = [
+    CodePointRange.parse('AC00..D7A3'),     # HANGUL SYLLABLE
+    CodePointRange.parse('3400..4DBF'),     # CJK UNIFIED IDEOGRAPH-
+    CodePointRange.parse('4E00..9FFF'),     # CJK UNIFIED IDEOGRAPH-
+    CodePointRange.parse('20000..2A6DF'),   # CJK UNIFIED IDEOGRAPH-
+    CodePointRange.parse('2A700..2B739'),   # CJK UNIFIED IDEOGRAPH-
+    CodePointRange.parse('2B740..2B81D'),   # CJK UNIFIED IDEOGRAPH-
+    CodePointRange.parse('2B820..2CEA1'),   # CJK UNIFIED IDEOGRAPH-
+    CodePointRange.parse('2CEB0..2EBE0'),   # CJK UNIFIED IDEOGRAPH-
+    CodePointRange.parse('2EBF0..2EE5D'),   # Added from 15.1.0. Not listed in the table.
+    CodePointRange.parse('30000..3134A'),   # CJK UNIFIED IDEOGRAPH-
+    CodePointRange.parse('31350..323AF'),   # CJK UNIFIED IDEOGRAPH-
+    CodePointRange.parse('17000..187F7'),   # TANGUT IDEOGRAPH-
+    CodePointRange.parse('18D00..18D08'),   # TANGUT IDEOGRAPH-
+    CodePointRange.parse('18B00..18CD5'),   # KHITAN SMALL SCRIPT CHARACTER-
+    CodePointRange.parse('1B170..1B2FB'),   # NUSHU CHARACTER-
+    CodePointRange.parse('F900..FA6D'),     # CJK COMPATIBILITY IDEOGRAPH-
+    CodePointRange.parse('FA70..FAD9'),     # CJK COMPATIBILITY IDEOGRAPH-
+    CodePointRange.parse('2F800..2FA1D'),   # CJK COMPATIBILITY IDEOGRAPH-
+]
+
 
 with open(os.path.join(UNICODE_DATA_DIR, 'PropertyAliases.json')) as f:
     property_aliases = json.load(f)
@@ -264,46 +288,15 @@ def na_table_rs() -> str:
     txt = '#[allow(dead_code)]\n'
     txt += 'pub(super) const NA_MAP: &[(u32, &\'static str)] = &[\n'
     for k, name in d.items():
-        cp = CodePointRange.parse(k)
-        # Ignore `HANGUL SYLLABLE` prefix.
-        if cp.start in CodePointRange.parse('AC00..D7A3'):
-            continue
-        # Ignore `CJK UNIFIED IDEOGRAPH-` prefix.
-        if cp.start in CodePointRange.parse('3400..4DBF'):
-            continue
-        if cp.start in CodePointRange.parse('4E00..9FFF'):
-            continue
-        if cp.start in CodePointRange.parse('20000..2A6DF'):
-            continue
-        if cp.start in CodePointRange.parse('2A700..2B739'):
-            continue
-        if cp.start in CodePointRange.parse('2B740..2B81D'):
-            continue
-        if cp.start in CodePointRange.parse('2B820..2CEA1'):
-            continue
-        if cp.start in CodePointRange.parse('2CEB0..2EBE0'):
-            continue
-        if cp.start in CodePointRange.parse('30000..3134A'):
-            continue
-        if cp.start in CodePointRange.parse('31350..323AF'):
-            continue
-        # Ignore `TANGUT IDEOGRAPH-` prefix.
-        if cp.start in CodePointRange.parse('17000..187F7'):
-            continue
-        if cp.start in CodePointRange.parse('18D00..18D08'):
-            continue
-        # Ignore `KHITAN SMALL SCRIPT CHARACTER-` prefix.
-        if cp.start in CodePointRange.parse('18B00..18CD5'):
-            continue
-        # Ignore `NUSHU CHARACTER-` prefix.
-        if cp.start in CodePointRange.parse('1B170..1B2FB'):
-            continue
-        # Ignore `CJK COMPATIBILITY IDEOGRAPH-` prefix.
-        if cp.start in CodePointRange.parse('F900..FA6D') or \
-                cp.start in CodePointRange.parse('FA70..FAD9') or \
-                cp.start in CodePointRange.parse('2F800..2FA1D'):
-            continue
-        txt += '    (0x{:04X}, "{}"),\n'.format(cp.start, name)
+        cp = CodePointRange.parse(k).start
+        # Ignore if in the derivation ranges.
+        ignore = False
+        for rng in derived_na_ranges:
+            if cp in rng:
+                ignore = True
+        # Add to the table.
+        if ignore is False:
+            txt += '    (0x{:04X}, "{}"),\n'.format(cp, name)
     txt += '];\n'
 
     return txt

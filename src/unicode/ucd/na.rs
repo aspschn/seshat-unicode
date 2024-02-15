@@ -27,6 +27,7 @@ pub(crate) fn na(cp: u32) -> String {
             (0x2A700..0x2B739 + 1).contains(&cp) ||
             (0x2B740..0x2B81D + 1).contains(&cp) ||
             (0x2B820..0x2CEA1 + 1).contains(&cp) ||
+            (0x2EBF0..=0x2EE5D).contains(&cp) ||
             (0x2CEB0..0x2EBE0 + 1).contains(&cp) ||
             (0x30000..0x3134A + 1).contains(&cp) ||
             (0x31350..0x323AF + 1).contains(&cp) {
