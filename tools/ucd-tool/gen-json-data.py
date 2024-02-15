@@ -56,6 +56,10 @@ files = [
         'target': 'UnicodeData.json',
     },
     {
+        'source': 'IndicSyllabicCategory.txt',
+        'target': 'IndicSyllabicCategory.json',
+    },
+    {
         'source': 'auxiliary/GraphemeBreakProperty.txt',
         'target': 'auxiliary/GraphemeBreakProperty.json',
     },
