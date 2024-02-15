@@ -346,6 +346,7 @@ pub enum Blk {
     CjkExtF,
     CjkExtG,
     CjkExtH,
+    CjkExtI,
     CjkRadicalsSup,
     CjkStrokes,
     CjkSymbols,
@@ -830,6 +831,7 @@ pub enum Age {
     V13_0,
     V14_0,
     V15_0,
+    V15_1,
     NA,
 }
 

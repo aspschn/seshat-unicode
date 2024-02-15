@@ -1820,7 +1820,7 @@ const STAGE_2: &[&[Bc]] = &[
         Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L,
         Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L,
         Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON,
-        Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::L, Bc::L, Bc::L, Bc::L,
+        Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON,
     ],
     &[
         // Block 67
@@ -1875,7 +1875,7 @@ const STAGE_2: &[&[Bc]] = &[
         Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON,
         Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::ON,
         Bc::ON, Bc::ON, Bc::ON, Bc::ON, Bc::L, Bc::L, Bc::L, Bc::L,
-        Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L,
+        Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::ON,
         Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L,
         Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L, Bc::L,
     ],

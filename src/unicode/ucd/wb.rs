@@ -722,7 +722,7 @@ const STAGE_2: &[&[Wb]] = &[
     ],
     &[
         // Block 9
-        Wb::FO, Wb::FO, Wb::FO, Wb::FO, Wb::FO, Wb::FO, Wb::XX, Wb::XX,
+        Wb::NU, Wb::NU, Wb::NU, Wb::NU, Wb::NU, Wb::NU, Wb::XX, Wb::XX,
         Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::MN, Wb::MN, Wb::XX, Wb::XX,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::XX, Wb::FO, Wb::XX, Wb::XX, Wb::XX,
@@ -752,7 +752,7 @@ const STAGE_2: &[&[Wb]] = &[
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::XX, Wb::LE, Wb::Extend, Wb::Extend,
-        Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::FO, Wb::XX, Wb::Extend,
+        Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::NU, Wb::XX, Wb::Extend,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::LE, Wb::LE, Wb::Extend,
         Wb::Extend, Wb::XX, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::LE, Wb::LE,
         Wb::NU, Wb::NU, Wb::NU, Wb::NU, Wb::NU, Wb::NU, Wb::NU, Wb::NU,
@@ -761,7 +761,7 @@ const STAGE_2: &[&[Wb]] = &[
     &[
         // Block 11
         Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX,
-        Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::FO,
+        Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::LE,
         Wb::LE, Wb::Extend, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
@@ -819,7 +819,7 @@ const STAGE_2: &[&[Wb]] = &[
         // Block 14
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::XX, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::XX,
-        Wb::FO, Wb::FO, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX,
+        Wb::NU, Wb::NU, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
@@ -829,7 +829,7 @@ const STAGE_2: &[&[Wb]] = &[
         Wb::LE, Wb::LE, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
-        Wb::Extend, Wb::Extend, Wb::FO, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
+        Wb::Extend, Wb::Extend, Wb::NU, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
@@ -2800,9 +2800,9 @@ const STAGE_2: &[&[Wb]] = &[
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend, Wb::Extend,
-        Wb::Extend, Wb::Extend, Wb::Extend, Wb::XX, Wb::XX, Wb::FO, Wb::XX, Wb::XX,
+        Wb::Extend, Wb::Extend, Wb::Extend, Wb::XX, Wb::XX, Wb::NU, Wb::XX, Wb::XX,
         Wb::XX, Wb::XX, Wb::Extend, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX,
-        Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::FO, Wb::XX, Wb::XX,
+        Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::XX, Wb::NU, Wb::XX, Wb::XX,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,
         Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE, Wb::LE,

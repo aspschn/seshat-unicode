@@ -1,1 +1,3 @@
 Put ucd.nounihan.flat.xml file into this directory before run test.
+
+Usually https://www.unicode.org/Public/<UNICODE_VERSION>/ucdxml/ucd.nounihan.flat.zip
