@@ -96,6 +96,8 @@ pub trait Ucd {
     fn wb(&self) -> Wb;
     /// Get the Unicode Hangul_Syllable_Type(hst) property.
     fn hst(&self) -> Hst;
+    /// Get the Unicode Indic_Syllabic_Category (InSC) property.
+    fn insc(&self) -> Insc;
     /// Get the Unicode White_Space(WSpace) property.
     fn wspace(&self) -> bool;
     /// Get the Unicode Bidi_Control(Bidi_C) property.
@@ -242,6 +244,10 @@ impl Ucd for CodePoint {
 
     fn hst(&self) -> Hst {
         ucd::hst::hst(self.code_point)
+    }
+
+    fn insc(&self) -> Insc {
+        ucd::insc::insc(self.code_point)
     }
 
     fn wspace(&self) -> bool {
@@ -492,6 +498,10 @@ impl Ucd for char {
 
     fn hst(&self) -> Hst {
         ucd::hst::hst(*self as u32)
+    }
+
+    fn insc(&self) -> Insc {
+        ucd::insc::insc(*self as u32)
     }
 
     fn wspace(&self) -> bool {

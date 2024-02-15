@@ -12,6 +12,8 @@ pub(crate) mod na;
 
 pub(crate) mod hst;
 
+pub(crate) mod insc;
+
 pub(crate) mod jsn;
 
 pub(crate) mod binary_props;

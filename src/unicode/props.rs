@@ -874,3 +874,60 @@ impl UnicodeProperty for Wb {
         property_names::wb_name(*self)
     }
 }
+
+/// Unicode property Indic_Syllabic_Category (InSC).
+#[allow(non_camel_case_types)]
+#[derive(Debug, PartialEq, Clone, Copy)]
+pub enum Insc {
+    Avagraha,                        // Avagraha
+    Bindu,                           // Bindu
+    Brahmi_Joining_Number,           // Brahmi_Joining_Number
+    Cantillation_Mark,               // Cantillation_Mark
+    Consonant,                       // Consonant
+    Consonant_Dead,                  // Consonant_Dead
+    Consonant_Final,                 // Consonant_Final
+    Consonant_Head_Letter,           // Consonant_Head_Letter
+    Consonant_Initial_Postfixed,     // Consonant_Initial_Postfixed
+    Consonant_Killer,                // Consonant_Killer
+    Consonant_Medial,                // Consonant_Medial
+    Consonant_Placeholder,           // Consonant_Placeholder
+    Consonant_Preceding_Repha,       // Consonant_Preceding_Repha
+    Consonant_Prefixed,              // Consonant_Prefixed
+    Consonant_Subjoined,             // Consonant_Subjoined
+    Consonant_Succeeding_Repha,      // Consonant_Succeeding_Repha
+    Consonant_With_Stacker,          // Consonant_With_Stacker
+    Gemination_Mark,                 // Gemination_Mark
+    Invisible_Stacker,               // Invisible_Stacker
+    Joiner,                          // Joiner
+    Modifying_Letter,                // Modifying_Letter
+    Non_Joiner,                      // Non_Joiner
+    Nukta,                           // Nukta
+    Number,                          // Number
+    Number_Joiner,                   // Number_Joiner
+    Other,                           // Other
+    Pure_Killer,                     // Pure_Killer
+    Register_Shifter,                // Register_Shifter
+    Syllable_Modifier,               // Syllable_Modifier
+    Tone_Letter,                     // Tone_Letter
+    Tone_Mark,                       // Tone_Mark
+    Virama,                          // Virama
+    Visarga,                         // Visarga
+    Vowel,                           // Vowel
+    Vowel_Dependent,                 // Vowel_Dependent
+    Vowel_Independent,               // Vowel_Independent
+}
+
+impl UnicodeProperty for Insc {
+    fn property_value_name(&self) -> PropertyName {
+        property_names::insc_name(*self)
+    }
+}
+
+/// Unicode property Indic_Conjunct_Break (InCB).
+#[derive(Debug, PartialEq, Clone, Copy)]
+pub enum Incb {
+    Consonant,  // Consonant
+    Extend,     // Extend
+    Linker,     // Linker
+    None,       // None
+}

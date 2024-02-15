@@ -2852,3 +2852,151 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
     }
 }
 
+pub(crate) fn insc_name(prop: Insc) -> PropertyName {
+    match prop {
+        Insc::Avagraha => PropertyName {
+            full: "Avagraha",
+            abbr: "Avagraha",
+        },
+        Insc::Bindu => PropertyName {
+            full: "Bindu",
+            abbr: "Bindu",
+        },
+        Insc::Brahmi_Joining_Number => PropertyName {
+            full: "Brahmi_Joining_Number",
+            abbr: "Brahmi_Joining_Number",
+        },
+        Insc::Cantillation_Mark => PropertyName {
+            full: "Cantillation_Mark",
+            abbr: "Cantillation_Mark",
+        },
+        Insc::Consonant => PropertyName {
+            full: "Consonant",
+            abbr: "Consonant",
+        },
+        Insc::Consonant_Dead => PropertyName {
+            full: "Consonant_Dead",
+            abbr: "Consonant_Dead",
+        },
+        Insc::Consonant_Final => PropertyName {
+            full: "Consonant_Final",
+            abbr: "Consonant_Final",
+        },
+        Insc::Consonant_Head_Letter => PropertyName {
+            full: "Consonant_Head_Letter",
+            abbr: "Consonant_Head_Letter",
+        },
+        Insc::Consonant_Initial_Postfixed => PropertyName {
+            full: "Consonant_Initial_Postfixed",
+            abbr: "Consonant_Initial_Postfixed",
+        },
+        Insc::Consonant_Killer => PropertyName {
+            full: "Consonant_Killer",
+            abbr: "Consonant_Killer",
+        },
+        Insc::Consonant_Medial => PropertyName {
+            full: "Consonant_Medial",
+            abbr: "Consonant_Medial",
+        },
+        Insc::Consonant_Placeholder => PropertyName {
+            full: "Consonant_Placeholder",
+            abbr: "Consonant_Placeholder",
+        },
+        Insc::Consonant_Preceding_Repha => PropertyName {
+            full: "Consonant_Preceding_Repha",
+            abbr: "Consonant_Preceding_Repha",
+        },
+        Insc::Consonant_Prefixed => PropertyName {
+            full: "Consonant_Prefixed",
+            abbr: "Consonant_Prefixed",
+        },
+        Insc::Consonant_Subjoined => PropertyName {
+            full: "Consonant_Subjoined",
+            abbr: "Consonant_Subjoined",
+        },
+        Insc::Consonant_Succeeding_Repha => PropertyName {
+            full: "Consonant_Succeeding_Repha",
+            abbr: "Consonant_Succeeding_Repha",
+        },
+        Insc::Consonant_With_Stacker => PropertyName {
+            full: "Consonant_With_Stacker",
+            abbr: "Consonant_With_Stacker",
+        },
+        Insc::Gemination_Mark => PropertyName {
+            full: "Gemination_Mark",
+            abbr: "Gemination_Mark",
+        },
+        Insc::Invisible_Stacker => PropertyName {
+            full: "Invisible_Stacker",
+            abbr: "Invisible_Stacker",
+        },
+        Insc::Joiner => PropertyName {
+            full: "Joiner",
+            abbr: "Joiner",
+        },
+        Insc::Modifying_Letter => PropertyName {
+            full: "Modifying_Letter",
+            abbr: "Modifying_Letter",
+        },
+        Insc::Non_Joiner => PropertyName {
+            full: "Non_Joiner",
+            abbr: "Non_Joiner",
+        },
+        Insc::Nukta => PropertyName {
+            full: "Nukta",
+            abbr: "Nukta",
+        },
+        Insc::Number => PropertyName {
+            full: "Number",
+            abbr: "Number",
+        },
+        Insc::Number_Joiner => PropertyName {
+            full: "Number_Joiner",
+            abbr: "Number_Joiner",
+        },
+        Insc::Other => PropertyName {
+            full: "Other",
+            abbr: "Other",
+        },
+        Insc::Pure_Killer => PropertyName {
+            full: "Pure_Killer",
+            abbr: "Pure_Killer",
+        },
+        Insc::Register_Shifter => PropertyName {
+            full: "Register_Shifter",
+            abbr: "Register_Shifter",
+        },
+        Insc::Syllable_Modifier => PropertyName {
+            full: "Syllable_Modifier",
+            abbr: "Syllable_Modifier",
+        },
+        Insc::Tone_Letter => PropertyName {
+            full: "Tone_Letter",
+            abbr: "Tone_Letter",
+        },
+        Insc::Tone_Mark => PropertyName {
+            full: "Tone_Mark",
+            abbr: "Tone_Mark",
+        },
+        Insc::Virama => PropertyName {
+            full: "Virama",
+            abbr: "Virama",
+        },
+        Insc::Visarga => PropertyName {
+            full: "Visarga",
+            abbr: "Visarga",
+        },
+        Insc::Vowel => PropertyName {
+            full: "Vowel",
+            abbr: "Vowel",
+        },
+        Insc::Vowel_Dependent => PropertyName {
+            full: "Vowel_Dependent",
+            abbr: "Vowel_Dependent",
+        },
+        Insc::Vowel_Independent => PropertyName {
+            full: "Vowel_Independent",
+            abbr: "Vowel_Independent",
+        },
+    }
+}

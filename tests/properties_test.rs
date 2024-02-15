@@ -153,6 +153,8 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     check_property(cp, cp_hst, "hst", el);
     // InPC                     ; Indic_Positional_Category
     // InSC                     ; Indic_Syllabic_Category
+    let cp_insc = cp.insc().property_value_name().abbr;
+    check_property(cp, cp_insc, "InSC", el);
     // jg                       ; Joining_Group
     // jt                       ; Joining_Type
     // lb                       ; Line_Break

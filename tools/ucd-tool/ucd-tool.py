@@ -51,6 +51,10 @@ property_info = {
     'wb': {
         'repr_size': 1,
     },
+    'insc': {
+        'repr_size': 1,
+        'alias_key': 'InSC',
+    },
 }
 
 # Unicode Table 4-8.
@@ -461,4 +465,10 @@ if __name__ == '__main__':
     tst = select_minimal_tst('Wb', wb_data, property_info['wb']['repr_size'],
         default_prop='XX')
     with open('../../src/unicode/ucd/wb.rs', 'w') as f:
+        f.write(tst.to_seshat())
+    # Make InSC data.
+    insc_data = make_data('IndicSyllabicCategory.json')
+    tst = select_minimal_tst('Insc', insc_data, property_info['insc']['repr_size'],
+        default_prop='Other')
+    with open('../../src/unicode/ucd/insc.rs', 'w') as f:
         f.write(tst.to_seshat())
