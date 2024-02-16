@@ -155,6 +155,9 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     // InSC                     ; Indic_Syllabic_Category
     let cp_insc = cp.insc().property_value_name().abbr;
     check_property(cp, cp_insc, "InSC", el);
+    // InCB                     ; Indic_Conjunct_Break
+    let cp_incb = cp.incb().property_value_name().abbr;
+    check_property(cp, cp_incb, "InCB", el);
     // jg                       ; Joining_Group
     // jt                       ; Joining_Type
     // lb                       ; Line_Break

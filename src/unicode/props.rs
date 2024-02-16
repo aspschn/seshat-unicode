@@ -931,3 +931,9 @@ pub enum Incb {
     Linker,     // Linker
     None,       // None
 }
+
+impl UnicodeProperty for Incb {
+    fn property_value_name(&self) -> PropertyName {
+        property_names::incb_name(*self)
+    }
+}

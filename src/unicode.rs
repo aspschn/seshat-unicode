@@ -98,6 +98,8 @@ pub trait Ucd {
     fn hst(&self) -> Hst;
     /// Get the Unicode Indic_Syllabic_Category (InSC) property.
     fn insc(&self) -> Insc;
+    /// Get the Unicode Indic_Conjunct_Break (InCB) property.
+    fn incb(&self) -> Incb;
     /// Get the Unicode White_Space(WSpace) property.
     fn wspace(&self) -> bool;
     /// Get the Unicode Bidi_Control(Bidi_C) property.
@@ -248,6 +250,10 @@ impl Ucd for CodePoint {
 
     fn insc(&self) -> Insc {
         ucd::insc::insc(self.code_point)
+    }
+
+    fn incb(&self) -> Incb {
+        ucd::derived_props::incb(self.code_point)
     }
 
     fn wspace(&self) -> bool {
@@ -502,6 +508,10 @@ impl Ucd for char {
 
     fn insc(&self) -> Insc {
         ucd::insc::insc(*self as u32)
+    }
+
+    fn incb(&self) -> Incb {
+        ucd::derived_props::incb(*self as u32)
     }
 
     fn wspace(&self) -> bool {

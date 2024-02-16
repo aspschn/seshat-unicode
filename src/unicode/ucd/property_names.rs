@@ -3000,3 +3000,24 @@ pub(crate) fn insc_name(prop: Insc) -> PropertyName {
         },
     }
 }
+
+pub(crate) fn incb_name(prop: Incb) -> PropertyName {
+    match prop {
+        Incb::Linker => PropertyName {
+            full: "Linker",
+            abbr: "Linker",
+        },
+        Incb::Consonant => PropertyName {
+            full: "Consonant",
+            abbr: "Consonant",
+        },
+        Incb::Extend => PropertyName {
+            full: "Extend",
+            abbr: "Extend",
+        },
+        Incb::None => PropertyName {
+            full: "None",
+            abbr: "None",
+        },
+    }
+}

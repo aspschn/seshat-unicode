@@ -1,6 +1,7 @@
 use crate::unicode::props::*;
 use crate::unicode::CodePoint;
 use crate::unicode::Ucd;
+use crate::unicode::Incb;
 
 pub(crate) fn math(cp: u32) -> bool {
     // Derived Property: Math
@@ -163,3 +164,36 @@ pub(crate) fn gr_ext(cp: u32) -> bool {
 // # Derived Property: Grapheme_Link (deprecated)
 // #  Generated from: Canonical_Combining_Class=Virama
 // #  Use Canonical_Combining_Class=Virama directly instead
+
+// # Derived Property: Indic_Conjunct_Break
+// #  Generated from the Grapheme_Cluster_Break, Indic_Syllabic_Category,
+// #  Canonical_Combining_Class, and Script properties as described in UAX #44:
+// #  https://www.unicode.org/reports/tr44/.
+// #
+// #  All code points not explicitly listed for Indic_Conjunct_Break
+// #  have the value None.
+pub(crate) fn incb(cp: u32) -> Incb {
+    let set = [Sc::Beng, Sc::Deva, Sc::Gujr, Sc::Mlym, Sc::Orya, Sc::Telu];
+
+    let cp = CodePoint::new(cp).unwrap();
+    let sc = cp.sc();
+
+    if set.contains(&sc) && cp.insc() == Insc::Virama {
+        return Incb::Linker;
+    }
+    if set.contains(&sc) && cp.insc() == Insc::Consonant {
+        return Incb::Consonant;
+    }
+    if cp.gcb() == Gcb::EX && cp.ccc() != Ccc::NR {
+        if cp.insc() != Insc::Virama && cp.insc() != Insc::Consonant {
+            return Incb::Extend;
+        }
+
+        return Incb::None;
+    }
+    if cp.gcb() == Gcb::ZWJ && cp.insc() != Insc::Virama && cp.insc() != Insc::Consonant {
+        return Incb::Extend;
+    }
+
+    Incb::None
+}
