@@ -745,6 +745,8 @@ impl<'a> Iterator for BreakGraphemes<'a> {
         let mut next = iter.next();
         let mut in_ext_pict = false;
         let mut _ri_count = 0; // Ignore compiler not used warning.
+        let mut in_indic = false;
+        let mut indic_linker = false;
         loop {
             let curr_ch = curr.unwrap();
             let next_ch = next.unwrap_or((self.slice.len(), '\u{0000}'));
@@ -755,6 +757,13 @@ impl<'a> Iterator for BreakGraphemes<'a> {
             // Prepare for GB12, GB13
             if curr_ch.1.gcb() == Gcb::RI {
                 _ri_count += 1;
+            }
+            // Prepare for GB9c
+            if curr_ch.1.incb() == Incb::Consonant {
+                in_indic = true;
+            }
+            if in_indic == true && curr_ch.1.incb() == Incb::Linker {
+                indic_linker = true;
             }
             // Do not break between a CR and LF. Otherwise, break before and after controls.
             // GB3:                  CR × LF
@@ -814,6 +823,44 @@ impl<'a> Iterator for BreakGraphemes<'a> {
                 curr = next;
                 next = iter.next();
                 continue;
+            }
+            // GB9c: Do not break within certain combinations with
+            // Indic_Conjunct_Break (InCB)=Linker.
+            if in_indic {
+                if next_ch.1.incb() == Incb::None {
+                    curr = next;
+                    break;
+                }
+                if curr_ch.1.incb() == Incb::Consonant && next_ch.1.incb() == Incb::Consonant {
+                    curr = next;
+                    break;
+                }
+                if indic_linker {
+                    if curr_ch.1.incb() == Incb::Extend || curr_ch.1.incb() == Incb::Linker
+                        || curr_ch.1.incb() == Incb::Consonant {
+                        curr = next;
+                        next = iter.next();
+                        continue;
+                    }
+                } else {
+                    if curr_ch.1.incb() == Incb::Linker {
+                        indic_linker = true;
+                        curr = next;
+                        next = iter.next();
+                        continue;
+                    } else if curr_ch.1.incb() == Incb::Extend
+                        && next_ch.1.incb() == Incb::Consonant {
+                        curr = next;
+                        break;
+                    } else if curr_ch.1.incb() == Incb::Extend {
+                        curr = next;
+                        next = iter.next();
+                        continue;
+                    } else {
+                        curr = next;
+                        break;
+                    }
+                }
             }
             // Do not break within emoji modifier sequences or emoji zwj sequences.
             // GB11: \p{ExtPict} Extend* ZWJ × \p{ExtPict}

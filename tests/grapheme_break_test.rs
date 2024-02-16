@@ -6,13 +6,15 @@ use seshat::unicode::Segmentation;
 
 #[test]
 fn validate_grapheme_break() {
+    let mut case_number = 1;
     for case in test_cases::TEST_CASES.iter() {
         let source = case.0;
         let breaks = case.1;
 
         for (i, grapheme) in source.break_graphemes().enumerate() {
-            assert_eq!(grapheme, breaks[i]);
+            assert_eq!(grapheme, breaks[i], "Error in the test case {}", case_number);
         }
+        case_number += 1;
     }
 
     // Additional test cases.
