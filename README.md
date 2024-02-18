@@ -92,6 +92,30 @@ fn main() {
 }
 ```
 
+### Properties
+
+```rust
+use seshat::unicode::Ucd;
+
+fn main() {
+    let c = 'ʹ';    // U+0374 GREEK NUMERAL SIGN
+    assert_eq!(c.xids(), true); // XID_Start property of the character.
+}
+```
+
+For enumeration property,
+
+```rust
+use seshat::unicode::Ucd;
+use seshat::unicode::props::Gc;
+
+fn main() {
+    assert_eq!('A'.gc(), Gc::Lu);
+    assert_eq!('a'.gc(), Gc::Ll);
+}
+```
+
+
 ## Contribute
 
 Add later.
