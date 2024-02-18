@@ -13,7 +13,7 @@ use self::props::*;
 /// Current Unicode version.
 pub const UNICODE_VERSION: UnicodeVersion = UnicodeVersion {
     major: 15,
-    minor: 0,
+    minor: 1,
     update: 0,
 };
 

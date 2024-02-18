@@ -20,7 +20,7 @@ The goal of this project is to provide a ICU-like library in Rust.
 
 ## Version
 
-Seshat follows the latest version of Unicode. Currently using version 15.0.0.
+Seshat follows the latest version of Unicode. Currently using version 15.1.0.
 
 ## Usage
 
@@ -98,8 +98,9 @@ Add later.
 
 ## License
 
-All logo images are copyright [Frybits Inc.](https://github.com/frybitsinc)
-and should not be used out of this project without permission.
+All logo images have copyright owned by their creators and should not be used
+out of this project without permission.
+
+The drawing part (writing goddess) by [Frybits Inc.](https://github.com/frybitsinc).
 
 Seshat is developed under MIT License. For the detail, see the LICENSE file.
-

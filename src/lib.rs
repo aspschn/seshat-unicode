@@ -46,7 +46,7 @@ mod tests {
     fn version_check() {
         let ver = UnicodeVersion {
             major: 15,
-            minor: 0,
+            minor: 1,
             update: 0,
         };
         assert_eq!(ver, UNICODE_VERSION);
