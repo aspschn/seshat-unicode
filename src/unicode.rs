@@ -196,6 +196,10 @@ pub trait Ucd {
     fn di(&self) -> bool;
     /// Get the Unicode Grapheme_Extend(Gr_Ext) property.
     fn gr_ext(&self) -> bool;
+    /// Get the Unicode ID_Start (IDS) property.
+    fn ids(&self) -> bool;
+    /// Get the Unicode ID_Continue (IDC) property.
+    fn idc(&self) -> bool;
 
     /// Get the Unicode Emoji(Emoji) property.
     fn emoji(&self) -> bool;
@@ -442,6 +446,14 @@ impl Ucd for CodePoint {
 
     fn gr_ext(&self) -> bool {
         ucd::derived_props::gr_ext(self.code_point)
+    }
+
+    fn ids(&self) -> bool {
+        ucd::derived_props::ids(self.code_point)
+    }
+
+    fn idc(&self) -> bool {
+        ucd::derived_props::idc(self.code_point)
     }
 
     fn emoji(&self) -> bool {
@@ -700,6 +712,14 @@ impl Ucd for char {
 
     fn gr_ext(&self) -> bool {
         ucd::derived_props::gr_ext(*self as u32)
+    }
+
+    fn ids(&self) -> bool {
+        ucd::derived_props::ids(*self as u32)
+    }
+
+    fn idc(&self) -> bool {
+        ucd::derived_props::idc(*self as u32)
     }
 
     fn emoji(&self) -> bool {

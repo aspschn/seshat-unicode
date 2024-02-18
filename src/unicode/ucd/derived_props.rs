@@ -93,24 +93,47 @@ pub(crate) fn ci(cp: u32) -> bool {
 // #  For more information, see D143 in Section 3.13, "Default Case Algorithms".
 // #  Changes_When_Casemapped(X) is true when CWL(X), or CWT(X), or CWU(X)
 
-// # Derived Property: ID_Start
-// #  Characters that can start an identifier.
-// #  Generated from:
-// #      Lu + Ll + Lt + Lm + Lo + Nl
-// #    + Other_ID_Start
-// #    - Pattern_Syntax
-// #    - Pattern_White_Space
-// #  NOTE: See UAX #31 for more information
+pub(crate) fn ids(cp: u32) -> bool {
+    // # Derived Property: ID_Start
+    // #  Characters that can start an identifier.
+    // #  Generated from:
+    // #      Lu + Ll + Lt + Lm + Lo + Nl
+    // #    + Other_ID_Start
+    // #    - Pattern_Syntax
+    // #    - Pattern_White_Space
+    // #  NOTE: See UAX #31 for more information
+    let cp = CodePoint::new(cp).unwrap();
+    let gc = cp.gc();
+    if (gc == Gc::Lu || gc == Gc::Ll || gc == Gc::Lt || gc == Gc::Lm ||
+            gc == Gc::Lo || gc == Gc::Nl ||
+            cp.oids()) &&
+            (!cp.pat_syn()) &&
+            (!cp.pat_ws()) {
+        return true;
+    }
+    false
+}
 
-// # Derived Property: ID_Continue
-// #  Characters that can continue an identifier.
-// #  Generated from:
-// #      ID_Start
-// #    + Mn + Mc + Nd + Pc
-// #    + Other_ID_Continue
-// #    - Pattern_Syntax
-// #    - Pattern_White_Space
-// #  NOTE: See UAX #31 for more information
+pub(crate) fn idc(cp: u32) -> bool {
+    // # Derived Property: ID_Continue
+    // #  Characters that can continue an identifier.
+    // #  Generated from:
+    // #      ID_Start
+    // #    + Mn + Mc + Nd + Pc
+    // #    + Other_ID_Continue
+    // #    - Pattern_Syntax
+    // #    - Pattern_White_Space
+    // #  NOTE: See UAX #31 for more information
+    let cp = CodePoint::new(cp).unwrap();
+    let gc = cp.gc();
+    if (cp.ids() || gc == Gc::Mn || gc == Gc::Mc || gc == Gc::Nd || gc == Gc::Pc ||
+            cp.oidc()) &&
+            !cp.pat_syn() &&
+            !cp.pat_ws() {
+        return true;
+    }
+    false
+}
 
 // # Derived Property: XID_Start
 // #  ID_Start modified for closure under NFKx

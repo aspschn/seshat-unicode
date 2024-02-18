@@ -248,10 +248,14 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     let cp_hyphen = BinaryProperty::from(cp.hyphen()).property_value_name().abbr;
     check_property(cp, cp_hyphen, "Hyphen", el);
     // IDC                      ; ID_Continue
+    let cp_idc = BinaryProperty::from(cp.idc()).property_value_name().abbr;
+    check_property(cp, cp_idc, "IDC", el);
     // Ideo (Ideographic)
     let cp_ideo = BinaryProperty::from(cp.ideo()).property_value_name().abbr;
     check_property(cp, cp_ideo, "Ideo", el);
     // IDS                      ; ID_Start
+    let cp_ids = BinaryProperty::from(cp.ids()).property_value_name().abbr;
+    check_property(cp, cp_ids, "IDS", el);
     // IDSB (IDS_Binary_Operator)
     let cp_idsb = BinaryProperty::from(cp.idsb()).property_value_name().abbr;
     check_property(cp, cp_idsb, "IDSB", el);
