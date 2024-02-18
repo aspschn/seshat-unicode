@@ -26,7 +26,7 @@ Seshat follows the latest version of Unicode. Currently using version 15.1.0.
 
 ```toml
 [dependencies]
-seshat-unicode = "0.1.0"
+seshat-unicode = "0.2.0"
 ```
 
 ```rust

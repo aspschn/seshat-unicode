@@ -1,8 +1,8 @@
 [package]
 name = "seshat-unicode"
-version = "0.1.0"
-authors = ["Yujeonja <hardboiled65@gmail.com>"]
-description = "A Unicode Library for Rust. Unicode 15.0.0 ready."
+version = "0.2.0"
+authors = ["Aspen Schneider <hardboiled65@gmail.com>"]
+description = "A Unicode Library for Rust. Unicode 15.1.0 ready. XID_Start and XID_Continue are also available."
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/hardboiled65/seshat-unicode"
