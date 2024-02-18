@@ -26,7 +26,7 @@ Seshat follows the latest version of Unicode. Currently using version 15.1.0.
 
 ```toml
 [dependencies]
-seshat-unicode = "0.2.0"
+seshat-unicode = "0.2.1"
 ```
 
 ```rust
@@ -114,6 +114,12 @@ fn main() {
     assert_eq!('a'.gc(), Gc::Ll);
 }
 ```
+
+
+## Patches
+
+0.2.1 - Exclude the `tools/` directory which should not be included when
+publishing.
 
 
 ## Contribute
