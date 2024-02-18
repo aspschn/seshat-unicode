@@ -342,6 +342,8 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     check_property(cp, cp_wspace, "WSpace", el);
     // XIDC                     ; XID_Continue
     // XIDS                     ; XID_Start
+    let cp_xids = BinaryProperty::from(cp.xids()).property_value_name().abbr;
+    check_property(cp, cp_xids, "XIDS", el);
     // XO_NFC                   ; Expands_On_NFC
     // XO_NFD                   ; Expands_On_NFD
     // XO_NFKC                  ; Expands_On_NFKC

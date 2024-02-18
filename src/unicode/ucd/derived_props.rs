@@ -135,12 +135,21 @@ pub(crate) fn idc(cp: u32) -> bool {
     false
 }
 
-// # Derived Property: XID_Start
-// #  ID_Start modified for closure under NFKx
-// #  Modified as described in UAX #15
-// #  NOTE: Does NOT remove the non-NFKx characters.
-// #        Merely ensures that if isIdentifer(string) then isIdentifier(NFKx(string))
-// #  NOTE: See UAX #31 for more information
+pub(crate) fn xids(cp: u32) -> bool {
+    // # Derived Property: XID_Start
+    // #  ID_Start modified for closure under NFKx
+    // #  Modified as described in UAX #15
+    // #  NOTE: Does NOT remove the non-NFKx characters.
+    // #        Merely ensures that if isIdentifer(string) then isIdentifier(NFKx(string))
+    // #  NOTE: See UAX #31 for more information
+    let excludes: &[u32] = &[0x0E33, 0x0EB3, 0xFF9E, 0xFF9F, 0x037A, 0x309B,
+        0x309C, 0xFDFA, 0xFDFB, 0xFE70, 0xFE72, 0xFE74,
+        0xFE76, 0xFE78, 0xFE7A, 0xFE7C, 0xFE7E, 0xFF9E,
+        0xFF9F,
+    ];
+
+    ids(cp) && !excludes.contains(&cp) && !(0xFC5E..=0xFC63).contains(&cp)
+}
 
 // # Derived Property: XID_Continue
 // #  Mod_ID_Continue modified for closure under NFKx
