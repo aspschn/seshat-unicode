@@ -203,7 +203,7 @@ pub trait Ucd {
     /// Get the Unicode XID_Start (XIDS) property.
     fn xids(&self) -> bool;
     /// Get the Unicode XID_Continue (XIDC) property.
-    // fn xidc(&self) -> bool;
+    fn xidc(&self) -> bool;
 
     /// Get the Unicode Emoji(Emoji) property.
     fn emoji(&self) -> bool;
@@ -462,6 +462,10 @@ impl Ucd for CodePoint {
 
     fn xids(&self) -> bool {
         ucd::derived_props::xids(self.code_point)
+    }
+
+    fn xidc(&self) -> bool {
+        ucd::derived_props::xidc(self.code_point)
     }
 
     fn emoji(&self) -> bool {
@@ -732,6 +736,10 @@ impl Ucd for char {
 
     fn xids(&self) -> bool {
         ucd::derived_props::xids(*self as u32)
+    }
+
+    fn xidc(&self) -> bool {
+        ucd::derived_props::xidc(*self as u32)
     }
 
     fn emoji(&self) -> bool {

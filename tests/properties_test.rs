@@ -341,6 +341,8 @@ fn check_properties(cp: CodePoint, el: &Vec<OwnedAttribute>) -> bool {
     let cp_wspace = BinaryProperty::from(cp.wspace()).property_value_name().abbr;
     check_property(cp, cp_wspace, "WSpace", el);
     // XIDC                     ; XID_Continue
+    let cp_xidc = BinaryProperty::from(cp.xidc()).property_value_name().abbr;
+    check_property(cp, cp_xidc, "XIDC", el);
     // XIDS                     ; XID_Start
     let cp_xids = BinaryProperty::from(cp.xids()).property_value_name().abbr;
     check_property(cp, cp_xids, "XIDS", el);
