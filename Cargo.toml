@@ -1,11 +1,11 @@
 [package]
 name = "seshat-unicode"
-version = "0.2.1"
-authors = ["Aspen Schneider <hardboiled65@gmail.com>"]
-description = "A Unicode Library for Rust. Unicode 15.1.0 ready. XID_Start and XID_Continue are also available."
+version = "0.3.0"
+authors = ["Aspen Schneider <rendezvous71@gmail.com>"]
+description = "A Unicode Library for Rust. Unicode 16.0.0 ready. XID_Start and XID_Continue are also available."
 license = "MIT"
 readme = "README.md"
-repository = "https://github.com/hardboiled65/seshat-unicode"
+repository = "https://github.com/aspschn/seshat-unicode"
 keywords = ["unicode"]
 edition = "2018"
 exclude = ["/tools"]

@@ -20,13 +20,13 @@ The goal of this project is to provide a ICU-like library in Rust.
 
 ## Version
 
-Seshat follows the latest version of Unicode. Currently using version 15.1.0.
+Seshat follows the latest version of Unicode. Currently using version 16.0.0.
 
 ## Usage
 
 ```toml
 [dependencies]
-seshat-unicode = "0.2.1"
+seshat-unicode = "0.3.0"
 ```
 
 ```rust
