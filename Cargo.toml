@@ -1,7 +1,7 @@
 [package]
 name = "seshat-unicode"
-version = "0.3.0"
-authors = ["Aspen Schneider <rendezvous71@gmail.com>"]
+version = "0.3.1"
+authors = ["Aspen Schneider <rendezvous71@outlook.com>"]
 description = "A Unicode Library for Rust. Unicode 16.0.0 ready. XID_Start and XID_Continue are also available."
 license = "MIT"
 readme = "README.md"
