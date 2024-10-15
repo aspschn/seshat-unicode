@@ -806,6 +806,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
             full: "Ethiopic",
             abbr: "Ethi",
         },
+        Sc::Gara => PropertyName {
+            full: "Garay",
+            abbr: "Gara",
+        },
         Sc::Geor => PropertyName {
             full: "Georgian",
             abbr: "Geor",
@@ -837,6 +841,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
         Sc::Gujr => PropertyName {
             full: "Gujarati",
             abbr: "Gujr",
+        },
+        Sc::Gukh => PropertyName {
+            full: "Gurung_Khema",
+            abbr: "Gukh",
         },
         Sc::Guru => PropertyName {
             full: "Gurmukhi",
@@ -925,6 +933,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
         Sc::Knda => PropertyName {
             full: "Kannada",
             abbr: "Knda",
+        },
+        Sc::Krai => PropertyName {
+            full: "Kirat_Rai",
+            abbr: "Krai",
         },
         Sc::Kthi => PropertyName {
             full: "Kaithi",
@@ -1070,6 +1082,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
             full: "Ol_Chiki",
             abbr: "Olck",
         },
+        Sc::Onao => PropertyName {
+            full: "Ol_Onal",
+            abbr: "Onao",
+        },
         Sc::Orkh => PropertyName {
             full: "Old_Turkic",
             abbr: "Orkh",
@@ -1194,6 +1210,10 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
             full: "Sundanese",
             abbr: "Sund",
         },
+        Sc::Sunu => PropertyName {
+            full: "Sunuwar",
+            abbr: "Sunu",
+        },
         Sc::Sylo => PropertyName {
             full: "Syloti_Nagri",
             abbr: "Sylo",
@@ -1262,9 +1282,17 @@ pub(crate) fn sc_name(prop: Sc) -> PropertyName {
             full: "Tangsa",
             abbr: "Tnsa",
         },
+        Sc::Todr => PropertyName {
+            full: "Todhri",
+            abbr: "Todr",
+        },
         Sc::Toto => PropertyName {
             full: "Toto",
             abbr: "Toto",
+        },
+        Sc::Tutg => PropertyName {
+            full: "Tulu_Tigalari",
+            abbr: "Tutg",
         },
         Sc::Ugar => PropertyName {
             full: "Ugaritic",
@@ -1426,6 +1454,10 @@ pub(crate) fn age_name(prop: Age) -> PropertyName {
         Age::V15_1 => PropertyName {
             full: "V15_1",
             abbr: "15.1",
+        },
+        Age::V16_0 => PropertyName {
+            full: "V16_0",
+            abbr: "16.0",
         },
         Age::NA => PropertyName {
             full: "Unassigned",
@@ -1909,6 +1941,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Egyptian_Hieroglyphs",
             abbr: "Egyptian_Hieroglyphs",
         },
+        Blk::EgyptianHieroglyphsExtA => PropertyName {
+            full: "Egyptian_Hieroglyphs_Extended_A",
+            abbr: "Egyptian_Hieroglyphs_Ext_A",
+        },
         Blk::Elbasan => PropertyName {
             full: "Elbasan",
             abbr: "Elbasan",
@@ -1956,6 +1992,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::EthiopicSup => PropertyName {
             full: "Ethiopic_Supplement",
             abbr: "Ethiopic_Sup",
+        },
+        Blk::Garay => PropertyName {
+            full: "Garay",
+            abbr: "Garay",
         },
         Blk::GeometricShapes => PropertyName {
             full: "Geometric_Shapes",
@@ -2012,6 +2052,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::Gurmukhi => PropertyName {
             full: "Gurmukhi",
             abbr: "Gurmukhi",
+        },
+        Blk::GurungKhema => PropertyName {
+            full: "Gurung_Khema",
+            abbr: "Gurung_Khema",
         },
         Blk::HalfAndFullForms => PropertyName {
             full: "Halfwidth_And_Fullwidth_Forms",
@@ -2172,6 +2216,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::Khudawadi => PropertyName {
             full: "Khudawadi",
             abbr: "Khudawadi",
+        },
+        Blk::KiratRai => PropertyName {
+            full: "Kirat_Rai",
+            abbr: "Kirat_Rai",
         },
         Blk::Lao => PropertyName {
             full: "Lao",
@@ -2397,6 +2445,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Myanmar_Extended_B",
             abbr: "Myanmar_Ext_B",
         },
+        Blk::MyanmarExtC => PropertyName {
+            full: "Myanmar_Extended_C",
+            abbr: "Myanmar_Ext_C",
+        },
         Blk::Nabataean => PropertyName {
             full: "Nabataean",
             abbr: "Nabataean",
@@ -2448,6 +2500,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::OlChiki => PropertyName {
             full: "Ol_Chiki",
             abbr: "Ol_Chiki",
+        },
+        Blk::OlOnal => PropertyName {
+            full: "Ol_Onal",
+            abbr: "Ol_Onal",
         },
         Blk::OldHungarian => PropertyName {
             full: "Old_Hungarian",
@@ -2629,6 +2685,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Sundanese_Supplement",
             abbr: "Sundanese_Sup",
         },
+        Blk::Sunuwar => PropertyName {
+            full: "Sunuwar",
+            abbr: "Sunuwar",
+        },
         Blk::SupArrowsA => PropertyName {
             full: "Supplemental_Arrows_A",
             abbr: "Sup_Arrows_A",
@@ -2680,6 +2740,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::SymbolsForLegacyComputing => PropertyName {
             full: "Symbols_For_Legacy_Computing",
             abbr: "Symbols_For_Legacy_Computing",
+        },
+        Blk::SymbolsForLegacyComputingSup => PropertyName {
+            full: "Symbols_For_Legacy_Computing_Supplement",
+            abbr: "Symbols_For_Legacy_Computing_Sup",
         },
         Blk::Syriac => PropertyName {
             full: "Syriac",
@@ -2769,6 +2833,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
             full: "Tirhuta",
             abbr: "Tirhuta",
         },
+        Blk::Todhri => PropertyName {
+            full: "Todhri",
+            abbr: "Todhri",
+        },
         Blk::Toto => PropertyName {
             full: "Toto",
             abbr: "Toto",
@@ -2776,6 +2844,10 @@ pub(crate) fn blk_name(prop: Blk) -> PropertyName {
         Blk::TransportAndMap => PropertyName {
             full: "Transport_And_Map_Symbols",
             abbr: "Transport_And_Map",
+        },
+        Blk::TuluTigalari => PropertyName {
+            full: "Tulu_Tigalari",
+            abbr: "Tulu_Tigalari",
         },
         Blk::Ucas => PropertyName {
             full: "Unified_Canadian_Aboriginal_Syllabics",
@@ -2965,6 +3037,10 @@ pub(crate) fn insc_name(prop: Insc) -> PropertyName {
         Insc::Register_Shifter => PropertyName {
             full: "Register_Shifter",
             abbr: "Register_Shifter",
+        },
+        Insc::Reordering_Killer => PropertyName {
+            full: "Reordering_Killer",
+            abbr: "Reordering_Killer",
         },
         Insc::Syllable_Modifier => PropertyName {
             full: "Syllable_Modifier",

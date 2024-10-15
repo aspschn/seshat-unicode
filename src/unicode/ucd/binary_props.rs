@@ -128,6 +128,9 @@ pub(crate) fn dash(cp: u32) -> bool {
     if (0xFF0D..0xFF0D + 1).contains(&cp) {
         return true;
     }
+    if (0x10D6E..0x10D6E + 1).contains(&cp) {
+        return true;
+    }
     if (0x10EAD..0x10EAD + 1).contains(&cp) {
         return true;
     }
@@ -308,7 +311,10 @@ pub(crate) fn term(cp: u32) -> bool {
     if (0x07F8..0x07F9 + 1).contains(&cp) {
         return true;
     }
-    if (0x0830..0x083E + 1).contains(&cp) {
+    if (0x0830..0x0835 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0837..0x083E + 1).contains(&cp) {
         return true;
     }
     if (0x085E..0x085E + 1).contains(&cp) {
@@ -359,13 +365,16 @@ pub(crate) fn term(cp: u32) -> bool {
     if (0x1AA8..0x1AAB + 1).contains(&cp) {
         return true;
     }
+    if (0x1B4E..0x1B4F + 1).contains(&cp) {
+        return true;
+    }
     if (0x1B5A..0x1B5B + 1).contains(&cp) {
         return true;
     }
     if (0x1B5D..0x1B5F + 1).contains(&cp) {
         return true;
     }
-    if (0x1B7D..0x1B7E + 1).contains(&cp) {
+    if (0x1B7D..0x1B7F + 1).contains(&cp) {
         return true;
     }
     if (0x1C3B..0x1C3F + 1).contains(&cp) {
@@ -374,10 +383,16 @@ pub(crate) fn term(cp: u32) -> bool {
     if (0x1C7E..0x1C7F + 1).contains(&cp) {
         return true;
     }
+    if (0x2024..0x2024 + 1).contains(&cp) {
+        return true;
+    }
     if (0x203C..0x203D + 1).contains(&cp) {
         return true;
     }
     if (0x2047..0x2049 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2CF9..0x2CFB + 1).contains(&cp) {
         return true;
     }
     if (0x2E2E..0x2E2E + 1).contains(&cp) {
@@ -432,6 +447,12 @@ pub(crate) fn term(cp: u32) -> bool {
         return true;
     }
     if (0xABEB..0xABEB + 1).contains(&cp) {
+        return true;
+    }
+    if (0xFE12..0xFE12 + 1).contains(&cp) {
+        return true;
+    }
+    if (0xFE15..0xFE16 + 1).contains(&cp) {
         return true;
     }
     if (0xFE50..0xFE52 + 1).contains(&cp) {
@@ -515,6 +536,9 @@ pub(crate) fn term(cp: u32) -> bool {
     if (0x112A9..0x112A9 + 1).contains(&cp) {
         return true;
     }
+    if (0x113D4..0x113D5 + 1).contains(&cp) {
+        return true;
+    }
     if (0x1144B..0x1144D + 1).contains(&cp) {
         return true;
     }
@@ -573,6 +597,9 @@ pub(crate) fn term(cp: u32) -> bool {
         return true;
     }
     if (0x16B44..0x16B44 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x16D6E..0x16D6F + 1).contains(&cp) {
         return true;
     }
     if (0x16E97..0x16E98 + 1).contains(&cp) {
@@ -1162,6 +1189,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x0345..0x0345 + 1).contains(&cp) {
         return true;
     }
+    if (0x0363..0x036F + 1).contains(&cp) {
+        return true;
+    }
     if (0x05B0..0x05BD + 1).contains(&cp) {
         return true;
     }
@@ -1220,6 +1250,9 @@ pub(crate) fn oalpha(cp: u32) -> bool {
         return true;
     }
     if (0x0829..0x082C + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0897..0x0897 + 1).contains(&cp) {
         return true;
     }
     if (0x08D4..0x08DF + 1).contains(&cp) {
@@ -1774,7 +1807,7 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x1C36..0x1C36 + 1).contains(&cp) {
         return true;
     }
-    if (0x1DE7..0x1DF4 + 1).contains(&cp) {
+    if (0x1DD3..0x1DF4 + 1).contains(&cp) {
         return true;
     }
     if (0x24B6..0x24E9 + 1).contains(&cp) {
@@ -1939,7 +1972,13 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x10D24..0x10D27 + 1).contains(&cp) {
         return true;
     }
+    if (0x10D69..0x10D69 + 1).contains(&cp) {
+        return true;
+    }
     if (0x10EAB..0x10EAC + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10EFC..0x10EFC + 1).contains(&cp) {
         return true;
     }
     if (0x11000..0x11000 + 1).contains(&cp) {
@@ -2068,6 +2107,24 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x11362..0x11363 + 1).contains(&cp) {
         return true;
     }
+    if (0x113B8..0x113BA + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113BB..0x113C0 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113C2..0x113C2 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113C5..0x113C5 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113C7..0x113CA + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113CC..0x113CD + 1).contains(&cp) {
+        return true;
+    }
     if (0x11435..0x11437 + 1).contains(&cp) {
         return true;
     }
@@ -2155,7 +2212,13 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x116B0..0x116B5 + 1).contains(&cp) {
         return true;
     }
-    if (0x1171D..0x1171F + 1).contains(&cp) {
+    if (0x1171D..0x1171D + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1171E..0x1171E + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1171F..0x1171F + 1).contains(&cp) {
         return true;
     }
     if (0x11720..0x11721 + 1).contains(&cp) {
@@ -2326,6 +2389,15 @@ pub(crate) fn oalpha(cp: u32) -> bool {
     if (0x11F40..0x11F40 + 1).contains(&cp) {
         return true;
     }
+    if (0x1611E..0x16129 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1612A..0x1612C + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1612D..0x1612E + 1).contains(&cp) {
+        return true;
+    }
     if (0x16F4F..0x16F4F + 1).contains(&cp) {
         return true;
     }
@@ -2409,7 +2481,7 @@ pub(crate) fn ideo(cp: u32) -> bool {
     if (0x18800..0x18CD5 + 1).contains(&cp) {
         return true;
     }
-    if (0x18D00..0x18D08 + 1).contains(&cp) {
+    if (0x18CFF..0x18D08 + 1).contains(&cp) {
         return true;
     }
     if (0x1B170..0x1B2FB + 1).contains(&cp) {
@@ -2648,6 +2720,9 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x0DCA..0x0DCA + 1).contains(&cp) {
         return true;
     }
+    if (0x0E3A..0x0E3A + 1).contains(&cp) {
+        return true;
+    }
     if (0x0E47..0x0E4C + 1).contains(&cp) {
         return true;
     }
@@ -2717,6 +2792,9 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x1715..0x1715 + 1).contains(&cp) {
         return true;
     }
+    if (0x1734..0x1734 + 1).contains(&cp) {
+        return true;
+    }
     if (0x17C9..0x17D3 + 1).contains(&cp) {
         return true;
     }
@@ -2724,6 +2802,9 @@ pub(crate) fn dia(cp: u32) -> bool {
         return true;
     }
     if (0x1939..0x193B + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1A60..0x1A60 + 1).contains(&cp) {
         return true;
     }
     if (0x1A75..0x1A7C + 1).contains(&cp) {
@@ -2754,6 +2835,12 @@ pub(crate) fn dia(cp: u32) -> bool {
         return true;
     }
     if (0x1BAB..0x1BAB + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1BE6..0x1BE6 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1BF2..0x1BF3 + 1).contains(&cp) {
         return true;
     }
     if (0x1C36..0x1C37 + 1).contains(&cp) {
@@ -2870,6 +2957,12 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0xA7F8..0xA7F9 + 1).contains(&cp) {
         return true;
     }
+    if (0xA806..0xA806 + 1).contains(&cp) {
+        return true;
+    }
+    if (0xA82C..0xA82C + 1).contains(&cp) {
+        return true;
+    }
     if (0xA8C4..0xA8C4 + 1).contains(&cp) {
         return true;
     }
@@ -2969,6 +3062,12 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x107B2..0x107BA + 1).contains(&cp) {
         return true;
     }
+    if (0x10A38..0x10A3A + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10A3F..0x10A3F + 1).contains(&cp) {
+        return true;
+    }
     if (0x10AE5..0x10AE6 + 1).contains(&cp) {
         return true;
     }
@@ -2976,6 +3075,12 @@ pub(crate) fn dia(cp: u32) -> bool {
         return true;
     }
     if (0x10D24..0x10D27 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10D4E..0x10D4E + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10D69..0x10D6D + 1).contains(&cp) {
         return true;
     }
     if (0x10EFD..0x10EFF + 1).contains(&cp) {
@@ -3017,7 +3122,7 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x112E9..0x112EA + 1).contains(&cp) {
         return true;
     }
-    if (0x1133C..0x1133C + 1).contains(&cp) {
+    if (0x1133B..0x1133C + 1).contains(&cp) {
         return true;
     }
     if (0x1134D..0x1134D + 1).contains(&cp) {
@@ -3027,6 +3132,24 @@ pub(crate) fn dia(cp: u32) -> bool {
         return true;
     }
     if (0x11370..0x11374 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113CE..0x113CE + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113CF..0x113CF + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113D0..0x113D0 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113D2..0x113D2 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113D3..0x113D3 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113E1..0x113E2 + 1).contains(&cp) {
         return true;
     }
     if (0x11442..0x11442 + 1).contains(&cp) {
@@ -3089,13 +3212,28 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x11D97..0x11D97 + 1).contains(&cp) {
         return true;
     }
+    if (0x11F41..0x11F41 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11F42..0x11F42 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11F5A..0x11F5A + 1).contains(&cp) {
+        return true;
+    }
     if (0x13447..0x13455 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1612F..0x1612F + 1).contains(&cp) {
         return true;
     }
     if (0x16AF0..0x16AF4 + 1).contains(&cp) {
         return true;
     }
     if (0x16B30..0x16B36 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x16D6B..0x16D6C + 1).contains(&cp) {
         return true;
     }
     if (0x16F8F..0x16F92 + 1).contains(&cp) {
@@ -3149,6 +3287,9 @@ pub(crate) fn dia(cp: u32) -> bool {
     if (0x1E2EC..0x1E2EF + 1).contains(&cp) {
         return true;
     }
+    if (0x1E5EE..0x1E5EF + 1).contains(&cp) {
+        return true;
+    }
     if (0x1E8D0..0x1E8D6 + 1).contains(&cp) {
         return true;
     }
@@ -3173,6 +3314,12 @@ pub(crate) fn ext(cp: u32) -> bool {
         return true;
     }
     if (0x07FA..0x07FA + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0A71..0x0A71 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0AFB..0x0AFB + 1).contains(&cp) {
         return true;
     }
     if (0x0B55..0x0B55 + 1).contains(&cp) {
@@ -3238,7 +3385,25 @@ pub(crate) fn ext(cp: u32) -> bool {
     if (0x10781..0x10782 + 1).contains(&cp) {
         return true;
     }
+    if (0x10D4E..0x10D4E + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10D6A..0x10D6A + 1).contains(&cp) {
+        return true;
+    }
+    if (0x10D6F..0x10D6F + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11237..0x11237 + 1).contains(&cp) {
+        return true;
+    }
     if (0x1135D..0x1135D + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113D2..0x113D2 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113D3..0x113D3 + 1).contains(&cp) {
         return true;
     }
     if (0x115C6..0x115C8 + 1).contains(&cp) {
@@ -3257,6 +3422,9 @@ pub(crate) fn ext(cp: u32) -> bool {
         return true;
     }
     if (0x1E13C..0x1E13D + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1E5EF..0x1E5EF + 1).contains(&cp) {
         return true;
     }
     if (0x1E944..0x1E946 + 1).contains(&cp) {
@@ -3453,7 +3621,16 @@ pub(crate) fn ogr_ext(cp: u32) -> bool {
     if (0x0BD7..0x0BD7 + 1).contains(&cp) {
         return true;
     }
+    if (0x0CC0..0x0CC0 + 1).contains(&cp) {
+        return true;
+    }
     if (0x0CC2..0x0CC2 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0CC7..0x0CC8 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0CCA..0x0CCB + 1).contains(&cp) {
         return true;
     }
     if (0x0CD5..0x0CD6 + 1).contains(&cp) {
@@ -3471,7 +3648,28 @@ pub(crate) fn ogr_ext(cp: u32) -> bool {
     if (0x0DDF..0x0DDF + 1).contains(&cp) {
         return true;
     }
+    if (0x1715..0x1715 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1734..0x1734 + 1).contains(&cp) {
+        return true;
+    }
     if (0x1B35..0x1B35 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1B3B..0x1B3B + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1B3D..0x1B3D + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1B43..0x1B44 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1BAA..0x1BAA + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1BF2..0x1BF3 + 1).contains(&cp) {
         return true;
     }
     if (0x200C..0x200C + 1).contains(&cp) {
@@ -3480,13 +3678,43 @@ pub(crate) fn ogr_ext(cp: u32) -> bool {
     if (0x302E..0x302F + 1).contains(&cp) {
         return true;
     }
+    if (0xA953..0xA953 + 1).contains(&cp) {
+        return true;
+    }
+    if (0xA9C0..0xA9C0 + 1).contains(&cp) {
+        return true;
+    }
     if (0xFF9E..0xFF9F + 1).contains(&cp) {
+        return true;
+    }
+    if (0x111C0..0x111C0 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x11235..0x11235 + 1).contains(&cp) {
         return true;
     }
     if (0x1133E..0x1133E + 1).contains(&cp) {
         return true;
     }
+    if (0x1134D..0x1134D + 1).contains(&cp) {
+        return true;
+    }
     if (0x11357..0x11357 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113B8..0x113B8 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113C2..0x113C2 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113C5..0x113C5 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113C7..0x113C9 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x113CF..0x113CF + 1).contains(&cp) {
         return true;
     }
     if (0x114B0..0x114B0 + 1).contains(&cp) {
@@ -3498,13 +3726,25 @@ pub(crate) fn ogr_ext(cp: u32) -> bool {
     if (0x115AF..0x115AF + 1).contains(&cp) {
         return true;
     }
+    if (0x116B6..0x116B6 + 1).contains(&cp) {
+        return true;
+    }
     if (0x11930..0x11930 + 1).contains(&cp) {
         return true;
     }
-    if (0x1D165..0x1D165 + 1).contains(&cp) {
+    if (0x1193D..0x1193D + 1).contains(&cp) {
         return true;
     }
-    if (0x1D16E..0x1D172 + 1).contains(&cp) {
+    if (0x11F41..0x11F41 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x16FF0..0x16FF1 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1D165..0x1D166 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x1D16D..0x1D172 + 1).contains(&cp) {
         return true;
     }
     if (0xE0020..0xE007F + 1).contains(&cp) {
@@ -4048,13 +4288,16 @@ pub(crate) fn sterm(cp: u32) -> bool {
     if (0x1AA8..0x1AAB + 1).contains(&cp) {
         return true;
     }
+    if (0x1B4E..0x1B4F + 1).contains(&cp) {
+        return true;
+    }
     if (0x1B5A..0x1B5B + 1).contains(&cp) {
         return true;
     }
     if (0x1B5E..0x1B5F + 1).contains(&cp) {
         return true;
     }
-    if (0x1B7D..0x1B7E + 1).contains(&cp) {
+    if (0x1B7D..0x1B7F + 1).contains(&cp) {
         return true;
     }
     if (0x1C3B..0x1C3C + 1).contains(&cp) {
@@ -4063,10 +4306,16 @@ pub(crate) fn sterm(cp: u32) -> bool {
     if (0x1C7E..0x1C7F + 1).contains(&cp) {
         return true;
     }
+    if (0x2024..0x2024 + 1).contains(&cp) {
+        return true;
+    }
     if (0x203C..0x203D + 1).contains(&cp) {
         return true;
     }
     if (0x2047..0x2049 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x2CF9..0x2CFB + 1).contains(&cp) {
         return true;
     }
     if (0x2E2E..0x2E2E + 1).contains(&cp) {
@@ -4112,6 +4361,12 @@ pub(crate) fn sterm(cp: u32) -> bool {
         return true;
     }
     if (0xABEB..0xABEB + 1).contains(&cp) {
+        return true;
+    }
+    if (0xFE12..0xFE12 + 1).contains(&cp) {
+        return true;
+    }
+    if (0xFE15..0xFE16 + 1).contains(&cp) {
         return true;
     }
     if (0xFE52..0xFE52 + 1).contains(&cp) {
@@ -4168,6 +4423,9 @@ pub(crate) fn sterm(cp: u32) -> bool {
     if (0x112A9..0x112A9 + 1).contains(&cp) {
         return true;
     }
+    if (0x113D4..0x113D5 + 1).contains(&cp) {
+        return true;
+    }
     if (0x1144B..0x1144C + 1).contains(&cp) {
         return true;
     }
@@ -4214,6 +4472,9 @@ pub(crate) fn sterm(cp: u32) -> bool {
         return true;
     }
     if (0x16B44..0x16B44 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x16D6E..0x16D6F + 1).contains(&cp) {
         return true;
     }
     if (0x16E98..0x16E98 + 1).contains(&cp) {
@@ -4552,10 +4813,10 @@ pub(crate) fn pat_syn(cp: u32) -> bool {
     if (0x23DC..0x23E1 + 1).contains(&cp) {
         return true;
     }
-    if (0x23E2..0x2426 + 1).contains(&cp) {
+    if (0x23E2..0x2429 + 1).contains(&cp) {
         return true;
     }
-    if (0x2427..0x243F + 1).contains(&cp) {
+    if (0x242A..0x243F + 1).contains(&cp) {
         return true;
     }
     if (0x2440..0x244A + 1).contains(&cp) {
@@ -5073,6 +5334,38 @@ pub(crate) fn pcm(cp: u32) -> bool {
 
 pub(crate) fn ri(cp: u32) -> bool {
     if (0x1F1E6..0x1F1FF + 1).contains(&cp) {
+        return true;
+    }
+
+    false
+}
+
+pub(crate) fn mcm(cp: u32) -> bool {
+    if (0x0654..0x0655 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x0658..0x0658 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x06DC..0x06DC + 1).contains(&cp) {
+        return true;
+    }
+    if (0x06E3..0x06E3 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x06E7..0x06E8 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x08CA..0x08CB + 1).contains(&cp) {
+        return true;
+    }
+    if (0x08CD..0x08CF + 1).contains(&cp) {
+        return true;
+    }
+    if (0x08D3..0x08D3 + 1).contains(&cp) {
+        return true;
+    }
+    if (0x08F3..0x08F3 + 1).contains(&cp) {
         return true;
     }
 
