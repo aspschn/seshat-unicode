@@ -33,6 +33,10 @@ pub(crate) fn na(cp: u32) -> String {
             (0x31350..0x323AF + 1).contains(&cp) {
         return format!("CJK UNIFIED IDEOGRAPH-{:04X}", cp);
     }
+    // 13460..143FA NR2 "EGYPTIAN HIEROGLYPH-" Added since 16.0
+    if (0x13460..=0x143FA).contains(&cp) {
+        return format!("EGYPTIAN HIEROGLYPH-{:04X}", cp);
+    }
     // 17000..187F7 NR2 “tangut ideograph-”
     // 18D00..18D08 NR2 “tangut ideograph-”
     if (0x17000..0x187F7 + 1).contains(&cp) ||
@@ -40,7 +44,11 @@ pub(crate) fn na(cp: u32) -> String {
         return format!("TANGUT IDEOGRAPH-{:04X}", cp);
     }
     // 18B00..18CD5 NR2 “khitan small script character-”
-    if (0x18B00..0x18CD5 + 1).contains(&cp) {
+    if (0x18B00..=0x18CD5).contains(&cp) {
+        return format!("KHITAN SMALL SCRIPT CHARACTER-{:04X}", cp);
+    }
+    // Not listed but 18CFF is also a KHITAN SMALL SCRIPT CHARACTER.
+    if 0x18CFF == cp {
         return format!("KHITAN SMALL SCRIPT CHARACTER-{:04X}", cp);
     }
     // 1B170..1B2FB NR2 “nushu character-”

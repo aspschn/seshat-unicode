@@ -205,6 +205,7 @@ pub(crate) fn gr_ext(cp: u32) -> bool {
 // #  Generated from: Canonical_Combining_Class=Virama
 // #  Use Canonical_Combining_Class=Virama directly instead
 
+
 // # Derived Property: Indic_Conjunct_Break
 // #  Generated from the Grapheme_Cluster_Break, Indic_Syllabic_Category,
 // #  Canonical_Combining_Class, and Script properties as described in UAX #44:
@@ -212,27 +213,50 @@ pub(crate) fn gr_ext(cp: u32) -> bool {
 // #
 // #  All code points not explicitly listed for Indic_Conjunct_Break
 // #  have the value None.
-pub(crate) fn incb(cp: u32) -> Incb {
+
+fn is_incb_linker(cp: u32) -> bool {
     let set = [Sc::Beng, Sc::Deva, Sc::Gujr, Sc::Mlym, Sc::Orya, Sc::Telu];
 
     let cp = CodePoint::new(cp).unwrap();
     let sc = cp.sc();
 
     if set.contains(&sc) && cp.insc() == Insc::Virama {
+        return true;
+    }
+
+    false
+}
+
+fn is_incb_consonant(cp: u32) -> bool {
+    let set = [Sc::Beng, Sc::Deva, Sc::Gujr, Sc::Mlym, Sc::Orya, Sc::Telu];
+
+    let cp = CodePoint::new(cp).unwrap();
+    let sc = cp.sc();
+
+    if set.contains(&sc) && cp.insc() == Insc::Consonant {
+        return true;
+    };
+
+    false
+}
+
+pub(crate) fn incb(cp: u32) -> Incb {
+    if is_incb_linker(cp) {
         return Incb::Linker;
     }
-    if set.contains(&sc) && cp.insc() == Insc::Consonant {
+    if is_incb_consonant(cp) {
         return Incb::Consonant;
     }
-    if cp.gcb() == Gcb::EX && cp.ccc() != Ccc::NR {
-        if cp.insc() != Insc::Virama && cp.insc() != Insc::Consonant {
+
+    let code_point = CodePoint::new(cp).unwrap();
+    let gcb = code_point.gcb();
+
+    if gcb == Gcb::EX || gcb == Gcb::ZWJ {
+        if !is_incb_linker(cp) && !is_incb_consonant(cp) && cp != 0x200C {
             return Incb::Extend;
         }
 
         return Incb::None;
-    }
-    if cp.gcb() == Gcb::ZWJ && cp.insc() != Insc::Virama && cp.insc() != Insc::Consonant {
-        return Incb::Extend;
     }
 
     Incb::None
